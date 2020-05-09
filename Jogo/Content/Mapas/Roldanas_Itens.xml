@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<itens mapa="Roldanas">
+	<item tipo="cenario" sprite="Sprites\\Geral\\LIXEIRA_SHEET" x="8" y="5" largura="64" altura="128" quadros="1" animacao="parado" passavel="s" nuvem="n"/>
+	<item tipo="cenario" sprite="Sprites\\Geral\\LIXEIRA_SHEET" x="14" y="5" largura="64" altura="128" quadros="1" animacao="parado" passavel="s" nuvem="n"/>
+	<item tipo="cenario" sprite="Sprites\\Geral\\LIXEIRA_SHEET" x="17" y="13" largura="64" altura="128" quadros="1" animacao="parado" passavel="s" nuvem="n"/>
+	<item tipo="cenario" sprite="Sprites\\Roldanas\\BANCO_MADEIRA_SHEET" x="9" y="5" largura="256" altura="128" quadros="1" animacao="parado" passavel="s" nuvem="n"/>
+	<item tipo="cenario" sprite="Sprites\\Roldanas\\BANCO_MADEIRA_SHEET" x="16" y="5" largura="256" altura="128" quadros="1" animacao="parado" passavel="s" nuvem="n"/>
+	<item tipo="cenario" sprite="Sprites\\Roldanas\\BANCO_MADEIRA_SHEET" x="20" y="13" largura="256" altura="128" quadros="1" animacao="parado" passavel="s" nuvem="n"/>
+	<item tipo="cenario" sprite="Sprites\\Geral\\ELEVADOR_BOTAO" x="23" y="5" largura="64" altura="64" quadros="1" animacao="parado" passavel="s" nuvem="n"/>
+	<item tipo="cenario" sprite="Sprites\\Geral\\ELEVADOR_BOTAO" x="24" y="13" largura="64" altura="64" quadros="1" animacao="parado" passavel="s" nuvem="n"/>
+	<item tipo="cenario" sprite="Sprites\\Geral\\ELEVADOR_BOTAO" x="4" y="17" largura="64" altura="64" quadros="1" animacao="parado" passavel="s" nuvem="n"/>
+	<item tipo="cenario" sprite="Sprites\\Geral\\ELEVADOR_BOTAO" x="25" y="49" largura="64" altura="64" quadros="1" animacao="parado" passavel="s" nuvem="n"/>
+  <item tipo="cenario" sprite="Sprites\\Geral\\CAIXA_02" x="0" y="11" largura="128" altura="64" quadros="1" animacao="parado" passavel="s" nuvem="s"/>
+  <item tipo="cenario" sprite="Sprites\\Geral\\CAIXA_01" x="0" y="10" largura="64" altura="64" quadros="1" animacao="parado" passavel="s" nuvem="s"/>
+  <item tipo="cenario" sprite="Sprites\\Geral\\CAIXA_01_CIMA" x="0" y="9" largura="64" altura="64" quadros="1" animacao="parado" passavel="s" nuvem="s"/>
+  <item tipo="cenario" sprite="Sprites\\Geral\\CAIXA_01_CIMA" x="1" y="10" largura="64" altura="64" quadros="1" animacao="parado" passavel="s" nuvem="s"/>
+  <item tipo="cenario" sprite="Sprites\\Geral\\CAIXA_01_CIMA" x="2" y="11" largura="64" altura="64" quadros="1" animacao="parado" passavel="s" nuvem="s"/>
+  <item tipo="cenario" sprite="Sprites\\Geral\\CAIXA_03_CIMA" x="3" y="10" largura="128" altura="128" quadros="1" animacao="parado" passavel="s" nuvem="s"/>
+  <item tipo="cenario" sprite="Sprites\\Geral\\CAIXA_01" x="18" y="23" largura="64" altura="64" quadros="1" animacao="parado" passavel="s" nuvem="s"/>
+  <item tipo="cenario" sprite="Sprites\\Geral\\CAIXA_01" x="25" y="23" largura="64" altura="64" quadros="1" animacao="parado" passavel="s" nuvem="s"/>
+  <item tipo="cenario" sprite="Sprites\\Geral\\CAIXA_01" x="6" y="20" largura="64" altura="64" quadros="1" animacao="parado" passavel="s" nuvem="s"/>
+  <item tipo="cenario" sprite="Sprites\\Geral\\CAIXA_01_CIMA" x="25" y="22" largura="64" altura="64" quadros="1" animacao="parado" passavel="s" nuvem="s"/>
+	<item tipo="cenario" sprite="Sprites\\Geral\\CAIXA_01_CIMA" x="21" y="17" largura="64" altura="64" quadros="1" animacao="parado" passavel="s" nuvem="s"/>
+  <item tipo="cenario" sprite="Sprites\\Geral\\CAIXA_01_CIMA" x="5" y="21" largura="64" altura="64" quadros="1" animacao="parado" passavel="s" nuvem="s"/>
+	<item tipo="cenario" sprite="Sprites\\Geral\\CAIXA_01_CIMA" x="22" y="18" largura="64" altura="64" quadros="1" animacao="parado" passavel="s" nuvem="s"/>
+	<item tipo="cenario" sprite="Sprites\\Geral\\CAIXA_01_CIMA" x="18" y="22" largura="64" altura="64" quadros="1" animacao="parado" passavel="s" nuvem="s"/>
+	<item tipo="cenario" sprite="Sprites\\Geral\\CAIXA_01_CIMA" x="19" y="23" largura="64" altura="64" quadros="1" animacao="parado" passavel="s" nuvem="s"/>
+	<item tipo="cenario" sprite="Sprites\\Geral\\CAIXA_01_CIMA" x="5" y="39" largura="64" altura="64" quadros="1" animacao="parado" passavel="s" nuvem="s"/>
+	<item tipo="cenario" sprite="Sprites\\Geral\\CAIXA_01_CIMA" x="6" y="38" largura="64" altura="64" quadros="1" animacao="parado" passavel="s" nuvem="s"/>
+  <item tipo="cenario" sprite="Sprites\\Geral\\CAIXA_02" x="19" y="24" largura="128" altura="64" quadros="1" animacao="parado" passavel="s" nuvem="s"/>
+	<item tipo="cenario" sprite="Sprites\\Geral\\CAIXA_02" x="7" y="22" largura="128" altura="64" quadros="1" animacao="parado" passavel="s" nuvem="s"/>
+	<item tipo="cenario" sprite="Sprites\\Geral\\CAIXA_02" x="5" y="22" largura="128" altura="64" quadros="1" animacao="parado" passavel="s" nuvem="s"/>
+	<item tipo="cenario" sprite="Sprites\\Geral\\CAIXA_02" x="6" y="21" largura="128" altura="64" quadros="1" animacao="parado" passavel="s" nuvem="s"/>
+	<item tipo="cenario" sprite="Sprites\\Geral\\CAIXA_02" x="22" y="19" largura="128" altura="64" quadros="1" animacao="parado" passavel="s" nuvem="s"/>
+	<item tipo="cenario" sprite="Sprites\\Geral\\CAIXA_02" x="17" y="24" largura="128" altura="64" quadros="1" animacao="parado" passavel="s" nuvem="s"/>
+	<item tipo="cenario" sprite="Sprites\\Geral\\CAIXA_02" x="25" y="24" largura="128" altura="64" quadros="1" animacao="parado" passavel="s" nuvem="s"/>
+	<item tipo="cenario" sprite="Sprites\\Geral\\CAIXA_02" x="6" y="39" largura="128" altura="64" quadros="1" animacao="parado" passavel="s" nuvem="s"/>
+	<item tipo="cenario" sprite="Sprites\\Geral\\CAIXA_02_CIMA" x="18" y="19" largura="128" altura="64" quadros="1" animacao="parado" passavel="s" nuvem="s"/>
+	<item tipo="cenario" sprite="Sprites\\Geral\\CAIXA_03" x="20" y="18" largura="128" altura="128" quadros="1" animacao="parado" passavel="s" nuvem="s"/>
+	<item tipo="cenario" sprite="Sprites\\Geral\\CAIXA_03" x="21" y="23" largura="128" altura="128" quadros="1" animacao="parado" passavel="s" nuvem="s"/>
+	<item tipo="cenario" sprite="Sprites\\Geral\\CAIXA_03_CIMA" x="25" y="18" largura="128" altura="128" quadros="1" animacao="parado" passavel="s" nuvem="s"/>
+	<item tipo="cenario" sprite="Sprites\\Geral\\CAIXA_03_CIMA" x="23" y="23" largura="128" altura="128" quadros="1" animacao="parado" passavel="s" nuvem="s"/>
+  <item tipo="cenario" sprite="Sprites\\Geral\\CAIXA_04_CIMA" x="27" y="17" largura="192" altura="192" quadros="1" animacao="parado" passavel="s" nuvem="s"/>
+	<item tipo="cenario" sprite="Sprites\\Geral\\CAIXA_04_CIMA" x="27" y="22" largura="192" altura="192" quadros="1" animacao="parado" passavel="s" nuvem="s"/>
+	<item tipo="cenario" sprite="Sprites\\Roldanas\\COFRE_SPRITE" x="4" y="48" largura="576" altura="192" quadros="3" animacao="parado" passavel="s" nuvem="n"/>
+	<item tipo="cenario" sprite="Sprites\\Geral\\PORTA_FUNDO_SHEET" x="0" y="24" largura="640" altura="320" quadros="5" animacao="parado" passavel="s" nuvem="n"/>
+	
+  <item tipo="elevador" tela="Roldanas" sprite="Sprites\\Geral\\ELEVADOR_FUNDO_SHEET" x="0" y="14" largura="1792" altura="320" quadros="7" saidaX="25" saidaY="4" animacao="parado" passavel="s" nuvem="n"/>
+	<item tipo="elevador" tela="Roldanas" sprite="Sprites\\Geral\\ELEVADOR_FUNDO_SHEET" x="24" y="2" largura="1792" altura="320" quadros="7" saidaX="1" saidaY="16" animacao="parado" passavel="s" nuvem="n"/>
+	<item tipo="elevador" tela="fim" sprite="Sprites\\Geral\\ELEVADOR_FUNDO_SHEET" x="26" y="10" largura="1792" altura="320" quadros="7" saidaX="27" saidaY="49" animacao="parado" passavel="s" nuvem="n"/>
+	<item tipo="elevador" tela="Roldanas" sprite="Sprites\\Geral\\ELEVADOR_FUNDO_SHEET" x="26" y="46" largura="1792" altura="320" quadros="7" saidaX="27" saidaY="12" animacao="parado" passavel="s" nuvem="n"/>
+ 
+	<item tipo="corda" sprite="Sprites\\Componentes\\corda" x="13" y="27" saidaX="15" saidaY="20"/>
+  <item tipo="corda" sprite="Sprites\\Componentes\\corda" x="18" y="20" saidaX="21" saidaY="20"/>
+	<item tipo="corda" sprite="Sprites\\Componentes\\corda" x="21" y="20" saidaX="21" saidaY="26"/>
+  <item tipo="corda" sprite="Sprites\\Componentes\\corda" x="17" y="35" saidaX="17" saidaY="46"/>
+  <item tipo="corda" sprite="Sprites\\Componentes\\corda" x="22" y="40" saidaX="20" saidaY="41"/>
+  	
+  <item tipo="cenario2" sprite="Sprites\\Geral\\CAIXA_04_CORDA" x="20" y="26" largura="192" altura="192" quadros="1" animacao="parado" passavel="n" nuvem="n"/>
+  <item tipo="cenario2" sprite="Sprites\\Roldanas\\ROLDANA_COMPLETA_TETO_FINO" x="15" y="20" largura="64" altura="64" quadros="1" animacao="parado" passavel="s" nuvem="n"/>
+	<item tipo="cenario2" sprite="Sprites\\Roldanas\\ROLDANA_COMPLETA_TETO_FINO" x="21" y="20" largura="64" altura="64" quadros="1" animacao="parado" passavel="s" nuvem="n"/>
+	<item tipo="cenario2" sprite="Sprites\\Roldanas\\ROLDANA_COMPLETA_TETO_FINO" x="17" y="35" largura="64" altura="64" quadros="1" animacao="parado" passavel="s" nuvem="n"/>
+  <item tipo="cenario2" sprite="Sprites\\Roldanas\\PORTA_QUE_SOBE" x="17" y="46" largura="64" altura="320" quadros="1" animacao="parado" passavel="n" nuvem="n"/>
+  
+  <item tipo="manivela" corda="2" item="0" sprite="Sprites\\Roldanas\\MANIVELA" x="13" y="27" largura="64" altura="128" quadros="1" animacao="parado" passavel="s" nuvem="n"/>
+	<item tipo="manivela" corda="3" item="4" sprite="Sprites\\Roldanas\\MANIVELA" x="22" y="40" largura="64" altura="128" quadros="1" animacao="parado" passavel="s" nuvem="n"/>
+  
+	<item tipo="roldanaSuporte" sprite="Sprites\\Roldanas\\ROLDANA_VAZIA_TETO_FINO" spriteCompleto="Sprites\\Roldanas\\ROLDANA_COMPLETA_TETO_FINO" x="18" y="20" cordaDe="8" largura="64" altura="64" quadros="1" animacao="parado" passavel="s" nuvem="n"/>
+	<item tipo="roldanaSuporte" sprite="Sprites\\Roldanas\\ROLDANA_VAZIA_BAIXO" spriteCompleto="Sprites\\Roldanas\\ROLDANA_COMPLETA_BAIXO" x="18" y="28" cordaDe="1" largura="64" altura="64" quadros="1" animacao="parado" passavel="s" nuvem="n"/>
+	<item tipo="roldanaSuporte" sprite="Sprites\\Roldanas\\ROLDANA_VAZIA_BAIXO" spriteCompleto="Sprites\\Roldanas\\ROLDANA_COMPLETA_BAIXO" x="20" y="41" cordaDe="3" largura="64" altura="64" quadros="1" animacao="parado" passavel="s" nuvem="n"/>
+  
+  <item tipo="save" sprite="Sprites\\Geral\\MAQUINA_REFRI" x="14" y="11" largura="128" altura="256" quadros="1" animacao="parado" passavel="s" nuvem="n"/>
+	
+  <item tipo="saveItem" sprite="Sprites\\Geral\\MOEDA" spriteHUD="Sprites\\Geral\\MOEDA_HUD" x="12" y="40" largura="256" altura="64" quadros="4" animacao="indo" passavel="s" nuvem="n"/>
+  
+	<item tipo="roldana" sprite="Sprites\\Roldanas\\ROLDANA" spriteHUD="Sprites\\Roldanas\\ROLDANA_HUD" x="15" y="5" largura="256" altura="64" quadros="4" animacao="indo" passavel="s" nuvem="n"/>
+  <item tipo="roldana" sprite="Sprites\\Roldanas\\ROLDANA" spriteHUD="Sprites\\Roldanas\\ROLDANA_HUD" x="23" y="18" largura="256" altura="64" quadros="4" animacao="indo" passavel="s" nuvem="n"/>
+	<item tipo="roldana" sprite="Sprites\\Roldanas\\ROLDANA" spriteHUD="Sprites\\Roldanas\\ROLDANA_HUD" x="27" y="28" largura="256" altura="64" quadros="4" animacao="indo" passavel="s" nuvem="n"/>
+	
+  <item tipo="cracha" sprite="Sprites\\Geral\\CRACHA" spriteHUD="Sprites\\Geral\\CRACHA_HUD" x="12" y="13" largura="256" altura="64" quadros="4" animacao="indo" passavel="s" nuvem="n"/>
+  
+  <item tipo="cenario3" sprite="Sprites\\Roldanas\\GRADE_FORA" x="0" y="4" largura="64" altura="192" quadros="1" animacao="parado" passavel="s" nuvem="n"/>
+  <item tipo="cenario3" sprite="Sprites\\Roldanas\\GRADE_FORA" x="1" y="4" largura="64" altura="192" quadros="1" animacao="parado" passavel="s" nuvem="n"/>
+  <item tipo="cenario3" sprite="Sprites\\Roldanas\\GRADE_FORA" x="2" y="4" largura="64" altura="192" quadros="1" animacao="parado" passavel="s" nuvem="n"/>
+  <item tipo="cenario3" sprite="Sprites\\Roldanas\\GRADE_FORA" x="3" y="4" largura="64" altura="192" quadros="1" animacao="parado" passavel="s" nuvem="n"/>
+  <item tipo="cenario3" sprite="Sprites\\Roldanas\\GRADE_FORA" x="4" y="4" largura="64" altura="192" quadros="1" animacao="parado" passavel="s" nuvem="n"/>
+  <item tipo="cenario3" sprite="Sprites\\Roldanas\\GRADE_FORA" x="5" y="4" largura="64" altura="192" quadros="1" animacao="parado" passavel="s" nuvem="n"/>
+  <item tipo="cenario3" sprite="Sprites\\Roldanas\\GRADE_FORA" x="6" y="4" largura="64" altura="192" quadros="1" animacao="parado" passavel="s" nuvem="n"/>
+  <item tipo="cenario3" sprite="Sprites\\Roldanas\\GRADE_FORA" x="7" y="4" largura="64" altura="192" quadros="1" animacao="parado" passavel="s" nuvem="n"/>
+  <item tipo="cenario3" sprite="Sprites\\Roldanas\\GRADE_FORA" x="8" y="4" largura="64" altura="192" quadros="1" animacao="parado" passavel="s" nuvem="n"/>
+  <item tipo="cenario3" sprite="Sprites\\Roldanas\\GRADE_FORA" x="9" y="4" largura="64" altura="192" quadros="1" animacao="parado" passavel="s" nuvem="n"/>
+  <item tipo="cenario3" sprite="Sprites\\Roldanas\\GRADE_FORA" x="10" y="4" largura="64" altura="192" quadros="1" animacao="parado" passavel="s" nuvem="n"/>
+  <item tipo="cenario3" sprite="Sprites\\Roldanas\\GRADE_FORA" x="11" y="4" largura="64" altura="192" quadros="1" animacao="parado" passavel="s" nuvem="n"/>
+  <item tipo="cenario3" sprite="Sprites\\Roldanas\\GRADE_FORA" x="12" y="4" largura="64" altura="192" quadros="1" animacao="parado" passavel="s" nuvem="n"/>
+  <item tipo="cenario3" sprite="Sprites\\Roldanas\\GRADE_FORA" x="13" y="4" largura="64" altura="192" quadros="1" animacao="parado" passavel="s" nuvem="n"/>
+  <item tipo="cenario3" sprite="Sprites\\Roldanas\\GRADE_FORA" x="14" y="4" largura="64" altura="192" quadros="1" animacao="parado" passavel="s" nuvem="n"/>
+  <item tipo="cenario3" sprite="Sprites\\Roldanas\\GRADE_FORA" x="15" y="4" largura="64" altura="192" quadros="1" animacao="parado" passavel="s" nuvem="n"/>
+  <item tipo="cenario3" sprite="Sprites\\Roldanas\\GRADE_FORA" x="16" y="4" largura="64" altura="192" quadros="1" animacao="parado" passavel="s" nuvem="n"/>
+  <item tipo="cenario3" sprite="Sprites\\Roldanas\\GRADE_FORA" x="17" y="4" largura="64" altura="192" quadros="1" animacao="parado" passavel="s" nuvem="n"/>
+  <item tipo="cenario3" sprite="Sprites\\Roldanas\\GRADE_FORA" x="18" y="4" largura="64" altura="192" quadros="1" animacao="parado" passavel="s" nuvem="n"/>
+  <item tipo="cenario3" sprite="Sprites\\Roldanas\\GRADE_FORA" x="19" y="4" largura="64" altura="192" quadros="1" animacao="parado" passavel="s" nuvem="n"/>
+  <item tipo="cenario3" sprite="Sprites\\Roldanas\\GRADE_FORA" x="20" y="4" largura="64" altura="192" quadros="1" animacao="parado" passavel="s" nuvem="n"/>
+  <item tipo="cenario3" sprite="Sprites\\Roldanas\\GRADE_FORA" x="21" y="4" largura="64" altura="192" quadros="1" animacao="parado" passavel="s" nuvem="n"/>
+  <item tipo="cenario3" sprite="Sprites\\Roldanas\\GRADE_FORA" x="22" y="4" largura="64" altura="192" quadros="1" animacao="parado" passavel="s" nuvem="n"/>
+  <item tipo="cenario3" sprite="Sprites\\Roldanas\\GRADE_FORA" x="23" y="4" largura="64" altura="192" quadros="1" animacao="parado" passavel="s" nuvem="n"/>
+  <item tipo="cenario3" sprite="Sprites\\Roldanas\\GRADE_FORA" x="24" y="4" largura="64" altura="192" quadros="1" animacao="parado" passavel="s" nuvem="n"/>
+  <item tipo="cenario3" sprite="Sprites\\Roldanas\\GRADE_FORA" x="25" y="4" largura="64" altura="192" quadros="1" animacao="parado" passavel="s" nuvem="n"/>
+  <item tipo="cenario3" sprite="Sprites\\Roldanas\\GRADE_FORA" x="26" y="4" largura="64" altura="192" quadros="1" animacao="parado" passavel="s" nuvem="n"/>
+  <item tipo="cenario3" sprite="Sprites\\Roldanas\\GRADE_FORA" x="27" y="4" largura="64" altura="192" quadros="1" animacao="parado" passavel="s" nuvem="n"/>
+  <item tipo="cenario3" sprite="Sprites\\Roldanas\\GRADE_FORA" x="28" y="4" largura="64" altura="192" quadros="1" animacao="parado" passavel="s" nuvem="n"/>
+  <item tipo="cenario3" sprite="Sprites\\Roldanas\\GRADE_FORA" x="29" y="4" largura="64" altura="192" quadros="1" animacao="parado" passavel="s" nuvem="n"/>
+</itens>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<itens mapa="Agua">
+  <item tipo="agua" sprite="Sprites\\Agua\\TILE_AGUA_SUBINDO" x="0" y="21" largura="19" altura="6"/>
+
+  <item tipo="vidro" sprite="Sprites\\Agua\\PORTA_VIDRO" x="19" y="21" largura="512" altura="384" quadros="4" animacao="indo" passavel="n" nuvem="n"/>
+  
+  <item tipo="portal" tela="Roldanas" sprite="Sprites\\Geral\\PORTA_FUNDO_SHEET" x="7" y="22" largura="640" altura="320" saidaX="0" saidaY="24" quadros="5" animacao="parado" passavel="s" nuvem="n"/>
+  
+  <item tipo="save" sprite="Sprites\\Geral\\MAQUINA_REFRI" x="13" y="23" largura="128" altura="256" quadros="1" animacao="parado" passavel="s" nuvem="n"/>
+  
+  <item tipo="cenario" sprite="Sprites\\Geral\\PORTA_FUNDO_SHEET" x="26" y="22" largura="640" altura="320" quadros="5" animacao="parado" passavel="s" nuvem="n"/>
+  <item tipo="cenario" sprite="Sprites\\Agua\\PLACA_1ANDAR" x="7" y="16" largura="64" altura="64" quadros="1" animacao="parado" passavel="s" nuvem="n"/>
+  <item tipo="cenario" sprite="Sprites\\Agua\\PLACA_1ANDAR" x="23" y="16" largura="64" altura="64" quadros="1" animacao="parado" passavel="s" nuvem="n"/>
+  <item tipo="cenario" sprite="Sprites\\Agua\\PLACA_2ANDAR" x="7" y="11" largura="64" altura="64" quadros="1" animacao="parado" passavel="s" nuvem="n"/>
+  <item tipo="cenario" sprite="Sprites\\Agua\\PLACA_3ANDAR" x="7" y="6" largura="64" altura="64" quadros="1" animacao="parado" passavel="s" nuvem="n"/>
+  <item tipo="cenario" sprite="Sprites\\Agua\\PLACA_4ANDAR" x="7" y="1" largura="64" altura="64" quadros="1" animacao="parado" passavel="s" nuvem="n"/>
+  <item tipo="cenario" sprite="Sprites\\Agua\\PLACA_MOLHADO" x="10" y="25" largura="64" altura="128" quadros="1" animacao="parado" passavel="s" nuvem="n"/>
+  <item tipo="cenario" sprite="Sprites\\Agua\\PLACA_MOLHADO" x="18" y="33" largura="64" altura="128" quadros="1" animacao="parado" passavel="s" nuvem="n"/>
+  <item tipo="cenario" sprite="Sprites\\Agua\\PLACA_RECEPCAO" x="2" y="30" largura="128" altura="64" quadros="1" animacao="parado" passavel="s" nuvem="n"/>
+  <item tipo="cenario" sprite="Sprites\\Agua\\PLACA_ALMOXARIFADO" x="26" y="16" largura="192" altura="128" quadros="1" animacao="parado" passavel="s" nuvem="n"/>
+  <item tipo="cenario" sprite="Sprites\\Agua\\GOTEIRA" x="18" y="28" largura="320" altura="64" quadros="5" animacao="indo" passavel="s" nuvem="n"/>
+  <item tipo="cenario" sprite="Sprites\\Agua\\GOTEIRA" x="13" y="21" largura="320" altura="64" quadros="5" animacao="indo" passavel="s" nuvem="n"/>
+  <item tipo="cenario" sprite="Sprites\\Agua\\PACOTES_VERT" x="9" y="2" largura="128" altura="192" quadros="1" animacao="parado" passavel="s" nuvem="n"/>
+  <item tipo="cenario" sprite="Sprites\\Agua\\AGUA_CONJUNTO_P" x="17" y="0" largura="192" altura="128" quadros="1" animacao="parado" passavel="s" nuvem="n"/>
+  <item tipo="cenario" sprite="Sprites\\Agua\\AGUA_CONJUNTO" x="15" y="2" largura="128" altura="192" quadros="1" animacao="parado" passavel="s" nuvem="n"/>
+  <item tipo="cenario" sprite="Sprites\\Agua\\PACOTES_COMAGUA" x="19" y="3" largura="192" altura="128" quadros="1" animacao="parado" passavel="s" nuvem="n"/>
+  <item tipo="cenario" sprite="Sprites\\Agua\\SOFA" x="12" y="7" largura="192" altura="192" quadros="1" animacao="parado" passavel="s" nuvem="n"/>
+  <item tipo="cenario" sprite="Sprites\\Agua\\SOFA" x="4" y="32" largura="192" altura="192" quadros="1" animacao="parado" passavel="s" nuvem="n"/>
+  <item tipo="cenario" sprite="Sprites\\Agua\\SOFA_LADO" x="20" y="7" largura="192" altura="192" quadros="1" animacao="parado" passavel="s" nuvem="n"/>
+  <item tipo="cenario" sprite="Sprites\\Agua\\SOFA_LADO" x="1" y="32" largura="128" altura="192" quadros="1" animacao="parado" passavel="s" nuvem="n"/>
+  <item tipo="cenario" sprite="Sprites\\Agua\\SOFA_OUTROLADO" x="8" y="32" largura="128" altura="192" quadros="1" animacao="parado" passavel="s" nuvem="n"/>
+  <item tipo="cenario" sprite="Sprites\\Agua\\FOGAO" x="16" y="12" largura="192" altura="192" quadros="1" animacao="parado" passavel="s" nuvem="n"/>
+
+  <item tipo="cenario" sprite="Sprites\\Geral\\ELEVADOR_BOTAO" x="15" y="33" largura="64" altura="64" quadros="1" animacao="parado" passavel="s" nuvem="n"/>
+  <item tipo="cenario" sprite="Sprites\\Geral\\ELEVADOR_FUNDO_SHEET" x="11" y="30" largura="1792" altura="320" quadros="7" animacao="parado" passavel="s" nuvem="n"/>
+  <item tipo="cenario" sprite="Sprites\\Geral\\MANUTENCAO_PLACA" x="12" y="32" largura="64" altura="128" quadros="1" animacao="parado" passavel="s" nuvem="n"/>
+  <item tipo="cenario" sprite="Sprites\\Geral\\LIXEIRA_SHEET" x="12" y="25" largura="64" altura="128" quadros="1" animacao="parado" passavel="s" nuvem="n"/>
+  <item tipo="cenario" sprite="Sprites\\Geral\\CAIXA_04_CIMA" x="8" y="17" largura="192" altura="192" quadros="1" animacao="parado" passavel="s" nuvem="n"/>
+  <item tipo="cenario" sprite="Sprites\\Geral\\CAIXA_04_CIMA" x="12" y="17" largura="192" altura="192" quadros="1" animacao="parado" passavel="s" nuvem="n"/>
+  <item tipo="cenario" sprite="Sprites\\Geral\\CAIXAS_CONJUNTO" x="18" y="17" largura="256" altura="192" quadros="1" animacao="parado" passavel="s" nuvem="n"/>
+  <item tipo="cenario" sprite="Sprites\\Geral\\LAMPADA_TETO_FINO" x="9" y="0" largura="192" altura="64" quadros="1" animacao="parado" passavel="s" nuvem="n"/>
+  <item tipo="cenario" sprite="Sprites\\Geral\\LAMPADA_TETO_FINO" x="15" y="0" largura="192" altura="64" quadros="1" animacao="parado" passavel="s" nuvem="n"/>
+  <item tipo="cenario" sprite="Sprites\\Geral\\LAMPADA_TETO_FINO" x="9" y="5" largura="192" altura="64" quadros="1" animacao="parado" passavel="s" nuvem="n"/>
+  <item tipo="cenario" sprite="Sprites\\Geral\\LAMPADA_TETO_FINO" x="15" y="5" largura="192" altura="64" quadros="1" animacao="parado" passavel="s" nuvem="n"/>
+  <item tipo="cenario" sprite="Sprites\\Geral\\LAMPADA_TETO_FINO" x="9" y="15" largura="192" altura="64" quadros="1" animacao="parado" passavel="s" nuvem="n"/>
+  <item tipo="cenario" sprite="Sprites\\Geral\\LAMPADA_TETO_FINO" x="15" y="15" largura="192" altura="64" quadros="1" animacao="parado" passavel="s" nuvem="n"/>
+  <item tipo="cenario" sprite="Sprites\\Geral\\LAMPADA_TETO_FINO" x="9" y="10" largura="192" altura="64" quadros="1" animacao="parado" passavel="s" nuvem="n"/>
+  <item tipo="cenario" sprite="Sprites\\Geral\\LAMPADA_TETO_FINO" x="15" y="10" largura="192" altura="64" quadros="1" animacao="parado" passavel="s" nuvem="n"/>
+  <item tipo="cenario" sprite="Sprites\\Geral\\LAMPADA" x="0" y="28" largura="192" altura="64" quadros="1" animacao="parado" passavel="s" nuvem="n"/>
+  <item tipo="cenario" sprite="Sprites\\Geral\\LAMPADA" x="6" y="28" largura="192" altura="64" quadros="1" animacao="parado" passavel="s" nuvem="n"/>
+  <item tipo="cenario" sprite="Sprites\\Geral\\LAMPADA" x="12" y="28" largura="192" altura="64" quadros="1" animacao="parado" passavel="s" nuvem="n"/>
+  <item tipo="cenario" sprite="Sprites\\Geral\\LAMPADA" x="26" y="28" largura="192" altura="64" quadros="1" animacao="parado" passavel="s" nuvem="n"/>
+  <item tipo="cenario" sprite="Sprites\\Geral\\LAMPADA" x="9" y="21" largura="192" altura="64" quadros="1" animacao="parado" passavel="s" nuvem="n"/>
+  <item tipo="cenario" sprite="Sprites\\Geral\\LAMPADA" x="15" y="21" largura="192" altura="64" quadros="1" animacao="parado" passavel="s" nuvem="n"/>
+  <item tipo="cenario" sprite="Sprites\\Geral\\LAMPADA" x="26" y="21" largura="192" altura="64" quadros="1" animacao="parado" passavel="s" nuvem="n"/>
+  
+  <item tipo="empurravel" sprite="Sprites\\Agua\\AGUA_VAZIA" x="12" y="2" largura="64" altura="192" quadros="1" animacao="parado" passavel="s" nuvem="n" peso="8"/>
+  <item tipo="empurravel" sprite="Sprites\\Agua\\AGUA_CHEIA" x="14" y="2" largura="64" altura="192" quadros="1" animacao="parado" passavel="s" nuvem="n" peso="18"/>
+  <item tipo="empurravel" sprite="Sprites\\Agua\\SOFA" x="8" y="7" largura="192" altura="192" quadros="1" animacao="parado" passavel="s" nuvem="n" peso="18"/>
+  <item tipo="empurravel" sprite="Sprites\\Agua\\GELADEIRA" x="12" y="11" largura="128" altura="256" quadros="1" animacao="parado" passavel="s" nuvem="n" peso="20"/>
+  <item tipo="empurravel" sprite="Sprites\\Agua\\ESTANTE" x="17" y="5" largura="128" altura="320" quadros="1" animacao="parado" passavel="s" nuvem="n" peso="10"/>
+  
+  <item tipo="saveItem" sprite="Sprites\\Geral\\MOEDA" spriteHUD="Sprites\\Geral\\MOEDA_HUD" x="20" y="8" largura="256" altura="64" quadros="4" animacao="indo" passavel="s" nuvem="n"/>
+  <item tipo="engrenagem" sprite="Sprites\\Geral\\ENGRENAGEM" spriteHUD="Sprites\\Geral\\ENGRENAGEM_HUD" x="9" y="13" largura="256" altura="64" quadros="4" animacao="indo" passavel="s" nuvem="n"/>
+</itens>

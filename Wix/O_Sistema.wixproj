@@ -1,0 +1,242 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectGuid>{92D4EEE8-32EC-43B9-87EC-EC9A3416B37F}</ProjectGuid>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <OutputType>Package</OutputType>
+    <RootNamespace>MyGame</RootNamespace>
+    <OutputName>O Sistema</OutputName>
+    <WixToolPath Condition=" '$(WixToolPath)' == '' ">$(SharpDevelopBinPath)\Tools\Wix</WixToolPath>
+    <WixTargetsPath Condition=" '$(WixTargetsPath)' == '' ">$(WixToolPath)\wix.targets</WixTargetsPath>
+    <WixTasksPath Condition=" '$(WixTasksPath)' == '' ">$(WixToolPath)\WixTasks.dll</WixTasksPath>
+    <SupressIces>ICE45</SupressIces>
+    <DefineConstants>DATADIR=$(SharpDevelopBinPath)\..\data\resources\InstallerBitmaps</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <DebugSymbols>True</DebugSymbols>
+    <DebugType>Full</DebugType>
+    <Optimize>False</Optimize>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <DebugSymbols>False</DebugSymbols>
+    <DebugType>None</DebugType>
+    <Optimize>True</Optimize>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Platform)' == 'x86' " />
+  <Import Project="$(WixToolPath)\wix.targets" />
+  <ItemGroup>
+    <None Include="Content\Content\Fonts\bitstreamCreditos.xnb" />
+    <None Include="Content\Content\Fonts\bitstreamMenu.xnb" />
+    <None Include="Content\Content\Fonts\Score_Miramonte.xnb" />
+    <None Include="Content\Content\Mapas\Agua.xnb" />
+    <None Include="Content\Content\Mapas\Agua_Inimigos.xnb" />
+    <None Include="Content\Content\Mapas\Agua_Itens.xnb" />
+    <None Include="Content\Content\Mapas\Inicio.xnb" />
+    <None Include="Content\Content\Mapas\Inicio_Inimigos.xnb" />
+    <None Include="Content\Content\Mapas\Inicio_Itens.xnb" />
+    <None Include="Content\Content\Mapas\Roldanas.xnb" />
+    <None Include="Content\Content\Mapas\Roldanas_Inimigos.xnb" />
+    <None Include="Content\Content\Mapas\Roldanas_Itens.xnb" />
+    <None Include="Content\Content\Sons\Agua\agua.xnb" />
+    <None Include="Content\Content\Sons\Agua\arrastar.xnb" />
+    <None Include="Content\Content\Sons\Agua\arrastar_leve.xnb" />
+    <None Include="Content\Content\Sons\Agua\goteira.xnb" />
+    <None Include="Content\Content\Sons\Agua\impacto_agua_leve.xnb" />
+    <None Include="Content\Content\Sons\Agua\impacto_agua_pesado.xnb" />
+    <None Include="Content\Content\Sons\Agua\vidro_quebrando.xnb" />
+    <None Include="Content\Content\Sons\Geral\caindo.xnb" />
+    <None Include="Content\Content\Sons\Geral\elevador_edit.xnb" />
+    <None Include="Content\Content\Sons\Geral\escada.xnb" />
+    <None Include="Content\Content\Sons\Geral\golpe.xnb" />
+    <None Include="Content\Content\Sons\Geral\item.xnb" />
+    <None Include="Content\Content\Sons\Geral\moeda.xnb" />
+    <None Include="Content\Content\Sons\Geral\morrendo.xnb" />
+    <None Include="Content\Content\Sons\Geral\pegando_item.xnb" />
+    <None Include="Content\Content\Sons\Geral\porta mecanica_edit.xnb" />
+    <None Include="Content\Content\Sons\Geral\porta_edit.xnb" />
+    <None Include="Content\Content\Sons\Menus\confirmar.xnb" />
+    <None Include="Content\Content\Sons\Menus\menu_navegacao.xnb" />
+    <None Include="Content\Content\Sons\Musicas\introdution2.wma" />
+    <None Include="Content\Content\Sons\Musicas\introdution2.xnb" />
+    <None Include="Content\Content\Sons\Musicas\som12.wma" />
+    <None Include="Content\Content\Sons\Musicas\som12.xnb" />
+    <None Include="Content\Content\Sons\Musicas\som2.wma" />
+    <None Include="Content\Content\Sons\Musicas\som2.xnb" />
+    <None Include="Content\Content\Sons\Musicas\som6.wma" />
+    <None Include="Content\Content\Sons\Musicas\som6.xnb" />
+    <None Include="Content\Content\Sons\Roldanas\roldana_edit.xnb" />
+    <None Include="Content\Content\Sprites\Agua\AGUA_CHEIA.xnb" />
+    <None Include="Content\Content\Sprites\Agua\AGUA_CONJUNTO.xnb" />
+    <None Include="Content\Content\Sprites\Agua\AGUA_CONJUNTO_P.xnb" />
+    <None Include="Content\Content\Sprites\Agua\AGUA_VAZIA.xnb" />
+    <None Include="Content\Content\Sprites\Agua\ESTANTE.xnb" />
+    <None Include="Content\Content\Sprites\Agua\FOGAO.xnb" />
+    <None Include="Content\Content\Sprites\Agua\GELADEIRA.xnb" />
+    <None Include="Content\Content\Sprites\Agua\GOTEIRA.xnb" />
+    <None Include="Content\Content\Sprites\Agua\PACOTES_COMAGUA.xnb" />
+    <None Include="Content\Content\Sprites\Agua\PACOTES_VERT.xnb" />
+    <None Include="Content\Content\Sprites\Agua\PLACA_1ANDAR.xnb" />
+    <None Include="Content\Content\Sprites\Agua\PLACA_2ANDAR.xnb" />
+    <None Include="Content\Content\Sprites\Agua\PLACA_3ANDAR.xnb" />
+    <None Include="Content\Content\Sprites\Agua\PLACA_4ANDAR.xnb" />
+    <None Include="Content\Content\Sprites\Agua\PLACA_ALMOXARIFADO.xnb" />
+    <None Include="Content\Content\Sprites\Agua\PLACA_MOLHADO.xnb" />
+    <None Include="Content\Content\Sprites\Agua\PLACA_RECEPCAO.xnb" />
+    <None Include="Content\Content\Sprites\Agua\PORTA_VIDRO.xnb" />
+    <None Include="Content\Content\Sprites\Agua\SOFA.xnb" />
+    <None Include="Content\Content\Sprites\Agua\SOFA_LADO.xnb" />
+    <None Include="Content\Content\Sprites\Agua\SOFA_OUTROLADO.xnb" />
+    <None Include="Content\Content\Sprites\Agua\TILE_AGUA_SUBINDO.xnb" />
+    <None Include="Content\Content\Sprites\Componentes\corda.xnb" />
+    <None Include="Content\Content\Sprites\Componentes\FadeIn.xnb" />
+    <None Include="Content\Content\Sprites\Componentes\FadeOut.xnb" />
+    <None Include="Content\Content\Sprites\Espelho\CRACHA.xnb" />
+    <None Include="Content\Content\Sprites\Espelho\CRACHA_HUD.xnb" />
+    <None Include="Content\Content\Sprites\Espelho\NIGHTVISION.xnb" />
+    <None Include="Content\Content\Sprites\Espelho\NIGHTVISION_HUD.xnb" />
+    <None Include="Content\Content\Sprites\Esquemas\esquemas_agua.xnb" />
+    <None Include="Content\Content\Sprites\Esquemas\esquemas_roldanas.xnb" />
+    <None Include="Content\Content\Sprites\Geral\CAIXAS_CONJUNTO.xnb" />
+    <None Include="Content\Content\Sprites\Geral\CAIXA_01.xnb" />
+    <None Include="Content\Content\Sprites\Geral\CAIXA_01_CIMA.xnb" />
+    <None Include="Content\Content\Sprites\Geral\CAIXA_02.xnb" />
+    <None Include="Content\Content\Sprites\Geral\CAIXA_02_CIMA.xnb" />
+    <None Include="Content\Content\Sprites\Geral\CAIXA_03.xnb" />
+    <None Include="Content\Content\Sprites\Geral\CAIXA_03_CIMA.xnb" />
+    <None Include="Content\Content\Sprites\Geral\CAIXA_04.xnb" />
+    <None Include="Content\Content\Sprites\Geral\CAIXA_04_CIMA.xnb" />
+    <None Include="Content\Content\Sprites\Geral\CAIXA_04_CORDA.xnb" />
+    <None Include="Content\Content\Sprites\Geral\CHECKPOINT.xnb" />
+    <None Include="Content\Content\Sprites\Geral\CRACHA.xnb" />
+    <None Include="Content\Content\Sprites\Geral\CRACHA_HUD.xnb" />
+    <None Include="Content\Content\Sprites\Geral\ELEVADOR_BOTAO.xnb" />
+    <None Include="Content\Content\Sprites\Geral\ELEVADOR_FUNDO_SHEET.xnb" />
+    <None Include="Content\Content\Sprites\Geral\ENGRENAGEM.xnb" />
+    <None Include="Content\Content\Sprites\Geral\ENGRENAGEM_HUD.xnb" />
+    <None Include="Content\Content\Sprites\Geral\LAMPADA.xnb" />
+    <None Include="Content\Content\Sprites\Geral\LAMPADA_TETO_FINO.xnb" />
+    <None Include="Content\Content\Sprites\Geral\LIXEIRA_SHEET.xnb" />
+    <None Include="Content\Content\Sprites\Geral\MANUTENCAO_PLACA.xnb" />
+    <None Include="Content\Content\Sprites\Geral\MAQUINA_REFRI.xnb" />
+    <None Include="Content\Content\Sprites\Geral\MOEDA.xnb" />
+    <None Include="Content\Content\Sprites\Geral\MOEDA_HUD.xnb" />
+    <None Include="Content\Content\Sprites\Geral\PORTA_FUNDO_SHEET.xnb" />
+    <None Include="Content\Content\Sprites\Geral\PORTA_QUE_SOBE.xnb" />
+    <None Include="Content\Content\Sprites\Geral\REATOR_logo.xnb" />
+    <None Include="Content\Content\Sprites\Inimigos\seguranca.xnb" />
+    <None Include="Content\Content\Sprites\Interface\HUD_FINAL.xnb" />
+    <None Include="Content\Content\Sprites\Interface\MOEDA.xnb" />
+    <None Include="Content\Content\Sprites\Interface\selecao.xnb" />
+    <None Include="Content\Content\Sprites\Menus\Botoes\cancelar.xnb" />
+    <None Include="Content\Content\Sprites\Menus\Botoes\continue.xnb" />
+    <None Include="Content\Content\Sprites\Menus\Botoes\controles.xnb" />
+    <None Include="Content\Content\Sprites\Menus\Botoes\controles_pause.xnb" />
+    <None Include="Content\Content\Sprites\Menus\Botoes\jogar.xnb" />
+    <None Include="Content\Content\Sprites\Menus\Botoes\menu_inicial.xnb" />
+    <None Include="Content\Content\Sprites\Menus\Botoes\opcoes.xnb" />
+    <None Include="Content\Content\Sprites\Menus\Botoes\sair.xnb" />
+    <None Include="Content\Content\Sprites\Menus\Botoes\sair_pause.xnb" />
+    <None Include="Content\Content\Sprites\Menus\Botoes\tela_inteira.xnb" />
+    <None Include="Content\Content\Sprites\Menus\Botoes\voltar.xnb" />
+    <None Include="Content\Content\Sprites\Menus\Fundos\fundo_opcoes.xnb" />
+    <None Include="Content\Content\Sprites\Menus\Fundos\fundo_pause.xnb" />
+    <None Include="Content\Content\Sprites\Personagem\personagem.xnb" />
+    <None Include="Content\Content\Sprites\Roldanas\BANCO_MADEIRA_SHEET.xnb" />
+    <None Include="Content\Content\Sprites\Roldanas\COFRE_SPRITE.xnb" />
+    <None Include="Content\Content\Sprites\Roldanas\GRADE_FORA.xnb" />
+    <None Include="Content\Content\Sprites\Roldanas\MANIVELA.xnb" />
+    <None Include="Content\Content\Sprites\Roldanas\PORTA_QUE_SOBE.xnb" />
+    <None Include="Content\Content\Sprites\Roldanas\ROLDANA.xnb" />
+    <None Include="Content\Content\Sprites\Roldanas\ROLDANA_COMPLETA.xnb" />
+    <None Include="Content\Content\Sprites\Roldanas\ROLDANA_COMPLETA_BAIXO.xnb" />
+    <None Include="Content\Content\Sprites\Roldanas\ROLDANA_COMPLETA_TETO_FINO.xnb" />
+    <None Include="Content\Content\Sprites\Roldanas\ROLDANA_HUD.xnb" />
+    <None Include="Content\Content\Sprites\Roldanas\ROLDANA_VAZIA.xnb" />
+    <None Include="Content\Content\Sprites\Roldanas\ROLDANA_VAZIA_BAIXO.xnb" />
+    <None Include="Content\Content\Sprites\Roldanas\ROLDANA_VAZIA_TETO_FINO.xnb" />
+    <None Include="Content\Content\Telas\FUNDO_agua.xnb" />
+    <None Include="Content\Content\Telas\FUNDO_IMA.xnb" />
+    <None Include="Content\Content\Telas\FUNDO_ROLDANAS.xnb" />
+    <None Include="Content\Content\Telas\telas_controles.xnb" />
+    <None Include="Content\Content\Telas\tela_continue.xnb" />
+    <None Include="Content\Content\Telas\tela_inicio.xnb" />
+    <None Include="Content\Content\Tilesets\SALA_DAS_ROLDANAS_SHEET.xnb" />
+    <None Include="Content\Content\Tilesets\SALA_DA_AGUA_SHEET.xnb" />
+    <None Include="Content\Content\Tilesets\SALA_DOS_ESPELHOS_SHEET.xnb" />
+    <None Include="Content\Content\Videos\Abertura.wmv" />
+    <None Include="Content\Content\Videos\Abertura.xnb" />
+    <None Include="Content\Content\Videos\Creditos.wmv" />
+    <None Include="Content\Content\Videos\Creditos.xnb" />
+    <None Include="Content\CustomTextImporter.dll" />
+    <None Include="Content\GameThumbnail.png" />
+    <None Include="Content\icone.ico" />
+    <None Include="Content\O Sistema.exe" />
+    <None Include="Content\O Sistema.exe.manifest" />
+    <None Include="Resources\DirectX-64.bmp" />
+    <None Include="Resources\DotNet-64.bmp" />
+    <None Include="Resources\GreenCheck-16.ico" />
+    <None Include="Resources\GreenCheck-24.ico" />
+    <None Include="Resources\RedX-16.ico" />
+    <None Include="Resources\RedX-24.ico" />
+    <None Include="Resources\Xna-64.bmp" />
+    <None Include="Source\Config.wxi" />
+    <Compile Include="Source\Dialogs\BrowseDialog.wxs" />
+    <Compile Include="Source\Dialogs\CancelDialog.wxs" />
+    <Compile Include="Source\Dialogs\ErrorDialog.wxs" />
+    <Compile Include="Source\Dialogs\ExitDialog.wxs" />
+    <Compile Include="Source\Dialogs\FatalErrorDialog.wxs" />
+    <Compile Include="Source\Dialogs\FilesInUseDialog.wxs" />
+    <Compile Include="Source\Dialogs\PrerequisitesDialog.wxs" />
+    <Compile Include="Source\Dialogs\OutOfDiskSpaceDialog.wxs" />
+    <Compile Include="Source\Dialogs\OutOfRollbackDiskSpaceDialog.wxs" />
+    <Compile Include="Source\Dialogs\ProgressDialog.wxs" />
+    <Compile Include="Source\Dialogs\RequireDotNetDialog.wxs" />
+    <Compile Include="Source\Dialogs\SelectFolderDialog.wxs" />
+    <Compile Include="Source\Dialogs\ShaderWarningDialog.wxs" />
+    <Compile Include="Source\Dialogs\UserExitDialog.wxs" />
+    <Compile Include="Source\Dialogs\VerifyReadyDialog.wxs" />
+    <Compile Include="Source\Dialogs\ViewLicenseAgreementDialog.wxs" />
+    <Compile Include="Source\Dialogs\WelcomeDialog.wxs" />
+    <Compile Include="Source\Dialogs\WrongOperatingSystemDialog.wxs" />
+    <Compile Include="Source\EmbeddedPrerequisites.wxs" />
+    <Compile Include="Source\Files.wxs" />
+    <Compile Include="Source\NuclexSetupDetector.wxs" />
+    <Compile Include="Source\Setup.wxs" />
+    <Compile Include="Source\UserInterface.wxs" />
+    <None Include="Documents\license.rtf" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Content" />
+    <Folder Include="Content\Content" />
+    <Folder Include="Content\Content\Fonts" />
+    <Folder Include="Content\Content\Mapas" />
+    <Folder Include="Content\Content\Sons" />
+    <Folder Include="Content\Content\Sons\Agua" />
+    <Folder Include="Content\Content\Sons\Geral" />
+    <Folder Include="Content\Content\Sons\Menus" />
+    <Folder Include="Content\Content\Sons\Musicas" />
+    <Folder Include="Content\Content\Sons\Roldanas" />
+    <Folder Include="Content\Content\Sprites" />
+    <Folder Include="Content\Content\Sprites\Agua" />
+    <Folder Include="Content\Content\Sprites\Componentes" />
+    <Folder Include="Content\Content\Sprites\Espelho" />
+    <Folder Include="Content\Content\Sprites\Esquemas" />
+    <Folder Include="Content\Content\Sprites\Geral" />
+    <Folder Include="Content\Content\Sprites\Inimigos" />
+    <Folder Include="Content\Content\Sprites\Interface" />
+    <Folder Include="Content\Content\Sprites\Menus" />
+    <Folder Include="Content\Content\Sprites\Menus\Botoes" />
+    <Folder Include="Content\Content\Sprites\Menus\Fundos" />
+    <Folder Include="Content\Content\Sprites\Personagem" />
+    <Folder Include="Content\Content\Sprites\Roldanas" />
+    <Folder Include="Content\Content\Telas" />
+    <Folder Include="Content\Content\Tilesets" />
+    <Folder Include="Content\Content\Videos" />
+    <Folder Include="Documents" />
+    <Folder Include="Resources" />
+    <Folder Include="Source" />
+    <Folder Include="Source\Dialogs" />
+  </ItemGroup>
+</Project>

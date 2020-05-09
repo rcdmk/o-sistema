@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<itens mapa="Inicio">
+  <item tipo="engrenagem" sprite="Sprites\\Geral\\ENGRENAGEM" spriteHUD="Sprites\\Geral\\ENGRENAGEM_HUD" x="29" y="12" largura="256" altura="64" quadros="4" animacao="indo" passavel="s" nuvem="n"/>
+  <item tipo="saveItem" sprite="Sprites\\Geral\\MOEDA" spriteHUD="Sprites\\Geral\\MOEDA_HUD" x="6" y="15" largura="256" altura="64" quadros="4" animacao="indo" passavel="s" nuvem="n"/>
+
+  <item tipo="save" sprite="Sprites\\Geral\\MAQUINA_REFRI" x="26" y="4" largura="128" altura="256" quadros="1" animacao="parado" passavel="s" nuvem="n"/>
+
+  <item tipo="portal" tela="Agua" sprite="Sprites\\Geral\\PORTA_FUNDO_SHEET" x="8" y="3" largura="640" altura="320" saidaX="1" saidaY="1" quadros="5" animacao="parado" passavel="s" nuvem="n"/>
+  
+  <item tipo="cenario" sprite="Sprites\\Geral\\PORTA_FUNDO_SHEET" x="27" y="11" largura="640" altura="320" quadros="5" animacao="parado" passavel="s" nuvem="n"/>
+  <item tipo="cenario" sprite="Sprites\\Geral\\PORTA_FUNDO_SHEET" x="25" y="19" largura="640" altura="320" quadros="5" animacao="parado" passavel="s" nuvem="n"/>
+  <item tipo="cenario" sprite="Sprites\\Geral\\CAIXA_01" x="4" y="23" largura="64" altura="64" quadros="1" animacao="parado" passavel="s" nuvem="s"/>
+  <item tipo="cenario" sprite="Sprites\\Geral\\CAIXA_01_CIMA" x="12" y="21" largura="64" altura="64" quadros="1" animacao="parado" passavel="s" nuvem="s"/>
+  <item tipo="cenario" sprite="Sprites\\Geral\\CAIXA_01_CIMA" x="13" y="23" largura="64" altura="64" quadros="1" animacao="parado" passavel="s" nuvem="s"/>
+  <item tipo="cenario" sprite="Sprites\\Geral\\CAIXA_03" x="11" y="22" largura="128" altura="128" quadros="1" animacao="parado" passavel="s" nuvem="s"/>
+  <item tipo="cenario" sprite="Sprites\\Geral\\CAIXA_03" x="28" y="14" largura="128" altura="128" quadros="1" animacao="parado" passavel="s" nuvem="s"/>
+  <item tipo="cenario" sprite="Sprites\\Geral\\CAIXA_03_CIMA" x="26" y="11" largura="128" altura="128" quadros="1" animacao="parado" passavel="s" nuvem="s"/>
+  <item tipo="cenario" sprite="Sprites\\Geral\\CAIXA_02" x="10" y="23" largura="128" altura="64" quadros="1" animacao="parado" passavel="s" nuvem="s"/>
+  
+  <item tipo="empurravel" sprite="Sprites\\Geral\\CAIXA_04" x="8" y="5" largura="192" altura="192" quadros="1" animacao="parado" passavel="n" nuvem="n" peso="20" />
+  
+  <item tipo="cenario2" sprite="Sprites\\Geral\\CAIXA_04" x="25" y="13" largura="192" altura="192" quadros="1" animacao="parado" passavel="n" nuvem="s" />
+  <item tipo="cenario2" sprite="Sprites\\Geral\\CAIXAS_CONJUNTO" x="0" y="5" largura="256" altura="192" quadros="1" animacao="parado" passavel="s" nuvem="n"/>
+  <item tipo="cenario2" sprite="Sprites\\Geral\\CAIXAS_CONJUNTO" x="5" y="21" largura="256" altura="192" quadros="1" animacao="parado" passavel="s" nuvem="n"/>
+
+  <item tipo="cenario" sprite="Sprites\\Geral\\LAMPADA" x="2" y="1" largura="192" altura="64" quadros="1" animacao="parado" passavel="s" nuvem="n"/>
+  <item tipo="cenario" sprite="Sprites\\Geral\\LAMPADA" x="10" y="1" largura="192" altura="64" quadros="1" animacao="parado" passavel="s" nuvem="n"/>
+  <item tipo="cenario" sprite="Sprites\\Geral\\LAMPADA" x="18" y="1" largura="192" altura="64" quadros="1" animacao="parado" passavel="s" nuvem="n"/>
+  <item tipo="cenario" sprite="Sprites\\Geral\\LAMPADA" x="26" y="1" largura="192" altura="64" quadros="1" animacao="parado" passavel="s" nuvem="n"/>
+  <item tipo="cenario" sprite="Sprites\\Geral\\LAMPADA_TETO_FINO" x="2" y="8" largura="192" altura="64" quadros="1" animacao="parado" passavel="s" nuvem="n"/>
+  <item tipo="cenario" sprite="Sprites\\Geral\\LAMPADA_TETO_FINO" x="10" y="8" largura="192" altura="64" quadros="1" animacao="parado" passavel="s" nuvem="n"/>
+  <item tipo="cenario" sprite="Sprites\\Geral\\LAMPADA_TETO_FINO" x="17" y="8" largura="192" altura="64" quadros="1" animacao="parado" passavel="s" nuvem="n"/>
+  <item tipo="cenario" sprite="Sprites\\Geral\\LAMPADA_TETO_FINO" x="26" y="8" largura="192" altura="64" quadros="1" animacao="parado" passavel="s" nuvem="n"/>
+  <item tipo="cenario" sprite="Sprites\\Geral\\LAMPADA_TETO_FINO" x="4" y="17" largura="192" altura="64" quadros="1" animacao="parado" passavel="s" nuvem="n"/>
+  <item tipo="cenario" sprite="Sprites\\Geral\\LAMPADA_TETO_FINO" x="26" y="16" largura="192" altura="64" quadros="1" animacao="parado" passavel="s" nuvem="n"/>
+</itens>
