@@ -1,8 +1,4 @@
 <Solution>
-  <Configurations>
-    <Platform Name="Any CPU" />
-    <Platform Name="x64" />
-    <Platform Name="x86" />
-  </Configurations>
+  <Project Path="CustomTextImporter/CustomTextImporter.csproj" />
   <Project Path="Port/Port.csproj" />
 </Solution>
