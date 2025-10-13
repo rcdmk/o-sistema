@@ -1,4 +1,4 @@
 <Solution>
   <Project Path="CustomTextImporter/CustomTextImporter.csproj" />
-  <Project Path="Port/Port.csproj" />
+  <Project Path="Jogo/Jogo.csproj" />
 </Solution>

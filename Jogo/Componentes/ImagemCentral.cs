@@ -58,7 +58,7 @@ namespace Jogo.Componentes
         #region Metodos Padrao
         public override void Draw(GameTime gameTime)
         {
-            spriteBatch.Begin(SpriteBlendMode.AlphaBlend, SpriteSortMode.Immediate, SaveStateMode.None);
+            spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend);
 
             spriteBatch.Draw(textura, tamanho, Color.White);
             spriteBatch.End();

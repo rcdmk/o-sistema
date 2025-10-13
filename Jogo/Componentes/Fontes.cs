@@ -1,4 +1,5 @@
 #region using
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 #endregion
 
@@ -86,7 +87,7 @@ namespace Jogo.Componentes
         public static int TamanhoCreditos
         {
             get { return tamanhoCreditos; }
-            set { tamanhoCreditos = value;}
+            set { tamanhoCreditos = value; }
         }
 
         public static int TamanhoTituloCreditos

@@ -106,12 +106,12 @@ namespace Jogo.Componentes
 
         public override void Draw(Microsoft.Xna.Framework.GameTime gameTime)
         {
-            spriteBatch.Begin(SpriteBlendMode.AlphaBlend, SpriteSortMode.Immediate, SaveStateMode.None);
+            spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend);
 
             //Posicionar a imagem de fundo entralizada no menu
             Vector2 posicaoFundo = new Vector2();
-            posicaoFundo.X = posicao.X - (fundo.Width - largura)/2;
-            posicaoFundo.Y = posicao.Y - (fundo.Height - altura)/2;
+            posicaoFundo.X = posicao.X - (fundo.Width - largura) / 2;
+            posicaoFundo.Y = posicao.Y - (fundo.Height - altura) / 2;
 
             //Desenha o fundo
             spriteBatch.Draw(fundo, posicaoFundo, Color.White);
@@ -126,7 +126,7 @@ namespace Jogo.Componentes
             for (int i = 0; i < imagens.Count; i++)
             {
                 //Define o retângulo de origem com a opção selecionada ou não
-                retangulo.Width = imagens[i].Width/2;
+                retangulo.Width = imagens[i].Width / 2;
                 retangulo.Height = imagens[i].Height;
 
                 //Posiciona o item
@@ -169,7 +169,7 @@ namespace Jogo.Componentes
                         }
 
                         posicaoItem.X = posicao.X + 100 - (retangulo.Width - largura) / 2;
-                        posicaoItem.Y += espaco/2;
+                        posicaoItem.Y += espaco / 2;
                     }
                 }
                 else
@@ -259,7 +259,7 @@ namespace Jogo.Componentes
 
             for (int i = 0; i < imagens.Count; i++)
             {
-                if (imagens[i].Width/2 > largura) largura = imagens[i].Width/2;
+                if (imagens[i].Width / 2 > largura) largura = imagens[i].Width / 2;
 
                 if (i < imagens.Count - 1)
                 {

@@ -72,7 +72,7 @@ namespace Jogo.Telas
 
             if (fader.Visivel)
             {
-                principal.SpriteBatch.Begin(SpriteBlendMode.AlphaBlend, SpriteSortMode.Immediate, SaveStateMode.None);
+                principal.SpriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend);
                 fader.Draw(gameTime, principal.SpriteBatch);
                 principal.SpriteBatch.End();
             }
@@ -86,19 +86,19 @@ namespace Jogo.Telas
             //Criando o menu
             menu = new MenuImagem(principal, this, new Texture2D(principal.GraphicsDevice, 2, 2));
             menuOpcoes = new MenuImagem(principal, this, principal.Content.Load<Texture2D>("Sprites\\Menus\\Fundos\\fundo_opcoes"));
-            
-            //String[] itens = { "Jogar", "Controles", "Opções", "Sair" };
+
+            //String[] itens = { "Jogar", "Controles", "Opï¿½ï¿½es", "Sair" };
             Texture2D[] itens = { principal.Content.Load<Texture2D>("Sprites\\Menus\\Botoes\\jogar"), principal.Content.Load<Texture2D>("Sprites\\Menus\\Botoes\\controles"), principal.Content.Load<Texture2D>("Sprites\\Menus\\Botoes\\opcoes"), principal.Content.Load<Texture2D>("Sprites\\Menus\\Botoes\\sair") };
             Menu[] menus = { null, null, menuOpcoes, null };
             Tela[] telas = { principal.telaAbertura, principal.telaControles, null, null };
-            
+
 
             //String telaCheia = "desativada";
             //if (principal.Graphics.IsFullScreen) telaCheia = "ativada";
             //String[] itensOpcoes = { String.Format("Tela Inteira: {0}", telaCheia), "Sair"};
             Texture2D[] itensOpcoes = { principal.Content.Load<Texture2D>("Sprites\\Menus\\Botoes\\tela_inteira"), principal.Content.Load<Texture2D>("Sprites\\Menus\\Botoes\\tela_inteira"), principal.Content.Load<Texture2D>("Sprites\\Menus\\Botoes\\voltar") };
             Menu[] menusOpcoes = { null, null, menu };
-            
+
 
             menu.criarMenu(itens, menus, telas);
             menuOpcoes.criarMenu(itensOpcoes, menusOpcoes);
@@ -115,7 +115,7 @@ namespace Jogo.Telas
                 MediaPlayer.IsRepeating = true;
                 MediaPlayer.Play(Sons.MusicaAbertura);
             }
-            
+
             menu.Posicao = new Vector2((Game.Window.ClientBounds.Width - menu.Largura) / 2, -menu.Altura - 10);
             menuOpcoes.Posicao = new Vector2((Game.Window.ClientBounds.Width - menuOpcoes.Largura) / 2, 350);
 
@@ -158,7 +158,7 @@ namespace Jogo.Telas
                             if (!Principal.Mudo) Sons.MenuOK.Play();
                             Game.Exit();
                             break;
-                        
+
                         default:
                             atualizarTelaInteira();
                             menu.AbrirOpcao(menu.ItemSelecionado);

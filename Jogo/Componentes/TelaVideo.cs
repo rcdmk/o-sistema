@@ -6,11 +6,11 @@ using Microsoft.Xna.Framework.Media;
 namespace Jogo.Componentes
 {
     /// <summary>
-    /// Classe base para telas de vídeo com skip por teclado ou controle
+    /// Classe base para telas de vï¿½deo com skip por teclado ou controle
     /// </summary>
     public class TelaVideo : Tela
     {
-        #region Variáveis
+        #region Variï¿½veis
         protected string caminhoVideo;
         protected Video video;
         protected VideoPlayer videoPlayer;
@@ -90,7 +90,7 @@ namespace Jogo.Componentes
             teclado = Keyboard.GetState();
             controle = GamePad.GetState(PlayerIndex.One);
 
-            //se pressionar alguma tecla, sai do vídeo
+            //se pressionar alguma tecla, sai do vï¿½deo
             if ((tecladoAnterior.IsKeyDown(Keys.Enter) && teclado.IsKeyUp(Keys.Enter)) || (tecladoAnterior.IsKeyDown(Keys.Escape) && teclado.IsKeyUp(Keys.Escape)) || (controleAnterior.Buttons.Back == ButtonState.Pressed && controle.Buttons.Back == ButtonState.Released) || (controleAnterior.Buttons.A == ButtonState.Pressed && controle.Buttons.A == ButtonState.Released) || (controleAnterior.Buttons.B == ButtonState.Pressed && controle.Buttons.B == ButtonState.Released) || (controleAnterior.Buttons.X == ButtonState.Pressed && controle.Buttons.X == ButtonState.Released) || (controleAnterior.Buttons.Y == ButtonState.Pressed && controle.Buttons.Y == ButtonState.Released) || (controleAnterior.Buttons.Start == ButtonState.Pressed && controle.Buttons.Start == ButtonState.Released))
             {
                 if (!Principal.Mudo) Sons.MenuOK.Play();
@@ -110,7 +110,7 @@ namespace Jogo.Componentes
         {
             if (videoPlayer.State == MediaState.Playing)
             {
-                principal.SpriteBatch.Begin(SpriteBlendMode.AlphaBlend, SpriteSortMode.Immediate, SaveStateMode.None);
+                principal.SpriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend);
 
                 texturaVideo = videoPlayer.GetTexture();
 

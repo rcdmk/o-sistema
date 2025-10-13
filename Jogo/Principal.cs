@@ -6,9 +6,10 @@ using Jogo.Componentes;
 using Jogo.Personagens;
 using Jogo.Telas;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.GamerServices;
+using Microsoft.Xna.Framework.Storage;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using Microsoft.Xna.Framework.Storage;
 
 namespace Jogo
 {
@@ -96,7 +97,7 @@ namespace Jogo
             graphics.SynchronizeWithVerticalRetrace = true;
             graphics.ApplyChanges();
 
-            this.Components.Add(new SafeGamerServicesComponent(this));
+            //this.Components.Add(new SafeGamerServicesComponent(this));
 
 
 #if PROFILE
@@ -105,7 +106,7 @@ namespace Jogo
             this.IsFixedTimeStep = false;
             graphics.SynchronizeWithVerticalRetrace = false;
 #endif
-        } 
+        }
         #endregion
 
 
@@ -139,29 +140,24 @@ namespace Jogo
 
         #region MetodosPadrao
         /// <summary>
-        /// Permite inicializar o jogo e todos os seus componentes não gráficos.
+        /// Permite inicializar o jogo e todos os seus componentes nï¿½o grï¿½ficos.
         /// </summary>
         protected override void Initialize()
         {
             //Inicializando a janela
-#if XBOX
-            graphics.PreferredBackBufferWidth = 1280;
-            graphics.PreferredBackBufferHeight = 720;
-#else
             graphics.PreferredBackBufferWidth = 1024;
             graphics.PreferredBackBufferHeight = 768;
-#endif
 
             graphics.IsFullScreen = true;
             graphics.ApplyChanges();
 
             Content.RootDirectory = "Content";
-            
+
             base.Initialize();
         }
 
         /// <summary>
-        /// É responsável pelo carregamento do conteúdo do jogo, chamada apenas uma vez.
+        /// ï¿½ responsï¿½vel pelo carregamento do conteï¿½do do jogo, chamada apenas uma vez.
         /// </summary>
         protected override void LoadContent()
         {
@@ -222,7 +218,7 @@ namespace Jogo
         }
 
         /// <summary>
-        /// Descarregar o conteúdo, chamada apenas uma vez.
+        /// Descarregar o conteï¿½do, chamada apenas uma vez.
         /// </summary>
         protected override void UnloadContent()
         {
@@ -230,58 +226,54 @@ namespace Jogo
         }
 
         /// <summary>
-        /// Permite atualizar o jogo, checar por colisões, tocar sons, etc
+        /// Permite atualizar o jogo, checar por colisï¿½es, tocar sons, etc
         /// </summary>
-        /// <param name="gameTime">O tempo que o jogo está rodando</param>
+        /// <param name="gameTime">O tempo que o jogo estï¿½ rodando</param>
         protected override void Update(GameTime gameTime)
         {
 #if PROFILE
             using (new ProfileMarker(updateProfiler))
             {
 #endif
-                //Se o Guide não estiver visível, continua
-                if (!PluggableGuide.IsVisible)
+            //Se o Guide nÃ£o estiver visÃ­vel, continua
+            if (!Guide.IsVisible)
+            {
+                teclado = Keyboard.GetState();
+                controle = GamePad.GetState(PlayerIndex.One);
+
+                //Despausa o jogo se acabou de ser ocultado
+                if (guideVisivelAntes) telaJogo.Pausado = false;
+
+
+                //Tela inteira
+                if ((tecladoAnterior.IsKeyDown(Keys.F) && teclado.IsKeyUp(Keys.F)) && (tecladoAnterior.IsKeyDown(Keys.LeftControl) || tecladoAnterior.IsKeyDown(Keys.RightControl)))
                 {
-                    teclado = Keyboard.GetState();
-                    controle = GamePad.GetState(PlayerIndex.One);
+                    graphics.ToggleFullScreen();
+                }
 
-                    //Despausa o jogo se acabou de ser ocultado
-                    if (guideVisivelAntes) telaJogo.Pausado = false;
-
-
-                    //Tela inteira
-#if !XBOX
-                    if ((tecladoAnterior.IsKeyDown(Keys.F) && teclado.IsKeyUp(Keys.F)) && (tecladoAnterior.IsKeyDown(Keys.LeftControl) || tecladoAnterior.IsKeyDown(Keys.RightControl)))
-                    {
-                        graphics.ToggleFullScreen();
-                    }
-#else
-                    if (!graphics.isFullScreen) graphics.ToggleFullScreen();
-#endif
-
-                    if (tecladoAnterior.IsKeyDown(Keys.F12) && teclado.IsKeyUp(Keys.F12))
-                    {
+                if (tecladoAnterior.IsKeyDown(Keys.F12) && teclado.IsKeyUp(Keys.F12))
+                {
 #if DEBUG || PROFILE
-                        Debug = ++Debug % 3;
+                    Debug = ++Debug % 3;
 #else
                         Debug = ++Debug % 2;
 #endif
-                    }
-
-                    tecladoAnterior = teclado;
-                    controleAnterior = controle;
-
-                    //Calcular o FPS
-                    tempoPassado += (float)gameTime.ElapsedGameTime.TotalSeconds;
-                }
-                //Caso contrário, pausa o jogo se acabou de ser mostrado
-                else if (!guideVisivelAntes && PluggableGuide.IsVisible)
-                {
-                    telaJogo.Pausado = true;
                 }
 
-                guideVisivelAntes = PluggableGuide.IsVisible;
-                base.Update(gameTime);
+                tecladoAnterior = teclado;
+                controleAnterior = controle;
+
+                //Calcular o FPS
+                tempoPassado += (float)gameTime.ElapsedGameTime.TotalSeconds;
+            }
+            //Caso contrï¿½rio, pausa o jogo se acabou de ser mostrado
+            else if (!guideVisivelAntes && Guide.IsVisible)
+            {
+                telaJogo.Pausado = true;
+            }
+
+            guideVisivelAntes = Guide.IsVisible;
+            base.Update(gameTime);
 #if PROFILE
             }
 #endif
@@ -290,46 +282,46 @@ namespace Jogo
         /// <summary>
         /// Permite "desenhar" na viewport o que se deseja
         /// </summary>
-        /// <param name="gameTime">O tempo que o jogo está rodando</param>
+        /// <param name="gameTime">O tempo que o jogo estï¿½ rodando</param>
         protected override void Draw(GameTime gameTime)
         {
 #if PROFILE
             using (new ProfileMarker(drawProfiler))
             {
 #endif
-                //Conta os quadros rodados
-                fps = (int)Math.Round(1 / tempoPassado);
-                tempoPassado = 0;
+            //Conta os quadros rodados
+            fps = (int)Math.Round(1 / tempoPassado);
+            tempoPassado = 0;
 
-                //Limpa a tela
-                graphics.GraphicsDevice.Clear(Color.Black);
+            //Limpa a tela
+            graphics.GraphicsDevice.Clear(Color.Black);
 
-                //desenha o resto
-                base.Draw(gameTime);
-                
-                //Debug FPS somente
-                if (Debug == 1)
-                {
-                    String infos = String.Format("FPS: {0}", fps);
+            //desenha o resto
+            base.Draw(gameTime);
 
-                    spriteBatch.Begin(SpriteBlendMode.AlphaBlend, SpriteSortMode.Immediate, SaveStateMode.None);
-                    SpriteBatch.DrawString(Fontes.Menu, infos, new Vector2(GraphicsDevice.Viewport.Width - 100, 10), Fontes.CorScore, 0, Vector2.Zero, 1, SpriteEffects.None, 0);
-                    spriteBatch.End();
-                }
-                //Debug geral
-                else if (Debug == 2)
-                {
-                    String infos = String.Format("FPS: {0}\nObjetivos Completos: {1}\nCaindo: {2}\nSubindo: {3}\nPulando: {4}\nGC 1: {5}\nGC 2: {6}", fps, telaJogo.Personagem.ObjetivosCompletos, telaJogo.Personagem.Caindo, telaJogo.Personagem.Subindo, telaJogo.Personagem.Pulando, System.GC.CollectionCount(0), System.GC.CollectionCount(1));
+            //Debug FPS somente
+            if (Debug == 1)
+            {
+                String infos = String.Format("FPS: {0}", fps);
 
-                    spriteBatch.Begin(SpriteBlendMode.AlphaBlend, SpriteSortMode.Immediate, SaveStateMode.None);
-                    SpriteBatch.DrawString(Fontes.Menu, infos, new Vector2(GraphicsDevice.Viewport.Width - 290, 10), Fontes.CorScore, 0, Vector2.Zero, 1, SpriteEffects.None, 0);
-                    spriteBatch.End();
-                }
+                spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend);
+                SpriteBatch.DrawString(Fontes.Menu, infos, new Vector2(GraphicsDevice.Viewport.Width - 100, 10), Fontes.CorScore, 0, Vector2.Zero, 1, SpriteEffects.None, 0);
+                spriteBatch.End();
+            }
+            //Debug geral
+            else if (Debug == 2)
+            {
+                String infos = String.Format("FPS: {0}\nObjetivos Completos: {1}\nCaindo: {2}\nSubindo: {3}\nPulando: {4}\nGC 1: {5}\nGC 2: {6}", fps, telaJogo.Personagem.ObjetivosCompletos, telaJogo.Personagem.Caindo, telaJogo.Personagem.Subindo, telaJogo.Personagem.Pulando, System.GC.CollectionCount(0), System.GC.CollectionCount(1));
+
+                spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend);
+                SpriteBatch.DrawString(Fontes.Menu, infos, new Vector2(GraphicsDevice.Viewport.Width - 290, 10), Fontes.CorScore, 0, Vector2.Zero, 1, SpriteEffects.None, 0);
+                spriteBatch.End();
+            }
 
 #if PROFILE
             }
 #endif
-        } 
+        }
         #endregion
 
 
@@ -345,16 +337,16 @@ namespace Jogo
         public void solicitarSalvar()
         {
             saveLoadPendente = true;
-            PluggableGuide.BeginShowStorageDeviceSelector(PlayerIndex.One, SalvarCarregar, "Salvar");
+            SalvarCarregar("Salvar");
         }
 
         public void solicitarCarregar()
         {
             saveLoadPendente = true;
-            PluggableGuide.BeginShowStorageDeviceSelector(PlayerIndex.One, SalvarCarregar, "Carregar");
+            SalvarCarregar("Carregar");
         }
 
-        private void SalvarCarregar(IAsyncResult resultado)
+        private void SalvarCarregar(string acao)
         {
             bool pausado = false;
             if (!telaJogo.Pausado)
@@ -363,52 +355,46 @@ namespace Jogo
                 telaJogo.Pausado = true;
             }
 
-            StorageDevice device = PluggableGuide.EndShowStorageDeviceSelector(resultado);
+            string nomeArquivo = "O_Sistema/save.sav";
+            string arquivo = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "MyGameSaves", nomeArquivo);
+            Directory.CreateDirectory(Path.GetDirectoryName(arquivo)); // Ensure the directory exists
 
-            if (device != null)
+            if (acao == "Salvar")
             {
-                StorageContainer container = device.OpenContainer("O_Sistema");
-                string arquivo = Path.Combine(container.Path, "save.sav");
-
-                if ((string)resultado.AsyncState == "Salvar")
-                {
-                    //Salvar o jogo
-                    Salvando = true;
-                    Salvar(container, arquivo);
-                }
-                else if ((string)resultado.AsyncState == "Carregar")
-                {
-                    //Carregar o jogo
-                    Carregando = true;
-                    Carregar(container, arquivo);
-                }
+                //Salvar o jogo
+                Salvando = true;
+                Salvar(arquivo);
+            }
+            else if (acao == "Carregar")
+            {
+                //Carregar o jogo
+                Carregando = true;
+                Carregar(arquivo);
             }
 
             if (pausado) telaJogo.Pausado = false;
         }
 
-        private void Salvar(StorageContainer container, string arquivo)
+        private void Salvar(string arquivo)
         {
             if (saveLoadPendente)
             {
                 XmlSerializer serializador = new XmlSerializer(typeof(Dados));
                 FileStream save = File.Open(arquivo, FileMode.Create);
                 XmlWriter writer = XmlWriter.Create(save);
-                
+
                 AtualizarDados();
 
                 serializador.Serialize(writer, dados);
 
                 save.Close();
 
-                container.Dispose();
-
                 saveLoadPendente = false;
                 Salvando = false;
             }
         }
 
-        private void Carregar(StorageContainer container, string arquivo)
+        private void Carregar(string arquivo)
         {
             if (File.Exists(arquivo) && saveLoadPendente)
             {
@@ -420,16 +406,10 @@ namespace Jogo
 
                 save.Close();
 
-                container.Dispose();
-
                 CarregarDados();
 
                 saveLoadPendente = false;
                 Carregando = false;
-            }
-            else
-            {
-                container.Dispose();
             }
         }
 
@@ -485,13 +465,13 @@ namespace Jogo
                 else if (novoItem.Tipo == "vidro")
                 {
                     novoItem.Animacao.pararAnimacao();
-                    novoItem.Animacao.Animacoes["indo"].QuadroAtual = Math.Min(3 , dados.ObjetivosCompletos);
+                    novoItem.Animacao.Animacoes["indo"].QuadroAtual = Math.Min(3, dados.ObjetivosCompletos);
                 }
 
                 telaJogo.mapa.Itens2.Add(novoItem);
             }
 
-            //Itens coletáveis
+            //Itens coletï¿½veis
             telaJogo.mapa.Coletaveis.Clear();
 
             for (int i = 0; i < dados.Coletaveis.Count; i++)

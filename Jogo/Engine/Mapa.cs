@@ -12,7 +12,7 @@ using Microsoft.Xna.Framework.Input;
 namespace Jogo.Engine
 {
     /// <summary>
-    /// Classe para o mapa que é responsável por todas as rotinas referentes a ele, como detecção de colisão.
+    /// Classe para o mapa que ï¿½ responsï¿½vel por todas as rotinas referentes a ele, como detecï¿½ï¿½o de colisï¿½o.
     /// </summary>
     public class Mapa : GameComponent
     {
@@ -221,7 +221,7 @@ namespace Jogo.Engine
                 itens[i].Update(gameTime);
             }
 
-            //Coletáveis
+            //Coletï¿½veis
             for (int i = 0; i < coletaveis.Count; i++)
             {
                 coletaveis[i].Update(gameTime);
@@ -304,7 +304,7 @@ namespace Jogo.Engine
                 itens2[i].Draw(gameTime, spriteBatch);
             }
 
-            //Itens coletáveis
+            //Itens coletï¿½veis
             for (int i = 0; i < coletaveis.Count; i++)
             {
                 coletaveis[i].Draw(gameTime, spriteBatch);
@@ -390,7 +390,7 @@ namespace Jogo.Engine
 
         #region Montagem
         /// <summary>
-        /// Lê o XML carregado e monta o mapa de tiles
+        /// Lï¿½ o XML carregado e monta o mapa de tiles
         /// </summary>
         public void LerXML()
         {
@@ -443,7 +443,7 @@ namespace Jogo.Engine
             #endregion
 
 
-            #region Inicialização
+            #region Inicializaï¿½ï¿½o
             XMLitens = new XmlDocument();
             CustomText xml = principal.Content.Load<CustomText>(caminho + "_Itens");
             XMLitens.LoadXml(xml.SourceCode);
@@ -460,7 +460,7 @@ namespace Jogo.Engine
             #endregion
 
 
-            #region Criação e ajustes
+            #region Criaï¿½ï¿½o e ajustes
             for (int i = 0; i < XMLitens.DocumentElement.ChildNodes.Count; i++)
             {
                 Item novoItem;
@@ -478,7 +478,7 @@ namespace Jogo.Engine
                     case "dica":
                     case "saveItem":
                     case "item":
-                    #region Itens coletáveis
+                    #region Itens coletï¿½veis
                         texturaHUD = XMLitens.DocumentElement.ChildNodes[i].Attributes["spriteHUD"].Value;
                         largura = int.Parse(XMLitens.DocumentElement.ChildNodes[i].Attributes["largura"].Value);
                         altura = int.Parse(XMLitens.DocumentElement.ChildNodes[i].Attributes["altura"].Value);
@@ -563,7 +563,7 @@ namespace Jogo.Engine
 
 
                     case "empurravel":
-                    #region Itens empurráveis
+                    #region Itens empurrï¿½veis
                         largura = int.Parse(XMLitens.DocumentElement.ChildNodes[i].Attributes["largura"].Value);
                         altura = int.Parse(XMLitens.DocumentElement.ChildNodes[i].Attributes["altura"].Value);
                         quadros = int.Parse(XMLitens.DocumentElement.ChildNodes[i].Attributes["quadros"].Value);
@@ -766,7 +766,7 @@ namespace Jogo.Engine
 
         #region Coordenadas
         /// <summary>
-        /// Pega a posição do mouse no mapa
+        /// Pega a posiï¿½ï¿½o do mouse no mapa
         /// </summary>
         /// <returns>Um vetor2 com a posicao do mouse no mapa</returns>
         public static Vector2 pegaMouse()
@@ -778,7 +778,7 @@ namespace Jogo.Engine
         }
 
         /// <summary>
-        /// Pega a posição no mapa com base na posição da tela
+        /// Pega a posiï¿½ï¿½o no mapa com base na posiï¿½ï¿½o da tela
         /// </summary>
         /// <returns>Um vetor2 com a posicao do mouse no mapa</returns>
         public static Vector2 pegaIndice(Vector2 posicao)
@@ -790,11 +790,11 @@ namespace Jogo.Engine
         }
 
         /// <summary>
-        /// Retorna a tile com base na informação do mapa
+        /// Retorna a tile com base na informaï¿½ï¿½o do mapa
         /// </summary>
-        /// <param name="qual">O valor retirado de uma posição no mapa</param>
-        /// <param name="posicao">A posição da tile retornada</param>
-        /// <returns>Uma tile com as características já acertadas</returns>
+        /// <param name="qual">O valor retirado de uma posiï¿½ï¿½o no mapa</param>
+        /// <param name="posicao">A posiï¿½ï¿½o da tile retornada</param>
+        /// <returns>Uma tile com as caracterï¿½sticas jï¿½ acertadas</returns>
         public virtual Tile pegaTile(XmlAttributeCollection qual, Vector2 posicao, int origem)
         {
             Tile tmpTile = new TileVazia(posicao, origem);
@@ -803,10 +803,10 @@ namespace Jogo.Engine
         }
 
         /// <summary>
-        /// Pega a posição na tela com base na posição no mapa
+        /// Pega a posiï¿½ï¿½o na tela com base na posiï¿½ï¿½o no mapa
         /// </summary>
-        /// <param name="posicao">A posição atual</param>
-        /// <returns>Um vetor2 com a posição na tela</returns>
+        /// <param name="posicao">A posiï¿½ï¿½o atual</param>
+        /// <returns>Um vetor2 com a posiï¿½ï¿½o na tela</returns>
         public Vector2 converteIndice(Vector2 posicao)
         {
             Vector2 indice = new Vector2();
@@ -819,10 +819,10 @@ namespace Jogo.Engine
 
         #region Pathfinding
         /// <summary>
-        /// Verifica as tiles visinhas se são passáveis ou não (útil para pathfinding)
+        /// Verifica as tiles visinhas se sï¿½o passï¿½veis ou nï¿½o (ï¿½til para pathfinding)
         /// </summary>
-        /// <param name="posicao">A posição da tile atual</param>
-        /// <returns>Um array de booleanos com cada direção na forma de [N, S, L, O, NE, NO, SE, SO]</returns>
+        /// <param name="posicao">A posiï¿½ï¿½o da tile atual</param>
+        /// <returns>Um array de booleanos com cada direï¿½ï¿½o na forma de [N, S, L, O, NE, NO, SE, SO]</returns>
         public bool[] checaTile(Vector2 posicao)
         {
             bool N, S, L, O, NE, NO, SE, SO;
@@ -867,21 +867,21 @@ namespace Jogo.Engine
         }
 
         /// <summary>
-        /// Verifica se o norte da posição informada é passável
+        /// Verifica se o norte da posiï¿½ï¿½o informada ï¿½ passï¿½vel
         /// </summary>
-        /// <param name="posicao">A posição da tile atual</param>
-        /// <returns>true se for passável e false se não</returns>
+        /// <param name="posicao">A posiï¿½ï¿½o da tile atual</param>
+        /// <returns>true se for passï¿½vel e false se nï¿½o</returns>
         public bool checaNorte(Vector2 posicao)
         {
             //Se estiver no topo do mapa
             if ((int)posicao.Y < 0)
             {
-                //Não pode mais subir
+                //Nï¿½o pode mais subir
                 return false;
             }
             else
             {
-                //Caso contrário, se a tile de cima for passável ou for nuvem
+                //Caso contrï¿½rio, se a tile de cima for passï¿½vel ou for nuvem
                 if (mapa[(int)posicao.Y - 1][(int)posicao.X].Passavel)
                 {
                     //Pode subir
@@ -889,28 +889,28 @@ namespace Jogo.Engine
                 }
                 else
                 {
-                    //Caso contrário, não pode
+                    //Caso contrï¿½rio, nï¿½o pode
                     return false;
                 }
             }
         }
 
         /// <summary>
-        /// Verifica se o sul da posição informada é passável
+        /// Verifica se o sul da posiï¿½ï¿½o informada ï¿½ passï¿½vel
         /// </summary>
-        /// <param name="posicao">A posição da tile atual</param>
-        /// <returns>true se for passável e false se não</returns>
+        /// <param name="posicao">A posiï¿½ï¿½o da tile atual</param>
+        /// <returns>true se for passï¿½vel e false se nï¿½o</returns>
         public bool checaSul(Vector2 posicao)
         {
             //Se estiver na base do mapa
             if ((int)posicao.Y >= mapa.Length - 1f)
             {
-                //Não pode mais descer
+                //Nï¿½o pode mais descer
                 return false;
             }
             else
             {
-                //Caso contrário, se a tile de baixo for passável e não for nuvem
+                //Caso contrï¿½rio, se a tile de baixo for passï¿½vel e nï¿½o for nuvem
                 if (mapa[(int)posicao.Y + 1][(int)posicao.X].Passavel)
                 {
                     //Pode descer
@@ -918,28 +918,28 @@ namespace Jogo.Engine
                 }
                 else
                 {
-                    //Caso contrário, não pode
+                    //Caso contrï¿½rio, nï¿½o pode
                     return false;
                 }
             }
         }
 
         /// <summary>
-        /// Verifica se o oeste da posição informada é passável
+        /// Verifica se o oeste da posiï¿½ï¿½o informada ï¿½ passï¿½vel
         /// </summary>
-        /// <param name="posicao">A posição da tile atual</param>
-        /// <returns>true se for passável e false se não</returns>
+        /// <param name="posicao">A posiï¿½ï¿½o da tile atual</param>
+        /// <returns>true se for passï¿½vel e false se nï¿½o</returns>
         public bool checaOeste(Vector2 posicao)
         {
             //Se estiver na primeira coluna do mapa
             if ((int)posicao.X < 0)
             {
-                //Não pode mais passar
+                //Nï¿½o pode mais passar
                 return false;
             }
             else
             {
-                //Caso contrário, se a tile da esquerda for passável
+                //Caso contrï¿½rio, se a tile da esquerda for passï¿½vel
                 if (mapa[(int)posicao.Y][(int)posicao.X - 1].Passavel)
                 {
                     //Pode passar
@@ -947,28 +947,28 @@ namespace Jogo.Engine
                 }
                 else
                 {
-                    //Caso contrário, não pode
+                    //Caso contrï¿½rio, nï¿½o pode
                     return false;
                 }
             }
         }
 
         /// <summary>
-        /// Verifica se o leste da posição informada é passável
+        /// Verifica se o leste da posiï¿½ï¿½o informada ï¿½ passï¿½vel
         /// </summary>
-        /// <param name="posicao">A posição da tile atual</param>
-        /// <returns>true se for passável e false se não</returns>
+        /// <param name="posicao">A posiï¿½ï¿½o da tile atual</param>
+        /// <returns>true se for passï¿½vel e false se nï¿½o</returns>
         public bool checaLeste(Vector2 posicao)
         {
-            //Se estiver na última coluna do mapa
+            //Se estiver na ï¿½ltima coluna do mapa
             if ((int)posicao.X >= mapa[0].Length)
             {
-                //Não pode mais passar
+                //Nï¿½o pode mais passar
                 return false;
             }
             else
             {
-                //Caso contrário, se a tile da direita for passável
+                //Caso contrï¿½rio, se a tile da direita for passï¿½vel
                 if (mapa[(int)posicao.Y][(int)posicao.X + 1].Passavel)
                 {
                     //Pode passar
@@ -976,23 +976,23 @@ namespace Jogo.Engine
                 }
                 else
                 {
-                    //Caso contrário, não pode
+                    //Caso contrï¿½rio, nï¿½o pode
                     return false;
                 }
             }
         }
 
         /// <summary>
-        /// Verifica se o nordeste da posição informada é passável
+        /// Verifica se o nordeste da posiï¿½ï¿½o informada ï¿½ passï¿½vel
         /// </summary>
-        /// <param name="posicao">A posição da tile atual</param>
-        /// <returns>true se for passável e false se não</returns>
+        /// <param name="posicao">A posiï¿½ï¿½o da tile atual</param>
+        /// <returns>true se for passï¿½vel e false se nï¿½o</returns>
         public bool checaNordeste(Vector2 posicao)
         {
-            //Se a tile de cima e a da direita forem passáveis
+            //Se a tile de cima e a da direita forem passï¿½veis
             if (checaNorte(posicao) && checaLeste(posicao))
             {
-                //Se a tile de cima-direita for passável ou for nuvem
+                //Se a tile de cima-direita for passï¿½vel ou for nuvem
                 if (mapa[(int)posicao.Y - 1][(int)posicao.X + 1].Passavel || mapa[(int)posicao.Y - 1][(int)posicao.X + 1].Nuvem)
                 {
                     //Pode passar
@@ -1000,28 +1000,28 @@ namespace Jogo.Engine
                 }
                 else
                 {
-                    //Caso contrário, não pode
+                    //Caso contrï¿½rio, nï¿½o pode
                     return false;
                 }
             }
             else
             {
-                //Caso contrário, não pode
+                //Caso contrï¿½rio, nï¿½o pode
                 return false;
             }
         }
 
         /// <summary>
-        /// Verifica se o noroeste da posição informada é passável
+        /// Verifica se o noroeste da posiï¿½ï¿½o informada ï¿½ passï¿½vel
         /// </summary>
-        /// <param name="posicao">A posição da tile atual</param>
-        /// <returns>true se for passável e false se não</returns>
+        /// <param name="posicao">A posiï¿½ï¿½o da tile atual</param>
+        /// <returns>true se for passï¿½vel e false se nï¿½o</returns>
         public bool checaNoroeste(Vector2 posicao)
         {
-            //Se a tile de cima e a da esquerda forem passáveis
+            //Se a tile de cima e a da esquerda forem passï¿½veis
             if (checaNorte(posicao) && checaOeste(posicao))
             {
-                //Se a tile de cima-esquerda for passável ou for nuvem
+                //Se a tile de cima-esquerda for passï¿½vel ou for nuvem
                 if (mapa[(int)posicao.Y - 1][(int)posicao.X - 1].Passavel || mapa[(int)posicao.Y - 1][(int)posicao.X - 1].Nuvem)
                 {
                     //Pode passar
@@ -1029,28 +1029,28 @@ namespace Jogo.Engine
                 }
                 else
                 {
-                    //Caso contrário, não pode
+                    //Caso contrï¿½rio, nï¿½o pode
                     return false;
                 }
             }
             else
             {
-                //Caso contrário, não pode
+                //Caso contrï¿½rio, nï¿½o pode
                 return false;
             }
         }
 
         /// <summary>
-        /// Verifica se o sudeste da posição informada é passável
+        /// Verifica se o sudeste da posiï¿½ï¿½o informada ï¿½ passï¿½vel
         /// </summary>
-        /// <param name="posicao">A posição da tile atual</param>
-        /// <returns>true se for passável e false se não</returns>
+        /// <param name="posicao">A posiï¿½ï¿½o da tile atual</param>
+        /// <returns>true se for passï¿½vel e false se nï¿½o</returns>
         public bool checaSudeste(Vector2 posicao)
         {
-            //Se a tile de baixo e a da direita forem passáveis
+            //Se a tile de baixo e a da direita forem passï¿½veis
             if (checaSul(posicao) && checaLeste(posicao))
             {
-                //Se a tile de baixo-direita for passável e não for nuvem
+                //Se a tile de baixo-direita for passï¿½vel e nï¿½o for nuvem
                 if (mapa[(int)posicao.Y + 1][(int)posicao.X + 1].Passavel && !mapa[(int)posicao.Y + 1][(int)posicao.X + 1].Nuvem)
                 {
                     //Pode passar
@@ -1058,28 +1058,28 @@ namespace Jogo.Engine
                 }
                 else
                 {
-                    //Caso contrário, não pode
+                    //Caso contrï¿½rio, nï¿½o pode
                     return false;
                 }
             }
             else
             {
-                //Caso contrário, não pode
+                //Caso contrï¿½rio, nï¿½o pode
                 return false;
             }
         }
 
         /// <summary>
-        /// Verifica se o sudoeste da posição informada é passável
+        /// Verifica se o sudoeste da posiï¿½ï¿½o informada ï¿½ passï¿½vel
         /// </summary>
-        /// <param name="posicao">A posição da tile atual</param>
-        /// <returns>true se for passável e false se não</returns>
+        /// <param name="posicao">A posiï¿½ï¿½o da tile atual</param>
+        /// <returns>true se for passï¿½vel e false se nï¿½o</returns>
         public bool checaSudoeste(Vector2 posicao)
         {
-            //Se a tile de baixo e a da esquerda forem passáveis
+            //Se a tile de baixo e a da esquerda forem passï¿½veis
             if (checaSul(posicao) && checaOeste(posicao))
             {
-                //Se a tile de baixo-esquerda for passável e não for nuvem
+                //Se a tile de baixo-esquerda for passï¿½vel e nï¿½o for nuvem
                 if (mapa[(int)posicao.Y + 1][(int)posicao.X - 1].Passavel && !mapa[(int)posicao.Y + 1][(int)posicao.X - 1].Nuvem)
                 {
                     //Pode passar
@@ -1087,13 +1087,13 @@ namespace Jogo.Engine
                 }
                 else
                 {
-                    //Caso contrário, não pode
+                    //Caso contrï¿½rio, nï¿½o pode
                     return false;
                 }
             }
             else
             {
-                //Caso contrário, não pode
+                //Caso contrï¿½rio, nï¿½o pode
                 return false;
             }
         }
@@ -1102,61 +1102,61 @@ namespace Jogo.Engine
 
         #region Colisoes
         /// <summary>
-        /// Verifica se a posição informada é nuvem
+        /// Verifica se a posiï¿½ï¿½o informada ï¿½ nuvem
         /// </summary>
-        /// <param name="posicao">A posição da tile atual</param>
-        /// <returns>true se for nuvem e false se não</returns>
+        /// <param name="posicao">A posiï¿½ï¿½o da tile atual</param>
+        /// <returns>true se for nuvem e false se nï¿½o</returns>
         public bool checaNuvem(Vector2 posicao)
         {
             //Se estiver na base do mapa
             if ((int)posicao.X < 0 || (int)posicao.X >= (int)Medidas.X || (int)posicao.Y < 0 || (int)posicao.Y >= (int)Medidas.Y)
             {
-                //Não é nuvem
+                //Nï¿½o ï¿½ nuvem
                 return false;
             }
             else
             {
-                //Caso contrário, retorna se a tile é nuvem
+                //Caso contrï¿½rio, retorna se a tile ï¿½ nuvem
                 return mapa[(int)posicao.Y][(int)posicao.X].Nuvem;
             }
         }
 
         /// <summary>
-        /// Verifica se a posição informada é escada
+        /// Verifica se a posiï¿½ï¿½o informada ï¿½ escada
         /// </summary>
-        /// <param name="posicao">A posição da tile atual</param>
-        /// <returns>true se for escada e false se não</returns>
+        /// <param name="posicao">A posiï¿½ï¿½o da tile atual</param>
+        /// <returns>true se for escada e false se nï¿½o</returns>
         public bool checaEscada(Vector2 posicao)
         {
             //Se estiver na base do mapa
             if ((int)posicao.X < 0 || (int)posicao.X >= (int)Medidas.X || (int)posicao.Y < 0 || (int)posicao.Y >= (int)Medidas.Y)
             {
-                //Não é escada
+                //Nï¿½o ï¿½ escada
                 return false;
             }
             else
             {
-                //Caso contrário, retorna se a tile é escada
+                //Caso contrï¿½rio, retorna se a tile ï¿½ escada
                 return mapa[(int)posicao.Y][(int)posicao.X].Escada;
             }
         }
 
         /// <summary>
-        /// Verifica se a posição informada é passavel
+        /// Verifica se a posiï¿½ï¿½o informada ï¿½ passavel
         /// </summary>
-        /// <param name="posicao">A posição da tile atual</param>
-        /// <returns>true se for passavel e false se não</returns>
+        /// <param name="posicao">A posiï¿½ï¿½o da tile atual</param>
+        /// <returns>true se for passavel e false se nï¿½o</returns>
         public bool checaPassavel(Vector2 posicao)
         {
             //Se estiver na base do mapa
             if ((int)posicao.X < 0 || (int)posicao.X >= (int)Medidas.X || (int)posicao.Y < 0 || (int)posicao.Y >= (int)Medidas.Y)
             {
-                //Não é passavel
+                //Nï¿½o ï¿½ passavel
                 return false;
             }
             else
             {
-                //Caso contrário, retorna se a tile é passavel
+                //Caso contrï¿½rio, retorna se a tile ï¿½ passavel
                 return mapa[(int)posicao.Y][(int)posicao.X].Passavel;
             }
         }
