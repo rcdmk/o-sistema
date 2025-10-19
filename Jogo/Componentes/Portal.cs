@@ -138,7 +138,7 @@ namespace Jogo.Componentes
                     }
                     else if (principal.telaJogo.mapa.Caminho != String.Concat("mapas\\", tela) && principal.telaJogo.mapa.Caminho != String.Concat("Mapas\\", tela))
                     {
-                        principal.telaJogo.mapa.Caminho = String.Concat("mapas\\", tela);
+                        principal.telaJogo.mapa.Caminho = String.Concat("Mapas\\", tela);
                         principal.telaJogo.Initialize();
                         principal.telaJogo.mapa.LerXML();
                         principal.telaJogo.mapa.criarItens();
