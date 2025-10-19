@@ -151,7 +151,7 @@ namespace Jogo.Telas
                             principal.telaJogo.mapa.criarInimigos();
                             principal.telaJogo.HUD.limpar();
                             menu.AbrirOpcao(menu.ItemSelecionado);
-                            principal.solicitarSalvar();
+                            //principal.solicitarSalvar();
                             break;
 
                         case 3:
