@@ -10,6 +10,7 @@
 
 #-------------------------------- References --------------------------------#
 
+/reference:..\..\CustomTextImporter\bin\Debug\net8.0\CustomTextImporter.dll
 
 #---------------------------------- Content ---------------------------------#
 
@@ -35,47 +36,47 @@
 /build:Fonts/Score_Miramonte.spritefont
 
 #begin Mapas/Agua_Inimigos.xml
-/importer:XmlImporter
+/importer:CustomTextImporter
 /processor:PassThroughProcessor
 /build:Mapas/Agua_Inimigos.xml
 
 #begin Mapas/Agua_Itens.xml
-/importer:XmlImporter
+/importer:CustomTextImporter
 /processor:PassThroughProcessor
 /build:Mapas/Agua_Itens.xml
 
 #begin Mapas/Agua.xml
-/importer:XmlImporter
+/importer:CustomTextImporter
 /processor:PassThroughProcessor
 /build:Mapas/Agua.xml
 
 #begin Mapas/Inicio_Inimigos.xml
-/importer:XmlImporter
+/importer:CustomTextImporter
 /processor:PassThroughProcessor
 /build:Mapas/Inicio_Inimigos.xml
 
 #begin Mapas/Inicio_Itens.xml
-/importer:XmlImporter
+/importer:CustomTextImporter
 /processor:PassThroughProcessor
 /build:Mapas/Inicio_Itens.xml
 
 #begin Mapas/Inicio.xml
-/importer:XmlImporter
+/importer:CustomTextImporter
 /processor:PassThroughProcessor
 /build:Mapas/Inicio.xml
 
 #begin Mapas/Roldanas_Inimigos.xml
-/importer:XmlImporter
+/importer:CustomTextImporter
 /processor:PassThroughProcessor
 /build:Mapas/Roldanas_Inimigos.xml
 
 #begin Mapas/Roldanas_Itens.xml
-/importer:XmlImporter
+/importer:CustomTextImporter
 /processor:PassThroughProcessor
 /build:Mapas/Roldanas_Itens.xml
 
 #begin Mapas/Roldanas.xml
-/importer:XmlImporter
+/importer:CustomTextImporter
 /processor:PassThroughProcessor
 /build:Mapas/Roldanas.xml
 
@@ -85,11 +86,11 @@
 /processorParam:Quality=Best
 /build:Sons/Agua/agua.wav
 
-#begin Sons/Agua/arrastando_leve.WAV
+#begin Sons/Agua/arrastar_leve.WAV
 /importer:WavImporter
 /processor:SoundEffectProcessor
 /processorParam:Quality=Best
-/build:Sons/Agua/arrastando_leve.WAV
+/build:Sons/Agua/arrastar_leve.WAV
 
 #begin Sons/Agua/arrastar.wav
 /importer:WavImporter
@@ -97,11 +98,11 @@
 /processorParam:Quality=Best
 /build:Sons/Agua/arrastar.wav
 
-#begin Sons/Agua/goteira_edit.WAV
+#begin Sons/Agua/goteira.WAV
 /importer:WavImporter
 /processor:SoundEffectProcessor
 /processorParam:Quality=Best
-/build:Sons/Agua/goteira_edit.WAV
+/build:Sons/Agua/goteira.WAV
 
 #begin Sons/Agua/impacto_agua_leve.wav
 /importer:WavImporter
@@ -121,11 +122,11 @@
 /processorParam:Quality=Best
 /build:Sons/Agua/vidro_quebrando.wav
 
-#begin Sons/Geral/caindo2.wav
+#begin Sons/Geral/caindo.wav
 /importer:WavImporter
 /processor:SoundEffectProcessor
 /processorParam:Quality=Best
-/build:Sons/Geral/caindo2.wav
+/build:Sons/Geral/caindo.wav
 
 #begin Sons/Geral/elevador_edit.WAV
 /importer:WavImporter
@@ -144,6 +145,12 @@
 /processor:SoundEffectProcessor
 /processorParam:Quality=Best
 /build:Sons/Geral/golpe.wav
+
+#begin Sons/Geral/item.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sons/Geral/item.wav
 
 #begin Sons/Geral/manivela_edit.WAV
 /importer:WavImporter
@@ -193,11 +200,11 @@
 /processorParam:Quality=Best
 /build:Sons/Menus/menu_navegacao.wav
 
-#begin Sons/Musicas/introdution2.mp3
+#begin Sons/Musicas/Introdution2.mp3
 /importer:Mp3Importer
 /processor:SongProcessor
 /processorParam:Quality=Best
-/build:Sons/Musicas/introdution2.mp3
+/build:Sons/Musicas/Introdution2.mp3
 
 #begin Sons/Musicas/som12.mp3
 /importer:Mp3Importer
@@ -955,7 +962,7 @@
 /processorParam:TextureFormat=Color
 /build:Sprites/Interface/MOEDA.png
 
-#begin Sprites/Interface/selecao64.png
+#begin Sprites/Interface/selecao.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -965,7 +972,7 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Sprites/Interface/selecao64.png
+/build:Sprites/Interface/selecao.png
 
 #begin Sprites/Menus/Botoes/cancelar.png
 /importer:TextureImporter
@@ -1291,7 +1298,7 @@
 /processorParam:TextureFormat=Color
 /build:Sprites/Roldanas/ROLDANA.png
 
-#begin Telas/FUNDO_agua.jpg
+#begin Telas/FUNDO_AGUA.jpg
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -1301,7 +1308,7 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Telas/FUNDO_agua.jpg
+/build:Telas/FUNDO_AGUA.jpg
 
 #begin Telas/FUNDO_IMA.jpg
 /importer:TextureImporter
@@ -1398,14 +1405,4 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Tilesets/SALA_DOS_ESPELHOS_SHEET.png
-
-#begin Videos/Abertura.mp4
-/importer:H264Importer
-/processor:VideoProcessor
-/build:Videos/Abertura.mp4
-
-#begin Videos/Creditos.mp4
-/importer:H264Importer
-/processor:VideoProcessor
-/build:Videos/Creditos.mp4
 

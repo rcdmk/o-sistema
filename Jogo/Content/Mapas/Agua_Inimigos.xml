@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <inimigos mapa="Agua">
-	<inimigo sprite="Sprites\\Inimigos\\seguranca" x="3" y="31" ai="1" velocidade="0,5" espera="4"/>
-	<inimigo sprite="Sprites\\Inimigos\\seguranca" x="12" y="31" ai="1" velocidade="0,5" espera="6"/>
+	<inimigo sprite="Sprites\\Inimigos\\seguranca" x="3" y="31" ai="1" velocidade="0.5" espera="4"/>
+	<inimigo sprite="Sprites\\Inimigos\\seguranca" x="12" y="31" ai="1" velocidade="0.5" espera="6"/>
 </inimigos>
