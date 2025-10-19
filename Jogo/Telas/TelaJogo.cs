@@ -695,14 +695,14 @@ namespace Jogo.Telas
                         //Se tiver na primeira fase, mostra a dica da �gua
                         if (mapa.Caminho.EndsWith("Inicio"))
                         {
-                            dica = new ImagemCentral(principal, principal.Content.Load<Texture2D>("Sprites\\Esquemas\\Esquemas_agua"), ImagemCentral.Modo.Esticado);
+                            dica = new ImagemCentral(principal, principal.Content.Load<Texture2D>("Sprites\\Esquemas\\esquemas_agua"), ImagemCentral.Modo.Esticado);
                             Componentes.Add(dica);
                             pausado = true;
                         }
                         //Se tiver na fase da �gua, mostra a dica das roldanas
                         else if (mapa.Caminho.EndsWith("Agua"))
                         {
-                            dica = new ImagemCentral(principal, principal.Content.Load<Texture2D>("Sprites\\Esquemas\\Esquemas_roldanas"), ImagemCentral.Modo.Esticado);
+                            dica = new ImagemCentral(principal, principal.Content.Load<Texture2D>("Sprites\\Esquemas\\esquemas_roldanas"), ImagemCentral.Modo.Esticado);
                             Componentes.Add(dica);
                             pausado = true;
                         }
