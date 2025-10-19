@@ -90,7 +90,7 @@ namespace Jogo.Telas
             //String[] itens = { "Jogar", "Controles", "Op��es", "Sair" };
             Texture2D[] itens = { principal.Content.Load<Texture2D>("Sprites\\Menus\\Botoes\\jogar"), principal.Content.Load<Texture2D>("Sprites\\Menus\\Botoes\\controles"), principal.Content.Load<Texture2D>("Sprites\\Menus\\Botoes\\opcoes"), principal.Content.Load<Texture2D>("Sprites\\Menus\\Botoes\\sair") };
             Menu[] menus = { null, null, menuOpcoes, null };
-            Tela[] telas = { principal.telaAbertura, principal.telaControles, null, null };
+            Tela[] telas = { principal.telaJogo, principal.telaControles, null, null };
 
 
             //String telaCheia = "desativada";
