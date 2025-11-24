@@ -3,11 +3,8 @@ using System.IO;
 using System.Xml;
 using System.Xml.Serialization;
 using Jogo.Componentes;
-using Jogo.Personagens;
 using Jogo.Telas;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.GamerServices;
-using Microsoft.Xna.Framework.Storage;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
@@ -58,8 +55,6 @@ namespace Jogo
         public bool saveLoadPendente = false;
         public bool Salvando;
         public bool Carregando;
-
-        public bool guideVisivelAntes = false;
 
         public int Debug = 0;
 
@@ -235,44 +230,30 @@ namespace Jogo
             using (new ProfileMarker(updateProfiler))
             {
 #endif
-            //Se o Guide não estiver visível, continua
-            if (!Guide.IsVisible)
+            teclado = Keyboard.GetState();
+            controle = GamePad.GetState(PlayerIndex.One);
+
+            //Tela inteira
+            if ((tecladoAnterior.IsKeyDown(Keys.F) && teclado.IsKeyUp(Keys.F)) && (tecladoAnterior.IsKeyDown(Keys.LeftControl) || tecladoAnterior.IsKeyDown(Keys.RightControl)))
             {
-                teclado = Keyboard.GetState();
-                controle = GamePad.GetState(PlayerIndex.One);
+                graphics.ToggleFullScreen();
+            }
 
-                //Despausa o jogo se acabou de ser ocultado
-                if (guideVisivelAntes) telaJogo.Pausado = false;
-
-
-                //Tela inteira
-                if ((tecladoAnterior.IsKeyDown(Keys.F) && teclado.IsKeyUp(Keys.F)) && (tecladoAnterior.IsKeyDown(Keys.LeftControl) || tecladoAnterior.IsKeyDown(Keys.RightControl)))
-                {
-                    graphics.ToggleFullScreen();
-                }
-
-                if (tecladoAnterior.IsKeyDown(Keys.F12) && teclado.IsKeyUp(Keys.F12))
-                {
+            if (tecladoAnterior.IsKeyDown(Keys.F12) && teclado.IsKeyUp(Keys.F12))
+            {
 #if DEBUG || PROFILE
-                    Debug = ++Debug % 3;
+                Debug = ++Debug % 3;
 #else
-                        Debug = ++Debug % 2;
+                Debug = ++Debug % 2;
 #endif
-                }
-
-                tecladoAnterior = teclado;
-                controleAnterior = controle;
-
-                //Calcular o FPS
-                tempoPassado += (float)gameTime.ElapsedGameTime.TotalSeconds;
-            }
-            //Caso contr�rio, pausa o jogo se acabou de ser mostrado
-            else if (!guideVisivelAntes && Guide.IsVisible)
-            {
-                telaJogo.Pausado = true;
             }
 
-            guideVisivelAntes = Guide.IsVisible;
+            tecladoAnterior = teclado;
+            controleAnterior = controle;
+
+            //Calcular o FPS
+            tempoPassado += (float)gameTime.ElapsedGameTime.TotalSeconds;
+
             base.Update(gameTime);
 #if PROFILE
             }
