@@ -6,6 +6,8 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Audio;
+using System.Xml.Schema;
+using System.Xml;
 
 namespace Jogo.Personagens
 {
@@ -27,9 +29,9 @@ namespace Jogo.Personagens
     /// Clase base para os inimigos
     /// </summary>
     [Serializable]
-    public class Inimigo : Personagem
+    public class Inimigo : Personagem, IXmlSerializable
     {
-        #region Variáveis
+        #region Variï¿½veis
         //IA
         protected float tempoEspera;
         protected float tempoEsperaMax = 2f;
@@ -429,6 +431,83 @@ namespace Jogo.Personagens
                     subindo = false;
                 }
             }
+        }
+        #endregion
+
+        #region XmlSerialize Methods
+
+        public XmlSchema GetSchema()
+        {
+            return null;
+        }
+
+        public void ReadXml(XmlReader reader)
+        {
+            XmlSerializer sr = new XmlSerializer(typeof(Vector2));
+
+            reader.ReadStartElement(); // Read the start tag of the element
+            while (reader.NodeType != System.Xml.XmlNodeType.EndElement)
+            {
+                reader.MoveToContent();
+                if (reader.NodeType == System.Xml.XmlNodeType.Element)
+                {
+                    switch (reader.Name)
+                    {
+                        case nameof(this.posicao):
+                            this.posicao = (Vector2)sr.Deserialize(reader);
+                            break;
+                        case nameof(this.velocidadeIncremental):
+                            this.velocidadeIncremental = reader.ReadElementContentAsFloat();
+                            break;
+                        case nameof(this.vidas):
+                            this.vidas = reader.ReadElementContentAsInt();
+                            break;
+                        case nameof(this.textura):
+                            this.textura = reader.ReadElementContentAsString();
+                            break;
+                        case nameof(this.direcao):
+                            this.direcao = Enum.Parse<Direcao>(reader.ReadElementContentAsString());
+                            break;
+                        case nameof(this.inteligencia):
+                            this.inteligencia = Enum.Parse<IA>(reader.ReadElementContentAsString());
+                            break;
+                        case nameof(this.perseguidor):
+                            this.perseguidor = reader.ReadElementContentAsBoolean();
+                            break;
+                        case nameof(this.tempoEspera):
+                            this.tempoEspera = reader.ReadElementContentAsFloat();
+                            break;
+                        case nameof(this.tempoEsperaMax):
+                            this.tempoEsperaMax = reader.ReadElementContentAsFloat();
+                            break;
+                        default:
+                            reader.Skip(); // Skip unknown elements
+                            break;
+                    }
+                }
+                else
+                {
+                    reader.Read(); // Advance the reader
+                }
+            }
+            reader.ReadEndElement(); // Read the end tag of the element
+        }
+
+        public void WriteXml(XmlWriter writer)
+        {
+            XmlSerializer sr = new XmlSerializer(typeof(Vector2));
+
+            sr.Serialize(writer, this.posicao);
+
+            writer.WriteElementString(nameof(this.velocidadeIncremental), this.velocidadeIncremental.ToString());
+            writer.WriteElementString(nameof(this.vidas), this.vidas.ToString());
+            writer.WriteElementString(nameof(this.textura), this.textura.ToString());
+
+            writer.WriteElementString(nameof(this.direcao), this.direcao.ToString());
+            writer.WriteElementString(nameof(this.inteligencia), this.inteligencia.ToString());
+            writer.WriteElementString(nameof(this.perseguidor), this.perseguidor.ToString().ToLower());
+            writer.WriteElementString(nameof(this.tempoEspera), this.tempoEspera.ToString());
+            writer.WriteElementString(nameof(this.tempoEsperaMax), this.tempoEsperaMax.ToString());
         }
         #endregion
     }
