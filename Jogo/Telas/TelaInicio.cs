@@ -51,7 +51,7 @@ namespace Jogo.Telas
             if (!menu.Enabled)
             {
                 menu.Posicao = new Vector2(menu.Posicao.X, menu.Posicao.Y + 4f);
-                if (menu.Posicao.Y >= 400f) menu.Enabled = true;
+                if (menu.Posicao.Y >= principal.Window.ClientBounds.Height / 1.8f) menu.Enabled = true;
             }
             else
             {
@@ -87,16 +87,25 @@ namespace Jogo.Telas
             menu = new MenuImagem(principal, this, new Texture2D(principal.GraphicsDevice, 2, 2));
             menuOpcoes = new MenuImagem(principal, this, principal.Content.Load<Texture2D>("Sprites\\Menus\\Fundos\\fundo_opcoes"));
 
-            //String[] itens = { "Jogar", "Controles", "Op��es", "Sair" };
-            Texture2D[] itens = { principal.Content.Load<Texture2D>("Sprites\\Menus\\Botoes\\jogar"), principal.Content.Load<Texture2D>("Sprites\\Menus\\Botoes\\controles"), principal.Content.Load<Texture2D>("Sprites\\Menus\\Botoes\\opcoes"), principal.Content.Load<Texture2D>("Sprites\\Menus\\Botoes\\sair") };
+            //String[] itens = { "Jogar", "Controles", "Opcoes", "Sair" };
+            Texture2D[] itens = {
+                principal.Content.Load<Texture2D>("Sprites\\Menus\\Botoes\\jogar"),
+                principal.Content.Load<Texture2D>("Sprites\\Menus\\Botoes\\controles"),
+                principal.Content.Load<Texture2D>("Sprites\\Menus\\Botoes\\opcoes"),
+                principal.Content.Load<Texture2D>("Sprites\\Menus\\Botoes\\sair")
+            };
             Menu[] menus = { null, null, menuOpcoes, null };
-            Tela[] telas = { principal.telaJogo, principal.telaControles, null, null };
+            Tela[] telas = { principal.telaAbertura, principal.telaControles, null, null };
 
 
             //String telaCheia = "desativada";
             //if (principal.Graphics.IsFullScreen) telaCheia = "ativada";
             //String[] itensOpcoes = { String.Format("Tela Inteira: {0}", telaCheia), "Sair"};
-            Texture2D[] itensOpcoes = { principal.Content.Load<Texture2D>("Sprites\\Menus\\Botoes\\tela_inteira"), principal.Content.Load<Texture2D>("Sprites\\Menus\\Botoes\\tela_inteira"), principal.Content.Load<Texture2D>("Sprites\\Menus\\Botoes\\voltar") };
+            Texture2D[] itensOpcoes = {
+                principal.Content.Load<Texture2D>("Sprites\\Menus\\Botoes\\tela_inteira"),
+                principal.Content.Load<Texture2D>("Sprites\\Menus\\Botoes\\tela_inteira"),
+                principal.Content.Load<Texture2D>("Sprites\\Menus\\Botoes\\voltar")
+            };
             Menu[] menusOpcoes = { null, null, menu };
 
 
@@ -171,7 +180,7 @@ namespace Jogo.Telas
                     {
                         case 0:
                             if (!Principal.Mudo) Sons.MenuOK.Play();
-                            principal.Graphics.ToggleFullScreen();
+                            principal.ToggleFullscreen();
 
                             atualizarTelaInteira();
 
