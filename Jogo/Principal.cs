@@ -1,5 +1,6 @@
 using System;
 using System.IO;
+using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Serialization;
 using Jogo.Componentes;
@@ -13,7 +14,7 @@ namespace Jogo
     /// <summary>
     /// Classe principal do jogo
     /// </summary>
-    public class Principal : Microsoft.Xna.Framework.Game
+    public class Principal : Game
     {
         #region Inicializar Graficos
         GraphicsDeviceManager graphics;
@@ -45,16 +46,20 @@ namespace Jogo
         public Tela telaInicial;
         private Texture2D fundoControles;
         private Texture2D controles;
+        public Texture2D texturaBranca;
         public TelaControles telaControles;
         public TelaJogo telaJogo;
         public TelaAbertura telaAbertura;
         public TelaCreditos telaCreditos;
+
+        private BarraDeCarregamento barraDeCarregamento;
 
         //Save
         Dados dados = new Dados();
         public bool saveLoadPendente = false;
         public bool Salvando;
         public bool Carregando;
+        public bool carregandoAssets;
 
         public int Debug = 0;
 
@@ -126,12 +131,17 @@ namespace Jogo
         {
             get { return frameCount; }
         }
+
+        public bool CarregandoAssets
+        {
+            get { return carregandoAssets; }
+        }
         #endregion
 
 
         #region MetodosPadrao
         /// <summary>
-        /// Permite inicializar o jogo e todos os seus componentes n�o gr�ficos.
+        /// Permite inicializar o jogo e todos os seus componentes não gráficos.
         /// </summary>
         protected override void Initialize()
         {
@@ -147,15 +157,28 @@ namespace Jogo
         }
 
         /// <summary>
-        /// � respons�vel pelo carregamento do conte�do do jogo, chamada apenas uma vez.
+        /// Responsável pelo carregamento do conteúdo do jogo, chamada apenas uma vez.
         /// </summary>
         protected override void LoadContent()
         {
             // Create o SpriteBatch para desenhar as texturas
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            //carregando os sons
-            Sons.LoadContent(Content);
+            carregandoAssets = true;
+
+            texturaBranca = new Texture2D(GraphicsDevice, 1, 1);
+            texturaBranca.SetData(new[] { Color.White });
+
+            //Barra de carregamento
+            var larguraBarra = (int)(GraphicsDevice.Viewport.Width * 0.7f);
+            var alturaBarra = (int)(GraphicsDevice.Viewport.Height * 0.05f);
+            barraDeCarregamento = new BarraDeCarregamento(this, new Vector2((GraphicsDevice.Viewport.Width - larguraBarra) / 2, GraphicsDevice.Viewport.Height * 0.8f), larguraBarra, alturaBarra);
+            Components.Add(barraDeCarregamento);
+
+            //Tela do logo
+            telaLogo = new TelaLogo(this);
+            telaLogo.Initialize();
+            Components.Add(telaLogo);
 
             //Definindo as fontes
             Fontes.Menu = Content.Load<SpriteFont>("Fonts\\bitstreamMenu");
@@ -164,41 +187,56 @@ namespace Jogo
             Fontes.Creditos = Content.Load<SpriteFont>("Fonts\\bitstreamCreditos");
             Fontes.TituloCreditos = Fontes.Score;
 
-            //Tela do logo
-            telaLogo = new TelaLogo(this);
-            telaLogo.Initialize();
-            Components.Add(telaLogo);
+            Task.Run(() =>
+            {
+                //carregando os sons
+                Sons.LoadContent(Content);
+                barraDeCarregamento.Progresso += 0.05f;
+            }).ContinueWith(t =>
+            {
+                //Tela Inicial
+                fundoInicial = Content.Load<Texture2D>("Telas\\tela_inicio");
+                telaInicial = new TelaInicio(this, fundoInicial);
+                telaInicial.Initialize();
+                Components.Add(telaInicial);
+                barraDeCarregamento.Progresso += 0.05f;
+            }).ContinueWith(t =>
+            {
+                //Tela Controles
+                fundoControles = Content.Load<Texture2D>("Telas\\tela_inicio");
+                controles = Content.Load<Texture2D>("Telas\\telas_controles");
+                telaControles = new TelaControles(this, fundoControles, controles);
+                telaControles.Initialize();
+                Components.Add(telaControles);
+                barraDeCarregamento.Progresso += 0.1f;
+            }).ContinueWith(t =>
+            {
+                //Tela Jogo
+                telaJogo = new TelaJogo(this);
+                telaJogo.Initialize();
+                Components.Add(telaJogo);
+                barraDeCarregamento.Progresso += 0.2f;
+            }).ContinueWith(t =>
+            {
+                //Tela Abertura
+                telaAbertura = new TelaAbertura(this);
+                telaAbertura.Initialize();
+                Components.Add(telaAbertura);
+                barraDeCarregamento.Progresso += 0.3f;
+            }).ContinueWith(t =>
+            {
+                //Tela Creditos
+                telaCreditos = new TelaCreditos(this);
+                telaCreditos.Initialize();
+                Components.Add(telaCreditos);
+                barraDeCarregamento.Progresso += 0.25f;
+            }).ContinueWith(t =>
+            {
+                ((TelaInicio)telaInicial).CriarMenu();
 
-            //Tela Inicial
-            fundoInicial = Content.Load<Texture2D>("Telas\\tela_inicio");
-            telaInicial = new TelaInicio(this, fundoInicial);
-            telaInicial.Initialize();
-            Components.Add(telaInicial);
-
-
-            //Tela Controles
-            fundoControles = Content.Load<Texture2D>("Telas\\tela_inicio");
-            controles = Content.Load<Texture2D>("Telas\\telas_controles");
-            telaControles = new TelaControles(this, fundoControles, controles);
-            telaControles.Initialize();
-            Components.Add(telaControles);
-
-            //Tela Jogo
-            telaJogo = new TelaJogo(this);
-            telaJogo.Initialize();
-            Components.Add(telaJogo);
-
-            //Tela Abertura
-            telaAbertura = new TelaAbertura(this);
-            telaAbertura.Initialize();
-            Components.Add(telaAbertura);
-
-            //Tela Creditos
-            telaCreditos = new TelaCreditos(this);
-            telaCreditos.Initialize();
-            Components.Add(telaCreditos);
-
-            ((TelaInicio)telaInicial).CriarMenu();
+                barraDeCarregamento.Progresso += 0.05f;
+                carregandoAssets = false;
+            });
 
             //Iniciar a primeira tela
             telaLogo.Mostrar();
@@ -208,7 +246,7 @@ namespace Jogo
         }
 
         /// <summary>
-        /// Descarregar o conte�do, chamada apenas uma vez.
+        /// Descarregar o conteúdo, chamada apenas uma vez.
         /// </summary>
         protected override void UnloadContent()
         {
@@ -216,15 +254,16 @@ namespace Jogo
         }
 
         /// <summary>
-        /// Permite atualizar o jogo, checar por colis�es, tocar sons, etc
+        /// Permite atualizar o jogo, checar por colisões, tocar sons, etc
         /// </summary>
-        /// <param name="gameTime">O tempo que o jogo est� rodando</param>
+        /// <param name="gameTime">O tempo que o jogo está rodando</param>
         protected override void Update(GameTime gameTime)
         {
 #if PROFILE
             using (new ProfileMarker(updateProfiler))
             {
 #endif
+
             teclado = Keyboard.GetState();
             controle = GamePad.GetState(PlayerIndex.One);
 
@@ -258,7 +297,7 @@ namespace Jogo
         /// <summary>
         /// Permite "desenhar" na viewport o que se deseja
         /// </summary>
-        /// <param name="gameTime">O tempo que o jogo est� rodando</param>
+        /// <param name="gameTime">O tempo que o jogo está rodando</param>
         protected override void Draw(GameTime gameTime)
         {
 #if PROFILE
@@ -446,7 +485,7 @@ namespace Jogo
                 telaJogo.mapa.Itens2.Add(novoItem);
             }
 
-            //Itens colet�veis
+            //Itens coletáveis
             telaJogo.mapa.Coletaveis.Clear();
 
             for (int i = 0; i < dados.Coletaveis.Count; i++)

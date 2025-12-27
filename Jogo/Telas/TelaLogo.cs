@@ -38,7 +38,7 @@ namespace Jogo.Telas
             {
                 tempo += (float)gameTime.ElapsedGameTime.TotalSeconds;
 
-                if (tempo >= 3)
+                if (tempo >= 3 && !principal.CarregandoAssets)
                 {
                     fader.FadeOut();
                     tempo = 0;
