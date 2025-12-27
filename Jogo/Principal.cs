@@ -189,14 +189,14 @@ namespace Jogo
             Components.Add(telaJogo);
 
             //Tela Abertura
-            // telaAbertura = new TelaAbertura(this);
-            // telaAbertura.Initialize();
-            // Components.Add(telaAbertura);
+            telaAbertura = new TelaAbertura(this);
+            telaAbertura.Initialize();
+            Components.Add(telaAbertura);
 
             //Tela Creditos
-            // telaCreditos = new TelaCreditos(this);
-            // telaCreditos.Initialize();
-            // Components.Add(telaCreditos);
+            telaCreditos = new TelaCreditos(this);
+            telaCreditos.Initialize();
+            Components.Add(telaCreditos);
 
             ((TelaInicio)telaInicial).CriarMenu();
 

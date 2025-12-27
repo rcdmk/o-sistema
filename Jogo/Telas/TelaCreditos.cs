@@ -5,7 +5,7 @@ namespace Jogo.Telas
 {
     public class TelaCreditos : TelaVideo
     {
-        public TelaCreditos(Principal principal) : base(principal, "Videos\\CREDITOS", principal.telaInicial) { }
+        public TelaCreditos(Principal principal) : base(principal, "Content\\Videos\\Creditos.mp4", principal.telaInicial) { }
 
         public override void Mostrar()
         {

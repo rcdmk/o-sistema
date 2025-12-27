@@ -1406,3 +1406,9 @@
 /processorParam:TextureFormat=Color
 /build:Tilesets/SALA_DOS_ESPELHOS_SHEET.png
 
+#begin Videos/Abertura.mp4
+/copy:Videos/Abertura.mp4
+
+#begin Videos/Creditos.mp4
+/copy:Videos/Creditos.mp4
+
