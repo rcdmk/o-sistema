@@ -437,13 +437,13 @@ namespace Jogo.Telas
         private void controlePersonagem(GameTime gameTime)
         {
             //Mover direita ou esquerda
-            if ((teclado.IsKeyDown(Keys.D) || teclado.IsKeyDown(Keys.Right) || controle.DPad.Right == ButtonState.Pressed))
+            if (teclado.IsKeyDown(Keys.D) || teclado.IsKeyDown(Keys.Right) || controle.DPad.Right == ButtonState.Pressed)
             {
                 if (!personagem.Subindo)
                 {
                     personagem.Velocidade += new Vector2(personagem.VelocidadeIncremental, 0f);
 
-                    if (!personagem.Subindo && !personagem.Pulando)
+                    if (!personagem.Pulando)
                     {
                         personagem.Animacao.AnimacaoAtual = "andando";
                         personagem.Animacao.iniciarAnimacao();
@@ -451,12 +451,12 @@ namespace Jogo.Telas
                     personagem.flip = SpriteEffects.None;
                 }
             }
-            else if ((teclado.IsKeyDown(Keys.A) || teclado.IsKeyDown(Keys.Left) || controle.DPad.Left == ButtonState.Pressed))
+            else if (teclado.IsKeyDown(Keys.A) || teclado.IsKeyDown(Keys.Left) || controle.DPad.Left == ButtonState.Pressed)
             {
                 if (!personagem.Subindo)
                 {
                     personagem.Velocidade -= new Vector2(personagem.VelocidadeIncremental, 0f);
-                    if (!personagem.Subindo && !personagem.Pulando)
+                    if (!personagem.Pulando)
                     {
                         personagem.Animacao.AnimacaoAtual = "andando";
                         personagem.Animacao.iniciarAnimacao();
