@@ -299,9 +299,9 @@ namespace Jogo.Componentes
     }
 
     /// <summary>
-    /// Classe para dicion�rio de anima��es serializ�vel
+    /// Classe para dicionário de animações serializável
     /// </summary>
-    /// <typeparam name="Chave">Chave �nica do item</typeparam>
+    /// <typeparam name="Chave">Chave única do item</typeparam>
     /// <typeparam name="Valor">Item</typeparam>
     [Serializable]
     public class Dicionario<Chave, Valor> : Dictionary<string, Animacao>, IXmlSerializable
@@ -309,13 +309,10 @@ namespace Jogo.Componentes
         #region Variaveis
         XmlSerializer _XmlSerializer;
         #endregion
-        
+
 
         #region Construtor
         public Dicionario() { }
-
-        protected Dicionario(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context)
-            : base(info, context) { }
         #endregion
 
 
@@ -361,9 +358,10 @@ namespace Jogo.Componentes
                 }
                 reader.Read();
             }
-            catch (Exception ex)
-            { throw ex; }
-
+            catch (Exception)
+            {
+                // ignora erros
+            }
         }
 
         public void WriteXml(XmlWriter writer)
@@ -380,9 +378,10 @@ namespace Jogo.Componentes
                     writer.WriteEndElement();
                 }
             }
-            catch (Exception ex)
-            { throw ex; }
-
+            catch (Exception)
+            {
+                // ignora erros
+            }
         }
         #endregion
     }
