@@ -108,7 +108,7 @@ namespace Jogo.Componentes
         {
             spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend);
 
-            //Posicionar a imagem de fundo entralizada no menu
+            //Posicionar a imagem de fundo centralizada no menu
             Vector2 posicaoFundo = new Vector2();
             posicaoFundo.X = posicao.X - (fundo.Width - largura) / 2;
             posicaoFundo.Y = posicao.Y - (fundo.Height - altura) / 2;

@@ -51,7 +51,11 @@ namespace Jogo.Telas
             if (!menu.Enabled)
             {
                 menu.Posicao = new Vector2(menu.Posicao.X, menu.Posicao.Y + 4f);
-                if (menu.Posicao.Y >= principal.Window.ClientBounds.Height / 1.8f) menu.Enabled = true;
+                if (menu.Posicao.Y >= principal.Window.ClientBounds.Height / 1.8f)
+                {
+                    if (menu.ItemSelecionado < 0) menu.ItemSelecionado = 0;
+                    menu.Enabled = true;
+                }
             }
             else
             {
@@ -130,6 +134,8 @@ namespace Jogo.Telas
 
             menu.Visible = true;
             menuOpcoes.Esconder();
+
+            menu.ItemSelecionado = -1; // iniciar sem item selecionado
 
             atualizarTelaInteira();
 
