@@ -84,7 +84,7 @@ namespace Jogo.Componentes
                 //Skip por teclado ou controle
                 KeyboardState teclado = Keyboard.GetState();
                 GamePadState controle = GamePad.GetState(PlayerIndex.One);
-                if (teclado.IsKeyDown(Keys.Enter) || teclado.IsKeyDown(Keys.Space) ||
+                if (teclado.IsKeyDown(Keys.Escape) || teclado.IsKeyDown(Keys.Enter) || teclado.IsKeyDown(Keys.Space) ||
                     controle.Buttons.A == ButtonState.Pressed || controle.Buttons.Start == ButtonState.Pressed)
                 {
                     Principal.mostrarTela(proximaTela);

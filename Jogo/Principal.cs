@@ -171,7 +171,7 @@ namespace Jogo
 
             //Barra de carregamento
             var larguraBarra = (int)(GraphicsDevice.Viewport.Width * 0.7f);
-            var alturaBarra = (int)(GraphicsDevice.Viewport.Height * 0.05f);
+            var alturaBarra = (int)(GraphicsDevice.Viewport.Height * 0.025f);
             barraDeCarregamento = new BarraDeCarregamento(this, new Vector2((GraphicsDevice.Viewport.Width - larguraBarra) / 2, GraphicsDevice.Viewport.Height * 0.8f), larguraBarra, alturaBarra);
             Components.Add(barraDeCarregamento);
 
@@ -289,6 +289,8 @@ namespace Jogo
             tempoPassado += (float)gameTime.ElapsedGameTime.TotalSeconds;
 
             base.Update(gameTime);
+
+            barraDeCarregamento.Visible = carregandoAssets;
 #if PROFILE
             }
 #endif
