@@ -90,17 +90,13 @@ namespace Jogo
 
             graphics = new GraphicsDeviceManager(this);
             graphics.SynchronizeWithVerticalRetrace = true;
-            graphics.ApplyChanges();
-
-            //this.Components.Add(new SafeGamerServicesComponent(this));
-
-
 #if PROFILE
             Components.Add(new ProfilerComponent(this));
 
             this.IsFixedTimeStep = false;
             graphics.SynchronizeWithVerticalRetrace = false;
 #endif
+            graphics.ApplyChanges();
         }
         #endregion
 
@@ -143,8 +139,7 @@ namespace Jogo
             graphics.PreferredBackBufferWidth = 1024;
             graphics.PreferredBackBufferHeight = 768;
 
-            graphics.IsFullScreen = true;
-            graphics.ApplyChanges();
+            ToggleFullscreen();
 
             Content.RootDirectory = "Content";
 
@@ -502,6 +497,83 @@ namespace Jogo
             {
                 telaJogo.HUD.addItem(dados.ItensHUD[i].Tipo, dados.ItensHUD[i].NomeTextura);
             }
+        }
+
+        bool _isFullscreen = false;
+        bool _isBorderless = false;
+        int _width = 0;
+        int _height = 0;
+
+        public void ToggleFullscreen()
+        {
+            bool oldIsFullscreen = _isFullscreen;
+
+            if (_isBorderless)
+            {
+                _isBorderless = false;
+            }
+            else
+            {
+                _isFullscreen = !_isFullscreen;
+            }
+
+            ApplyFullscreenChange(oldIsFullscreen);
+        }
+
+        public void ToggleBorderless()
+        {
+            bool oldIsFullscreen = _isFullscreen;
+
+            _isBorderless = !_isBorderless;
+            _isFullscreen = _isBorderless;
+
+            ApplyFullscreenChange(oldIsFullscreen);
+        }
+
+        private void ApplyFullscreenChange(bool oldIsFullscreen)
+        {
+            if (_isFullscreen)
+            {
+                if (oldIsFullscreen)
+                {
+                    ApplyHardwareMode();
+                }
+                else
+                {
+                    SetFullscreen();
+                }
+            }
+            else
+            {
+                UnsetFullscreen();
+            }
+        }
+
+        private void ApplyHardwareMode()
+        {
+            this.graphics.HardwareModeSwitch = !_isBorderless;
+            this.graphics.ApplyChanges();
+        }
+
+        private void SetFullscreen()
+        {
+            _width = Window.ClientBounds.Width;
+            _height = Window.ClientBounds.Height;
+
+            this.graphics.PreferredBackBufferWidth = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width;
+            this.graphics.PreferredBackBufferHeight = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height;
+            this.graphics.HardwareModeSwitch = !_isBorderless;
+
+            this.graphics.IsFullScreen = true;
+            this.graphics.ApplyChanges();
+        }
+
+        private void UnsetFullscreen()
+        {
+            this.graphics.PreferredBackBufferWidth = _width;
+            this.graphics.PreferredBackBufferHeight = _height;
+            this.graphics.IsFullScreen = false;
+            this.graphics.ApplyChanges();
         }
         #endregion
     }
