@@ -296,7 +296,8 @@ namespace Jogo.Telas
             principal.SpriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, null, null, null, null, transformacaoCamera);
 
             //Desenha o fundo
-            principal.SpriteBatch.Draw(fundo, mapa.PosicaoCamera, Color.White);
+            var tamanhoFundo = new Rectangle((int)mapa.PosicaoCamera.X, (int)mapa.PosicaoCamera.Y, principal.Window.ClientBounds.Width, principal.Window.ClientBounds.Height);
+            principal.SpriteBatch.Draw(fundo, tamanhoFundo, Color.White);
 
             //Desenha o mapa e os componentes da tela
             mapa.Draw(gameTime, principal.SpriteBatch);
