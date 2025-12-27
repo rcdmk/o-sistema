@@ -188,7 +188,7 @@ namespace Jogo.Telas
                 fader.FadeOut();
             }
 
-            //Se n�o tiver mostrando uma dica
+            //Se não tiver mostrando uma dica
             if (dica == null)
             {
                 //Controles dos menus
@@ -224,7 +224,7 @@ namespace Jogo.Telas
                     controleItens(gameTime);
 
 
-                    //Parar anima��es do persoangem se n�o estiver fazendo nada ou n�o puder se mexer
+                    //Parar anima��es do persoangem se não estiver fazendo nada ou não puder se mexer
                     pararAnimacoes(gameTime);
 
 
@@ -529,7 +529,7 @@ namespace Jogo.Telas
             {
                 int itemSelecionadoAnterior = hud.ItemSelecionado;
 
-                //Controle por n�meros
+                //Controle por numeros
                 if (tecladoAnterior.IsKeyUp(Keys.D1) && teclado.IsKeyDown(Keys.D1) && hud.Itens.Count >= 1) hud.ItemSelecionado = 0;
                 if (tecladoAnterior.IsKeyUp(Keys.D2) && teclado.IsKeyDown(Keys.D2) && hud.Itens.Count >= 2) hud.ItemSelecionado = 1;
                 if (tecladoAnterior.IsKeyUp(Keys.D3) && teclado.IsKeyDown(Keys.D3) && hud.Itens.Count >= 3) hud.ItemSelecionado = 2;
@@ -550,7 +550,7 @@ namespace Jogo.Telas
                     hud.ItemSelecionado++;
                 }
 
-                //Manter a sele��o v�lida se sair das bordas do HUD
+                //Manter a seleção válida se sair das bordas do HUD
                 if (hud.ItemSelecionado < 0)
                 {
                     hud.ItemSelecionado = hud.Itens.Count - 1;
@@ -571,12 +571,12 @@ namespace Jogo.Telas
         {
             Rectangle personagemBox = personagem.HitTest;
 
-            //Se estiver na �gua n�o usa a porta
+            //Se estiver na agua nao usa a porta
             if (mapa.Caminho.EndsWith("Agua"))
             {
                 if (mapa.Enchente.HitTest.Intersects(personagemBox)) return;
             }
-            //Se estiver empurrando alguma coisas tamb�m n�o
+            //Se estiver empurrando alguma coisas tambem nao
             else if (personagem.Animacao.AnimacaoAtual == "empurrando")
             {
                 return;
@@ -609,7 +609,7 @@ namespace Jogo.Telas
         {
             personagemBox = personagem.HitTest;
 
-            //Itens de cen�rio n�o precisam de tratamento
+            //Itens de cenario nao precisam de tratamento
 
 
             #region Itens de segundo plano
@@ -618,7 +618,7 @@ namespace Jogo.Telas
                 //Se for a maquina de refri e usar uma moeda
                 checarSave(mapa.Itens2[i], personagemBox);
 
-                //Se n�o for pass�vel, n�o atravessa
+                //Se nao for passivel, nao atravessa
                 tratarColisoes(mapa.Itens2[i], personagem, personagemBox);
 
                 //Se tiver na tela das Roldanas
@@ -647,7 +647,7 @@ namespace Jogo.Telas
             #endregion
 
 
-            #region Itens colet�veis
+            #region Itens coletaveis
             for (int i = 0; i < mapa.Coletaveis.Count; i++)
             {
                 //Se for coletavel e pressionar CTRL
@@ -678,7 +678,7 @@ namespace Jogo.Telas
             }
             #endregion
 
-            //Itens de primeiro plano n�o precisam de tratamento pois s�o apenas itens de cen�rio
+            //Itens de primeiro plano não precisam de tratamento pois são apenas itens de cenário
         }
 
         private void controleDicas(GameTime gameTime)
@@ -693,7 +693,7 @@ namespace Jogo.Telas
                     {
                         if (!Principal.Mudo) Sons.Item.Play();
 
-                        //Se tiver na primeira fase, mostra a dica da �gua
+                        //Se tiver na primeira fase, mostra a dica da agua
                         if (mapa.Caminho.EndsWith("Inicio"))
                         {
                             dica = new ImagemCentral(principal, principal.Content.Load<Texture2D>("Sprites\\Esquemas\\esquemas_agua"), ImagemCentral.Modo.Esticado);
@@ -724,7 +724,7 @@ namespace Jogo.Telas
 
         private bool coletarItem(List<Item> itens, int i, Rectangle personagemBox)
         {
-            //Se estiver empurrando, n�o coleta o item
+            //Se estiver empurrando, não coleta o item
             if (personagem.Animacao.AnimacaoAtual == "empurrando") return false;
 
             if (itens[i].Coletavel)
@@ -732,7 +732,7 @@ namespace Jogo.Telas
                 if (itens[i].HitTest.Intersects(personagemBox) && ((tecladoAnterior.IsKeyUp(Keys.RightControl) && teclado.IsKeyDown(Keys.RightControl)) || (tecladoAnterior.IsKeyUp(Keys.LeftControl) && teclado.IsKeyDown(Keys.LeftControl)) || (controleAnterior.Buttons.A == ButtonState.Released && controle.Buttons.A == ButtonState.Pressed)) && !personagem.Pulando && !personagem.Subindo)
                 {
                     //coleta o item
-                    //Se n�o conseguir por estar cheio, retorna falso, caso contr�rio, coleta e remove o item da tela
+                    //Se não conseguir por estar cheio, retorna falso, caso contrário, coleta e remove o item da tela
                     if (!hud.addItem(itens[i].Tipo, itens[i].NomeTexturaHUD)) return false;
 
                     if (!Principal.Mudo) Sons.PegandoItem.Play(0.5f, 0, 0);
@@ -767,7 +767,7 @@ namespace Jogo.Telas
                         //Verifica se tem os objetivos completos suficientes para rodar
                         if ((mapa.Itens2[item.ItemInterativo].NomeTextura.EndsWith("CORDA") && personagem.ObjetivosCompletos >= 2) || (mapa.Itens2[item.ItemInterativo].NomeTextura.EndsWith("SOBE") && personagem.ObjetivosCompletos >= 3))
                         {
-                            //Se a corda n�o estiver pequena demais, sobe o item e diminui a corda
+                            //Se a corda não estiver pequena demais, sobe o item e diminui a corda
                             if (mapa.Cordas[item.CordaInterativa].Tamanho > Tile.Dimensoes.Y / 2)
                             {
                                 if (!Principal.Mudo)
@@ -885,7 +885,7 @@ namespace Jogo.Telas
                     {
                         personagem.Velocidade = new Vector2(0, personagem.Velocidade.Y);
 
-                        //Se for um dos seguran�as
+                        //Se for um dos seguranças
                         if (!personagem.Equals(this.personagem) && !item.Passavel)
                         {
                             personagem.Posicao = new Vector2(personagem.Posicao.X + retorno.X - Tile.Dimensoes.X / 2, personagem.Posicao.Y);
@@ -896,7 +896,7 @@ namespace Jogo.Telas
                         {
                             personagem.Posicao = new Vector2(personagem.Posicao.X + retorno.X + 1, personagem.Posicao.Y);
 
-                            //Se for empurr�vel, empurra
+                            //Se for empurravel, empurra
                             if (item.Tipo == "empurravel" && (personagem.Animacao.AnimacaoAtual == "empurrando" || teclado.IsKeyDown(Keys.LeftControl) || teclado.IsKeyDown(Keys.RightControl) || controle.Buttons.X == ButtonState.Pressed) && !personagem.Pulando)
                             {
                                 //Se o item for leve
@@ -941,7 +941,7 @@ namespace Jogo.Telas
                     {
                         personagem.Velocidade = new Vector2(0, personagem.Velocidade.Y);
 
-                        //Se for um dos seguran�as
+                        //Se for um dos seguranças
                         if (!personagem.Equals(this.personagem) && !item.Passavel)
                         {
                             personagem.Posicao = new Vector2(personagem.Posicao.X + retorno.X + Tile.Dimensoes.X / 2, personagem.Posicao.Y);
@@ -952,7 +952,7 @@ namespace Jogo.Telas
                         {
                             personagem.Posicao = new Vector2(personagem.Posicao.X + retorno.X - 1, personagem.Posicao.Y);
 
-                            //Se for empurr�vel, empurra
+                            //Se for empurravel, empurra
                             if (item.Tipo == "empurravel" && (personagem.Animacao.AnimacaoAtual == "empurrando" || teclado.IsKeyDown(Keys.LeftControl) || teclado.IsKeyDown(Keys.RightControl) || controle.Buttons.X == ButtonState.Pressed) && !personagem.Pulando)
                             {
                                 //Se o item for leve
@@ -1039,7 +1039,7 @@ namespace Jogo.Telas
                     item.Velocidade = new Vector2(item.Velocidade.X, 0);
                 }
 
-                //se tiver na tela da �gua, aplica f�sica e checagens da �gua
+                //se tiver na tela da água, aplica física e checagens da água
                 if (mapa.Caminho.EndsWith("Agua")) checarAguaItem(item);
 
                 item.Velocidade = new Vector2(item.Velocidade.X * Fisica.Friccao, item.Velocidade.Y);
@@ -1110,7 +1110,7 @@ namespace Jogo.Telas
                     //Se o item for leve, aplica empuxo
                     if (item.Peso <= 10) item.Velocidade = new Vector2(item.Velocidade.X, item.Velocidade.Y + ((mapa.Enchente.Posicao.Y - item.HitTest.Bottom + item.HitTest.Height / 2) / (item.Peso * 10)));
 
-                    //Aplica desacelera��o pela densidade da �gua
+                    //Aplica desaceleração pela densidade da água
                     item.Velocidade *= Agua.Densidade;
 
                     //Se o item for pesado e estiver parando
@@ -1139,7 +1139,7 @@ namespace Jogo.Telas
                             }
                         }
 
-                        //Se jogar 3 ou mais itens na �gua, quebra o vidro
+                        //Se jogar 3 ou mais itens na água, quebra o vidro
                         if (personagem.ObjetivosCompletos == 3)
                         {
                             if (!Principal.Mudo) Sons.Vidro.Play();
@@ -1162,12 +1162,12 @@ namespace Jogo.Telas
                                 }
                             }
 
-                        }//Se jogar 1, sobe um pouco a �gua
+                        }//Se jogar 1, sobe um pouco a água
                         else if (personagem.ObjetivosCompletos == 1)
                         {
                             mapa.Enchente.UltimaFileira = "metade";
                         }
-                        //se jogar 2, enche a �gua
+                        //se jogar 2, enche a água
                         else if (personagem.ObjetivosCompletos == 2)
                         {
                             mapa.Enchente.UltimaFileira = "cheio";
@@ -1191,7 +1191,7 @@ namespace Jogo.Telas
 
         private void pararAnimacoes(GameTime gameTime)
         {
-            //Parar anima��es se estiver na escada ou mudar para a anima��o de parado se n�o estiver na escada e estiver pressionando nenhuma tecla
+            //Parar animações se estiver na escada ou mudar para a animação de parado se não estiver na escada e estiver pressionando nenhuma tecla
             if ((teclado.GetPressedKeys().Length == 0 && controle.PacketNumber == 0 && personagem.Animacao.AnimacaoAtual != "manivela" && personagem.Animacao.AnimacaoAtual != "empurrando") || (personagem.Velocidade == Vector2.Zero && !personagem.Subindo && !personagem.Pulando && personagem.Animacao.AnimacaoAtual != "manivela" && personagem.Animacao.AnimacaoAtual != "empurrando") || (personagem.Subindo && teclado.IsKeyUp(Keys.W) && teclado.IsKeyUp(Keys.S) && teclado.IsKeyUp(Keys.Up) && teclado.IsKeyUp(Keys.Down) && controle.DPad.Up == ButtonState.Released && controle.DPad.Down == ButtonState.Released) || (!personagem.Morto && (personagem.Animacao.AnimacaoAtual == "manivela" || personagem.Animacao.AnimacaoAtual == "empurrando") && teclado.IsKeyUp(Keys.RightControl) && teclado.IsKeyUp(Keys.LeftControl) && controle.Buttons.X == ButtonState.Released))
             {
                 if (personagem.Subindo && !personagem.Pulando)
@@ -1209,25 +1209,25 @@ namespace Jogo.Telas
         }
 
         /// <summary>
-        /// Fun��o que calcula a m�nima dist�ncia absoluta(MTD) resultante de uma intersec��o entre 2 ret�ngulos. Usada para resolver colis�es. (Retirada de www.ziggyware.com e modigicada por mim RCDMK)
+        /// Função que calcula a mínima distância absoluta(MTD) resultante de uma intersecção entre 2 retângulos. Usada para resolver colisões. (Retirada de www.ziggyware.com e modigicada por mim RCDMK)
         /// </summary>
-        /// <param name="obj1">O ret�ngulo do objeto 1</param>
-        /// <param name="obj2">O ret�ngulo do objeto 2</param>
-        /// <returns>O vetor resultante da intersec��o com a menor dist�ncia usada para separar os objetos</returns>
+        /// <param name="obj1">O retângulo do objeto 1</param>
+        /// <param name="obj2">O retângulo do objeto 2</param>
+        /// <returns>O vetor resultante da intersecção com a menor distância usada para separar os objetos</returns>
         public static Vector2 CalcularMTD(Rectangle obj1, Rectangle obj2)
         {
-            // O resultado da intersec��o que � usado pra corrigir a posi��o do objeto
+            // O resultado da intersecção que é usado pra corrigir a posição do objeto
             Vector2 resultado = Vector2.Zero;
 
-            // Isto � usado pra calcular a diferen�a de dist�ncias entre os lados
+            // Isto é usado pra calcular a diferença de distâncias entre os lados
             float diferenca = 0.0f;
 
-            // Isto guarda a m�nima dist�ncia absoluta(MTD) usada pra separar os objetos que colidem
+            // Isto guarda a mínima distância absoluta(MTD) usada pra separar os objetos que colidem
             float minimumTranslationDistance = 0.0f;
 
             // Eixo guarda os valores de X e Y.  X = 0, Y = 1.
             // Lado guarda o valor de esquerda (-1) ou direita (+1).
-            // S�o usados para calcular o vetor resultante (resultado).
+            // São usados para calcular o vetor resultante (resultado).
             int eixo = 0, lado = 0;
 
             // Esquerda
@@ -1279,7 +1279,7 @@ namespace Jogo.Telas
                 lado = 1;
             }
 
-            // Intercec��o ocorrida:
+            // Intersecção ocorrida:
             if (eixo == 1) // Eixo Y
                 resultado.Y = (float)lado * minimumTranslationDistance;
             else // Eixo X
