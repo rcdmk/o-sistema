@@ -241,7 +241,7 @@ namespace Jogo.Componentes
 
         public override void Draw(GameTime gameTime)
         {
-            spriteBatch.Begin(SpriteBlendMode.AlphaBlend, SpriteSortMode.Immediate, SaveStateMode.None);
+            spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend);
 
             float y = posicao.Y;
             for (int i = 0; i < itens.Count; i++)

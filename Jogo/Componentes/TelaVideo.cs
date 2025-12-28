@@ -1,3 +1,4 @@
+using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
@@ -6,16 +7,13 @@ using Microsoft.Xna.Framework.Media;
 namespace Jogo.Componentes
 {
     /// <summary>
-    /// Classe base para telas de vÌdeo com skip por teclado ou controle
+    /// Classe base para telas de v√≠deo com skip por teclado ou controle
     /// </summary>
-    public class TelaVideo : Tela
+    public class TelaVideo : Tela, IDisposable
     {
-        #region Vari·veis
+        #region Vari√°veis
         protected string caminhoVideo;
-        protected Video video;
         protected VideoPlayer videoPlayer;
-        protected Texture2D texturaVideo;
-        protected Rectangle retangulo = new Rectangle(0, 0, 64, 64);
         protected Tela proximaTela;
         protected int tempoEspera = 1;
         protected float tempo;
@@ -35,13 +33,7 @@ namespace Jogo.Componentes
             get { return VideoPlayer; }
         }
 
-        public Video Video
-        {
-            get { return video; }
-            set { video = value; }
-        }
         #endregion
-
 
         #region Construtor
         public TelaVideo(Principal _principal, string _caminhoVideo, Tela _proximaTela)
@@ -50,7 +42,7 @@ namespace Jogo.Componentes
             this.caminhoVideo = _caminhoVideo;
             this.proximaTela = _proximaTela;
 
-            videoPlayer = new VideoPlayer();
+            videoPlayer = new VideoPlayer(_principal);
         }
         #endregion
 
@@ -64,11 +56,7 @@ namespace Jogo.Componentes
 
         public virtual new void LoadContent()
         {
-            video = principal.Content.Load<Video>(caminhoVideo);
-
-            retangulo.Width = GraphicsDevice.Viewport.Width;
-            retangulo.Height = GraphicsDevice.Viewport.Height;
-
+            videoPlayer.LoadMedia(caminhoVideo);
             base.LoadContent();
         }
 
@@ -82,68 +70,72 @@ namespace Jogo.Componentes
                 {
                     tempo = 0;
                     inicio = true;
-                    videoPlayer.Play(video);
+                    videoPlayer.Play();
                     videoPlayer.IsMuted = Principal.Mudo;
                 }
             }
-
-            teclado = Keyboard.GetState();
-            controle = GamePad.GetState(PlayerIndex.One);
-
-            //se pressionar alguma tecla, sai do vÌdeo
-            if ((tecladoAnterior.IsKeyDown(Keys.Enter) && teclado.IsKeyUp(Keys.Enter)) || (tecladoAnterior.IsKeyDown(Keys.Escape) && teclado.IsKeyUp(Keys.Escape)) || (controleAnterior.Buttons.Back == ButtonState.Pressed && controle.Buttons.Back == ButtonState.Released) || (controleAnterior.Buttons.A == ButtonState.Pressed && controle.Buttons.A == ButtonState.Released) || (controleAnterior.Buttons.B == ButtonState.Pressed && controle.Buttons.B == ButtonState.Released) || (controleAnterior.Buttons.X == ButtonState.Pressed && controle.Buttons.X == ButtonState.Released) || (controleAnterior.Buttons.Y == ButtonState.Pressed && controle.Buttons.Y == ButtonState.Released) || (controleAnterior.Buttons.Start == ButtonState.Pressed && controle.Buttons.Start == ButtonState.Released))
+            else
             {
-                if (!Principal.Mudo) Sons.MenuOK.Play();
-                Principal.mostrarTela(proximaTela);
-            }
-            else if (video != null)
-            {
-                if (videoPlayer.PlayPosition >= video.Duration) Principal.mostrarTela(proximaTela);
+                if (videoPlayer.State == MediaState.Playing && videoPlayer.PlayPosition >= 0.99f)
+                {
+                    Principal.mostrarTela(proximaTela);
+                }
+
+                //Skip por teclado ou controle
+                KeyboardState teclado = Keyboard.GetState();
+                GamePadState controle = GamePad.GetState(PlayerIndex.One);
+                if (teclado.IsKeyDown(Keys.Escape) || teclado.IsKeyDown(Keys.Enter) || teclado.IsKeyDown(Keys.Space) ||
+                    controle.Buttons.A == ButtonState.Pressed || controle.Buttons.Start == ButtonState.Pressed)
+                {
+                    Principal.mostrarTela(proximaTela);
+                }
             }
 
-            tecladoAnterior = teclado;
-            controleAnterior = controle;
             base.Update(gameTime);
         }
 
         public override void Draw(GameTime gameTime)
         {
+            // Render extracted video frame to game window
             if (videoPlayer.State == MediaState.Playing)
             {
-                principal.SpriteBatch.Begin(SpriteBlendMode.AlphaBlend, SpriteSortMode.Immediate, SaveStateMode.None);
-
-                texturaVideo = videoPlayer.GetTexture();
-
-                principal.SpriteBatch.Draw(texturaVideo, retangulo, Color.White);
-
-                principal.SpriteBatch.End();
+                Texture2D currentFrame = videoPlayer.GetCurrentFrame(principal.GraphicsDevice);
+                if (currentFrame != null)
+                {
+                    principal.SpriteBatch.Begin(SpriteSortMode.Deferred, BlendState.Opaque);
+                    principal.SpriteBatch.Draw(currentFrame,
+                        new Rectangle(0, 0, principal.GraphicsDevice.Viewport.Width, principal.GraphicsDevice.Viewport.Height),
+                        Color.White);
+                    principal.SpriteBatch.End();
+                    currentFrame.Dispose();
+                }
             }
 
             base.Draw(gameTime);
         }
-        #endregion
 
+        #endregion
 
         #region Metodos
         public override void Mostrar()
         {
             base.Mostrar();
             inicio = false;
-
-            if (video != null)
-            {
-                //videoPlayer.Play(video);
-            }
+            tempo = 0;
         }
 
         public override void Esconder()
         {
-            if (videoPlayer != null)
-            {
-                if (videoPlayer.State != MediaState.Stopped) videoPlayer.Stop();
-            }
-
+            videoPlayer?.Stop();
             base.Esconder();
+        }
+
+
+        public new void Dispose()
+        {
+            videoPlayer.Dispose();
+
+            base.Dispose();
         }
         #endregion
     }

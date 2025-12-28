@@ -166,8 +166,8 @@ namespace Jogo.Componentes
             get
             {
                 retangulo = animacao.Animacoes[animacao.AnimacaoAtual].RetanguloQuadroAtual;
-                retangulo.X = (int)posicaoReal.X+1;
-                retangulo.Y = (int)posicaoReal.Y+1;
+                retangulo.X = (int)posicaoReal.X + 1;
+                retangulo.Y = (int)posicaoReal.Y + 1;
                 retangulo.Width -= 2;
                 retangulo.Height -= 2;
                 return retangulo;
@@ -214,7 +214,7 @@ namespace Jogo.Componentes
         /// <param name="_posicao">A posição do item no mapa</param>
         /// <param name="_textura">O sprite do item</param>
         public Item(Principal _principal, Vector2 _posicao, String _nomeTextura)
-            : this(_principal, _posicao, true, true, false, _nomeTextura) {}
+            : this(_principal, _posicao, true, true, false, _nomeTextura) { }
         #endregion
 
 
@@ -328,7 +328,7 @@ namespace Jogo.Componentes
 
                         sr = new XmlSerializer(typeof(AnimacaoDeSprites));
                         this.Animacao = (AnimacaoDeSprites)sr.Deserialize(reader);
-                        
+
 
                         this.ItemInterativo = reader.ReadElementContentAsInt();
                         this.CordaInterativa = reader.ReadElementContentAsInt();
@@ -345,9 +345,9 @@ namespace Jogo.Componentes
                         reader.Read();
                     }
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    throw ex;
+                    // ignora erros
                 }
             }
             reader.Read();

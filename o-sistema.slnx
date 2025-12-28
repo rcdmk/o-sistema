@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="CustomTextImporter/CustomTextImporter.csproj" />
+  <Project Path="Jogo/Jogo.csproj" />
+</Solution>

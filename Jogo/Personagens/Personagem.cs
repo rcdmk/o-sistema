@@ -10,7 +10,7 @@ using Microsoft.Xna.Framework.Audio;
 namespace Jogo.Personagens
 {
     /// <summary>
-    /// Classe b·sica para personagens do jogo
+    /// Classe b√°sica para personagens do jogo
     /// </summary>
     public class Personagem : GameComponent
     {
@@ -48,7 +48,7 @@ namespace Jogo.Personagens
         protected int tileY = 0;
         protected int offsetX;
         protected bool sobreAlgo = false;
-        protected Rectangle retangulo = new Rectangle(0,0,64,64);
+        protected Rectangle retangulo = new Rectangle(0, 0, 64, 64);
         protected int objetivosCompletos = 0;
         protected int itensUsados = 0;
         protected bool agua = false;
@@ -63,7 +63,7 @@ namespace Jogo.Personagens
 
         //Sons
         [XmlIgnore]
-        public SoundEffectInstance SomEscada = Sons.Escada.CreateInstance(); 
+        public SoundEffectInstance SomEscada = Sons.Escada.CreateInstance();
         #endregion
 
 
@@ -72,11 +72,11 @@ namespace Jogo.Personagens
         /// Cria um personagem para o jogo
         /// </summary>
         /// <param name="_principal">O jogo</param>
-        /// <param name="_posicao">A posiÁ„o na tela</param>
-        /// <param name="_velocidadeIncremental">O incremento de velocidade para a movimentaÁ„o do personagem</param>
+        /// <param name="_posicao">A posi√ß√£o na tela</param>
+        /// <param name="_velocidadeIncremental">O incremento de velocidade para a movimenta√ß√£o do personagem</param>
         /// <param name="_vidas">A quantidade de vidas inicial</param>
         /// <param name="_textura">O spritesheet do personagem</param>
-        public Personagem(Principal _principal, Vector2 _posicao, float _velocidadeIncremental, int _vidas, String _textura):base(_principal)
+        public Personagem(Principal _principal, Vector2 _posicao, float _velocidadeIncremental, int _vidas, String _textura) : base(_principal)
         {
             this.principal = _principal;
             this.posicao = _posicao;
@@ -84,7 +84,7 @@ namespace Jogo.Personagens
             this.vidas = _vidas;
             this.textura = _textura;
 
-            //AnimaÁıes
+            //Anima√ß√µes
             animacao = new AnimacaoDeSprites();
 
             Animacao parado = new Animacao(78, 192, 1, 0, 0);
@@ -276,7 +276,7 @@ namespace Jogo.Personagens
                 morrer();
                 tempoMorto = 0;
                 return false;
-            } 
+            }
             else
             {
                 posicaoAtual = Mapa.pegaIndice(new Vector2(posicao.X + medidas.X / 2, Bordas.Y));
@@ -286,19 +286,19 @@ namespace Jogo.Personagens
 
                 if ((!principal.telaJogo.mapa.checaPassavel(posicaoFutura) || !principal.telaJogo.mapa.checaPassavel(posicaoFutura2) || principal.telaJogo.mapa.checaNuvem(posicaoFutura) || principal.telaJogo.mapa.checaNuvem(posicaoFutura2)) && posicaoFutura.Y != posicaoAtual.Y)
                 {
-                    if (velocidade.Y > 5)
+                    if (!Principal.Mudo)
                     {
                         if (velocidade.Y > 18)
                         {
-                            if (!Principal.Mudo) Sons.Queda.Play();
+                            Sons.Queda.Play();
                         }
-                        else
+                        else if (velocidade.Y > 5)
                         {
-                            if (!Principal.Mudo) Sons.Queda.Play(0.3f, 1, 0);
+                            Sons.Queda.Play(0.3f, 1, 0);
                         }
                     }
 
-                    if (this == principal.telaJogo.Personagem && velocidade.Y > 24 && !morto) morrer();
+                    if (this == principal.telaJogo.Personagem && velocidade.Y > 25 && !morto) morrer();
 
                     if (subindo)
                     {
@@ -326,7 +326,7 @@ namespace Jogo.Personagens
 
         private void checaEscada()
         {
-            posicaoAtual = Mapa.pegaIndice(new Vector2(posicao.X + medidas.X/2f, Bordas.Y));
+            posicaoAtual = Mapa.pegaIndice(new Vector2(posicao.X + medidas.X / 2f, Bordas.Y));
             if (principal.telaJogo.mapa.checaEscada(posicaoAtual) && subindo)
             {
                 velocidade.Y = 0;
@@ -405,7 +405,7 @@ namespace Jogo.Personagens
 
             vidas--;
             morto = true;
-            tempoMorto = 2;
+            tempoMorto = 3;
             animacao.AnimacaoAtual = "morrendo";
             animacao.iniciarAnimacao();
         }
@@ -466,8 +466,8 @@ namespace Jogo.Personagens
                 if (tempoMorto > 0)
                 {
                     tempoMorto -= (float)gameTime.ElapsedGameTime.TotalSeconds;
-                    
-                    //Sobe aos poucos pra dar impress„o de estar voando
+
+                    //Sobe aos poucos pra dar impress√£o de estar voando
                     velocidade = Vector2.Zero;
                     posicao.Y -= 0.4f;
 
@@ -481,7 +481,7 @@ namespace Jogo.Personagens
             }
             else
             {
-                //Aplicar fÌsica
+                //Aplicar f√≠sica
                 if (velocidade.X != 0) velocidade.X *= (friccao + Fisica.Friccao) / 2;
                 if (caindo) velocidade.Y += Fisica.Gravidade;
 
@@ -490,7 +490,7 @@ namespace Jogo.Personagens
                 if (Math.Abs(velocidade.Y) < 0.1f) velocidade.Y = 0;
                 if (subindo) checaEscada();
 
-                //Se estiver andando em alguma direÁ„o, verifica se h· colis„o
+                //Se estiver andando em alguma dire√ß√£o, verifica se h√° colis√£o
                 if (velocidade.X != 0) checaDirecao();
 
                 if (velocidade.Y < 0)
@@ -504,12 +504,12 @@ namespace Jogo.Personagens
                     checaChao();
                 }
 
-                //Atualiza a posiÁ„o do personagem
+                //Atualiza a posi√ß√£o do personagem
                 posicao.X += velocidade.X;
                 posicao.Y += velocidade.Y;
             }
 
-            //Atualizar animaÁ„o
+            //Atualizar anima√ß√£o
             animacao.Update(gameTime);
 
             medidas.Y = animacao.Animacoes[animacao.AnimacaoAtual].RetanguloQuadroAtual.Height;

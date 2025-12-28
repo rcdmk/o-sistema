@@ -36,9 +36,9 @@ namespace Jogo.Componentes
                             reader.Read();
                         }
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
-                        throw ex;
+                        // ignora erros
                     }
                 }
             }

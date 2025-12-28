@@ -85,8 +85,8 @@ namespace Jogo.Componentes
             set
             {
                 tamanho = value;
-                largura = (int)(tamanho * (textura.Width * (float)Math.Cos(angulo * 3.14f/180)));
-                altura = (int)(tamanho * textura.Width * (float)Math.Sin(angulo * 3.14f/180));
+                largura = (int)(tamanho * (textura.Width * (float)Math.Cos(angulo * 3.14f / 180)));
+                altura = (int)(tamanho * textura.Width * (float)Math.Sin(angulo * 3.14f / 180));
             }
         }
 
@@ -130,7 +130,7 @@ namespace Jogo.Componentes
         }
 
         public Corda(String nomeTextura, Vector2 origem, Vector2 destino)
-            : this(nomeTextura, origem, (int)Vector2.Distance(origem, destino), (-(float)Math.Atan2((double)(destino.Y - origem.Y), (double)(destino.X - origem.X))) * 180/3.14f)
+            : this(nomeTextura, origem, (int)Vector2.Distance(origem, destino), (-(float)Math.Atan2((double)(destino.Y - origem.Y), (double)(destino.X - origem.X))) * 180 / 3.14f)
         { }
         #endregion
 
@@ -142,8 +142,8 @@ namespace Jogo.Componentes
 
             retangulo = new Rectangle(0, 0, textura.Width, textura.Height);
 
-            largura = (int)(tamanho * (textura.Width * (float)Math.Cos(angulo * 3.14f/180)));
-            altura = (int)(tamanho * (textura.Width * (float)Math.Sin(angulo * 3.14f/180)));
+            largura = (int)(tamanho * (textura.Width * (float)Math.Cos(angulo * 3.14f / 180)));
+            altura = (int)(tamanho * (textura.Width * (float)Math.Sin(angulo * 3.14f / 180)));
         }
 
         public void Draw(GameTime gameTime, SpriteBatch spriteBatch)
@@ -151,9 +151,9 @@ namespace Jogo.Componentes
             posicaoAtual = posicao;
             for (int i = 0; i < tamanho; i++)
             {
-                spriteBatch.Draw(textura, posicaoAtual, retangulo, cor, -(angulo * 3.14f/180), new Vector2(0, (textura.Height/2)), 1, SpriteEffects.None, 0);
-                posicaoAtual.X += textura.Width * (float)Math.Cos(angulo * 3.14f/180);
-                posicaoAtual.Y -= textura.Width * (float)Math.Sin(angulo * 3.14f/180);
+                spriteBatch.Draw(textura, posicaoAtual, retangulo, cor, -(angulo * 3.14f / 180), new Vector2(0, (textura.Height / 2)), 1, SpriteEffects.None, 0);
+                posicaoAtual.X += textura.Width * (float)Math.Cos(angulo * 3.14f / 180);
+                posicaoAtual.Y -= textura.Width * (float)Math.Sin(angulo * 3.14f / 180);
             }
         }
         #endregion
@@ -186,7 +186,7 @@ namespace Jogo.Componentes
                         this.tamanho = reader.ReadElementContentAsInt();
 
                         this.NomeTextura = reader.ReadElementContentAsString();
- 
+
                         sr = new XmlSerializer(typeof(Color));
                         this.Cor = (Color)sr.Deserialize(reader);
                     }
@@ -195,9 +195,9 @@ namespace Jogo.Componentes
                         reader.Read();
                     }
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    throw ex;
+                    // ignora errors
                 }
             }
             reader.Read();

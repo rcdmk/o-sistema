@@ -25,7 +25,7 @@ namespace Jogo.Telas
         protected override void LoadContent()
         {
             Componentes.Add(new ImagemCentral(principal, principal.Content.Load<Texture2D>("Sprites\\Geral\\REATOR_logo"), ImagemCentral.Modo.Centralizado));
-            
+
             fader = new Fader(principal, "Sprites\\Componentes\\FadeIn", "Sprites\\Componentes\\FadeOut");
             Componentes.Add(fader);
 
@@ -38,7 +38,7 @@ namespace Jogo.Telas
             {
                 tempo += (float)gameTime.ElapsedGameTime.TotalSeconds;
 
-                if (tempo >= 3)
+                if (tempo >= 3 && !principal.CarregandoAssets)
                 {
                     fader.FadeOut();
                     tempo = 0;
@@ -70,7 +70,7 @@ namespace Jogo.Telas
 
             if (fader.Visivel)
             {
-                principal.SpriteBatch.Begin(SpriteBlendMode.AlphaBlend, SpriteSortMode.Immediate, SaveStateMode.None);
+                principal.SpriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend);
                 fader.Draw(gameTime, principal.SpriteBatch);
                 principal.SpriteBatch.End();
             }

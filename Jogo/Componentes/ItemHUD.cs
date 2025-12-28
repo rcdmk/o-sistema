@@ -1,4 +1,6 @@
 using System;
+using System.Xml;
+using System.Xml.Schema;
 using System.Xml.Serialization;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
@@ -7,7 +9,7 @@ using Microsoft.Xna.Framework.Graphics;
 namespace Jogo.Componentes
 {
     [Serializable]
-    public class ItemHUD : GameComponent
+    public class ItemHUD : GameComponent, IXmlSerializable
     {
         #region Variaveis
         private Principal principal;
@@ -65,6 +67,7 @@ namespace Jogo.Componentes
             get { return espacoItens; }
             set { espacoItens = value; }
         }
+
         #endregion
 
 
@@ -104,6 +107,63 @@ namespace Jogo.Componentes
         public override string ToString()
         {
             return String.Format("Item: {0}", nome);
+        }
+
+        public XmlSchema GetSchema()
+        {
+            return null;
+        }
+
+        public void ReadXml(XmlReader reader)
+        {
+            XmlSerializer sr = new XmlSerializer(typeof(Vector2));
+
+            reader.ReadStartElement(); // Read the start tag of the element
+            while (reader.NodeType != System.Xml.XmlNodeType.EndElement)
+            {
+                reader.MoveToContent();
+                if (reader.NodeType == System.Xml.XmlNodeType.Element)
+                {
+                    switch (reader.Name)
+                    {
+                        case nameof(this.posicao):
+                            this.posicao = (Vector2)sr.Deserialize(reader);
+                            break;
+                        case nameof(this.posicaoHUD):
+                            this.posicaoHUD = (Vector2)sr.Deserialize(reader);
+                            break;
+                        case nameof(this.nome):
+                            this.nome = reader.ReadElementContentAsString();
+                            break;
+                        case nameof(this.tipo):
+                            this.tipo = reader.ReadElementContentAsString();
+                            break;
+                        case nameof(this.nomeTextura):
+                            this.nomeTextura = reader.ReadElementContentAsString();
+                            break;
+                        default:
+                            reader.Skip(); // Skip unknown elements
+                            break;
+                    }
+                }
+                else
+                {
+                    reader.Read(); // Advance the reader
+                }
+            }
+            reader.ReadEndElement(); // Read the end tag of the element
+        }
+
+        public void WriteXml(XmlWriter writer)
+        {
+            XmlSerializer sr = new XmlSerializer(typeof(Vector2));
+
+            sr.Serialize(writer, this.posicao);
+            sr.Serialize(writer, this.posicaoHUD);
+
+            writer.WriteElementString(nameof(this.nome), this.nome);
+            writer.WriteElementString(nameof(this.tipo), this.tipo);
+            writer.WriteElementString(nameof(this.nomeTextura), this.nomeTextura);
         }
         #endregion
     }

@@ -3,9 +3,10 @@ using System.Xml.Serialization;
 using Jogo.Componentes;
 using Jogo.Engine;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Audio;
+using System.Xml.Schema;
+using System.Xml;
 
 namespace Jogo.Personagens
 {
@@ -27,9 +28,9 @@ namespace Jogo.Personagens
     /// Clase base para os inimigos
     /// </summary>
     [Serializable]
-    public class Inimigo : Personagem
+    public class Inimigo : Personagem, IXmlSerializable
     {
-        #region Vari·veis
+        #region Vari√°veis
         //IA
         protected float tempoEspera;
         protected float tempoEsperaMax = 2f;
@@ -99,7 +100,7 @@ namespace Jogo.Personagens
         #region Metodos Padrao
         public override void Initialize()
         {
-            //AnimaÁıes
+            //Anima√ß√µes
             animacao.Animacoes.Clear();
 
             Animacao parado = new Animacao(106, 256, 1, 0, 0);
@@ -137,17 +138,17 @@ namespace Jogo.Personagens
             tileX = (int)Math.Floor(posicaoX / Tile.Dimensoes.X);
             tileY = (int)Math.Floor(Bordas.Y / Tile.Dimensoes.Y);
 
-            //Se estiver numa altura diferente e n„o estiver numa escada ou pulando, passa a ter ai simples
+            //Se estiver numa altura diferente e n√£o estiver numa escada ou pulando, passa a ter ai simples
             if (Math.Abs(principal.telaJogo.Personagem.Posicao.Y - posicao.Y) > HitTest.Height + 10 && !subindo && !pulando)
             {
                 inteligencia = IA.Simples;
             }
 
-            //Se o personagem tiver na tela da ·gua e empurrar 3 ou mais itens na ·gua, os seguranÁas ficam sempre alertas
-            //Caso contr·rio...
+            //Se o personagem tiver na tela da √°gua e empurrar 3 ou mais itens na √°gua, os seguran√ßas ficam sempre alertas
+            //Caso contr√°rio...
             if (principal.telaJogo.Personagem.ItensUsados < 3 || !principal.telaJogo.mapa.Caminho.EndsWith("Agua"))
             {
-                //Se estiver numa altura a 800 px de dist‚ncia, passa a ter IA simples e deixa de ser perseguidor
+                //Se estiver numa altura a 800 px de dist√¢ncia, passa a ter IA simples e deixa de ser perseguidor
                 if (Math.Abs(principal.telaJogo.Personagem.Posicao.Y - posicao.Y) > 800 && !subindo && !pulando)
                 {
                     inteligencia = IA.Simples;
@@ -185,7 +186,7 @@ namespace Jogo.Personagens
                 }
             }
 
-            //Para de se mover se o jogador perdeu ou se est· esperando
+            //Para de se mover se o jogador perdeu ou se est√° esperando
             if (principal.telaJogo.Derrota || principal.telaJogo.Personagem.Morto || tempoEspera > 0)
             {
                 velocidade.X = 0;
@@ -209,7 +210,7 @@ namespace Jogo.Personagens
             }
             else
             {
-                //caso contr·rio, se n„o estiver pulando ou subindo, muda para andar
+                //caso contr√°rio, se n√£o estiver pulando ou subindo, muda para andar
                 if (!pulando && !subindo)
                 {
                     animacao.AnimacaoAtual = "andando";
@@ -218,7 +219,7 @@ namespace Jogo.Personagens
             }
 
 
-            //Ajuste se permanecer parado por um tempo maior que a espera m·xima
+            //Ajuste se permanecer parado por um tempo maior que a espera m√°xima
             if (posicaoAnterior == posicao)
             {
                 if (subindo)
@@ -233,7 +234,7 @@ namespace Jogo.Personagens
 
                 tempoParado += (float)gameTime.ElapsedGameTime.TotalSeconds;
 
-                if (tempoParado > tempoEsperaMax + 1 || (subindo && tempoParado > tempoEsperaMax/2))
+                if (tempoParado > tempoEsperaMax + 1 || (subindo && tempoParado > tempoEsperaMax / 2))
                 {
                     pular();
                     tempoParado = 0;
@@ -263,10 +264,10 @@ namespace Jogo.Personagens
                 //Se o tempo acabar
                 if (tempoEspera <= 0)
                 {
-                    //Muda de direÁ„o do movimento
+                    //Muda de dire√ß√£o do movimento
                     direcao = (Direcao)(-(int)direcao);
 
-                    //Muda a direÁ„o do sprite
+                    //Muda a dire√ß√£o do sprite
                     if (direcao == Direcao.Direita)
                     {
                         flip = SpriteEffects.None;
@@ -277,21 +278,21 @@ namespace Jogo.Personagens
                     }
                 }
             }
-            //Se n„o, se movimenta na direÁ„o atual
+            //Se n√£o, se movimenta na dire√ß√£o atual
             else
             {
-                //se n„o puder passar ou se for cair da plataforma
+                //se n√£o puder passar ou se for cair da plataforma
                 if (!caindo && !pulando && !subindo && (!principal.telaJogo.mapa.checaPassavel(new Vector2(tileX + (int)direcao, tileY)) || !principal.telaJogo.mapa.checaPassavel(new Vector2(tileX + (int)direcao, tileY - 1)) || !principal.telaJogo.mapa.checaPassavel(new Vector2(tileX + (int)direcao, tileY - 2)) || (principal.telaJogo.mapa.checaPassavel(new Vector2(tileX + (int)direcao, tileY + 1)) && !principal.telaJogo.mapa.checaNuvem(new Vector2(tileX + (int)direcao, tileY + 1)))))
                 {
-                    //ComeÁa a esperar
+                    //Come√ßa a esperar
                     tempoEspera = tempoEsperaMax;
                     velocidade.X = 0;
                     velocidade.Y = 0;
                 }
-                //Se puder passar e n„o estiver subindo
+                //Se puder passar e n√£o estiver subindo
                 else if (!subindo)
                 {
-                    //movimenta-se na direÁ„o atual
+                    //movimenta-se na dire√ß√£o atual
                     velocidade.X += velocidadeIncremental * (int)direcao;
                 }
             }
@@ -429,6 +430,83 @@ namespace Jogo.Personagens
                     subindo = false;
                 }
             }
+        }
+        #endregion
+
+        #region XmlSerialize Methods
+
+        public XmlSchema GetSchema()
+        {
+            return null;
+        }
+
+        public void ReadXml(XmlReader reader)
+        {
+            XmlSerializer sr = new XmlSerializer(typeof(Vector2));
+
+            reader.ReadStartElement(); // Read the start tag of the element
+            while (reader.NodeType != System.Xml.XmlNodeType.EndElement)
+            {
+                reader.MoveToContent();
+                if (reader.NodeType == System.Xml.XmlNodeType.Element)
+                {
+                    switch (reader.Name)
+                    {
+                        case nameof(this.posicao):
+                            this.posicao = (Vector2)sr.Deserialize(reader);
+                            break;
+                        case nameof(this.velocidadeIncremental):
+                            this.velocidadeIncremental = reader.ReadElementContentAsFloat();
+                            break;
+                        case nameof(this.vidas):
+                            this.vidas = reader.ReadElementContentAsInt();
+                            break;
+                        case nameof(this.textura):
+                            this.textura = reader.ReadElementContentAsString();
+                            break;
+                        case nameof(this.direcao):
+                            this.direcao = Enum.Parse<Direcao>(reader.ReadElementContentAsString());
+                            break;
+                        case nameof(this.inteligencia):
+                            this.inteligencia = Enum.Parse<IA>(reader.ReadElementContentAsString());
+                            break;
+                        case nameof(this.perseguidor):
+                            this.perseguidor = reader.ReadElementContentAsBoolean();
+                            break;
+                        case nameof(this.tempoEspera):
+                            this.tempoEspera = reader.ReadElementContentAsFloat();
+                            break;
+                        case nameof(this.tempoEsperaMax):
+                            this.tempoEsperaMax = reader.ReadElementContentAsFloat();
+                            break;
+                        default:
+                            reader.Skip(); // Skip unknown elements
+                            break;
+                    }
+                }
+                else
+                {
+                    reader.Read(); // Advance the reader
+                }
+            }
+            reader.ReadEndElement(); // Read the end tag of the element
+        }
+
+        public void WriteXml(XmlWriter writer)
+        {
+            XmlSerializer sr = new XmlSerializer(typeof(Vector2));
+
+            sr.Serialize(writer, this.posicao);
+
+            writer.WriteElementString(nameof(this.velocidadeIncremental), this.velocidadeIncremental.ToString());
+            writer.WriteElementString(nameof(this.vidas), this.vidas.ToString());
+            writer.WriteElementString(nameof(this.textura), this.textura.ToString());
+
+            writer.WriteElementString(nameof(this.direcao), this.direcao.ToString());
+            writer.WriteElementString(nameof(this.inteligencia), this.inteligencia.ToString());
+            writer.WriteElementString(nameof(this.perseguidor), this.perseguidor.ToString().ToLower());
+            writer.WriteElementString(nameof(this.tempoEspera), this.tempoEspera.ToString());
+            writer.WriteElementString(nameof(this.tempoEsperaMax), this.tempoEsperaMax.ToString());
         }
         #endregion
     }
