@@ -199,20 +199,23 @@ namespace Jogo.Telas
             controleDicas(gameTime);
 
 
+            if (!derrota && !vitoria && !personagem.Morto)
+            {
+                //Posicionar a camera
+                mapa.ScrollCamera(principal.SpriteBatch.GraphicsDevice.Viewport);
+            }
+
             if (!derrota && !pausado && !vitoria)
             {
                 if (!personagem.Morto)
                 {
-                    //Posicionar a camera
-                    mapa.ScrollCamera(principal.SpriteBatch.GraphicsDevice.Viewport);
-
                     //Atualizar itens e personagens
                     mapa.Update(gameTime);
 
                     //Controles do HUD
                     controleHUD(gameTime);
 
-                    //Os inimigos s�o controlados pela IA no pr�prio objeto
+                    //Os inimigos são controlados pela IA no próprio objeto
 
                     //Controles do personagem
                     controlePersonagem(gameTime);
@@ -220,18 +223,18 @@ namespace Jogo.Telas
                     //Controles dos Portais
                     controlePortais(gameTime);
 
-                    //Controle e intera��o com os Itens
+                    //Controle e interação com os Itens
                     controleItens(gameTime);
 
 
-                    //Parar anima��es do persoangem se não estiver fazendo nada ou não puder se mexer
+                    //Parar animações do personagem se não estiver fazendo nada ou não puder se mexer
                     pararAnimacoes(gameTime);
 
 
                     if (!iniciado)
                     {
-                        //Sons e m�sicas de fundo
-                        //Se for a tela da �gua
+                        //Sons e músicas de fundo
+                        //Se for a tela da água
                         if (mapa.Caminho.EndsWith("Agua"))
                         {
                             //Toca a goteira

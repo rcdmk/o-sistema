@@ -375,9 +375,6 @@ namespace Jogo.Engine
             posicaoMaximaCameraY = (int)Tile.Dimensoes.Y * (int)Medidas.Y - viewport.Height;
             posicaoCamera = new Vector2(MathHelper.Clamp((int)(posicaoCamera.X + movimentoCameraX), 0.0f, posicaoMaximaCameraX), MathHelper.Clamp((int)(posicaoCamera.Y + movimentoCameraY), 0.0f, posicaoMaximaCameraY));
 
-            if (camera.Width != viewport.Width) camera.Width = viewport.Width;
-            if (camera.Height != viewport.Height) camera.Height = viewport.Height;
-
             camera.X = (int)posicaoCamera.X;
             camera.Y = (int)posicaoCamera.Y;
             camera.Width = viewport.Width;
