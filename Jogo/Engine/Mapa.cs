@@ -221,7 +221,7 @@ namespace Jogo.Engine
                 itens[i].Update(gameTime);
             }
 
-            //Colet�veis
+            //Coletáveis
             for (int i = 0; i < coletaveis.Count; i++)
             {
                 coletaveis[i].Update(gameTime);
@@ -280,40 +280,37 @@ namespace Jogo.Engine
             //Portais
             for (int i = 0; i < portais.Count; i++)
             {
-                portais[i].Draw(gameTime, spriteBatch);
+                if (camera.Intersects(portais[i].HitTest)) portais[i].Draw(gameTime, spriteBatch);
             }
 
             //Itens - Fundo
             for (int i = 0; i < itens.Count; i++)
             {
-                itens[i].Draw(gameTime, spriteBatch);
+                if (camera.Intersects(itens[i].HitTest)) itens[i].Draw(gameTime, spriteBatch);
             }
 
             //Cordas
             for (int i = 0; i < cordas.Count; i++)
             {
-                if (camera.Intersects(cordas[i].HitTest))
-                {
-                    cordas[i].Draw(gameTime, spriteBatch);
-                }
+                if (camera.Intersects(cordas[i].HitTest)) cordas[i].Draw(gameTime, spriteBatch);
             }
 
             //Itens2 - Segundo plano
             for (int i = 0; i < itens2.Count; i++)
             {
-                itens2[i].Draw(gameTime, spriteBatch);
+                if (camera.Intersects(itens2[i].HitTest)) itens2[i].Draw(gameTime, spriteBatch);
             }
 
             //Itens coletáveis
             for (int i = 0; i < coletaveis.Count; i++)
             {
-                coletaveis[i].Draw(gameTime, spriteBatch);
+                if (camera.Intersects(coletaveis[i].HitTest)) coletaveis[i].Draw(gameTime, spriteBatch);
             }
 
             //Inimigos
             for (int i = 0; i < inimigos.Count; i++)
             {
-                inimigos[i].Draw(gameTime, spriteBatch);
+                if (camera.Intersects(inimigos[i].HitTest)) inimigos[i].Draw(gameTime, spriteBatch);
             }
 
             //Personagem
@@ -329,7 +326,7 @@ namespace Jogo.Engine
             //Itens3 - Primeiro plano
             for (int i = 0; i < itens3.Count; i++)
             {
-                itens3[i].Draw(gameTime, spriteBatch);
+                if (camera.Intersects(itens3[i].HitTest)) itens3[i].Draw(gameTime, spriteBatch);
             }
         }
         #endregion
