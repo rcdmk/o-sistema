@@ -2,7 +2,6 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Media;
 
 namespace Jogo.Componentes
 {
@@ -92,7 +91,7 @@ namespace Jogo.Componentes
                     Pausar();
                 }
             }
-            
+
             base.Update(gameTime);
         }
 
@@ -101,7 +100,8 @@ namespace Jogo.Componentes
             if (visivel)
             {
                 Rectangle destino = new Rectangle((int)posicao.X, (int)posicao.Y, Game.Window.ClientBounds.Width, Game.Window.ClientBounds.Height);
-                if (animacao.AnimacaoAtual == "fadeIn") {
+                if (animacao.AnimacaoAtual == "fadeIn")
+                {
                     spriteBatch.Draw(texturaIn, destino, animacao.Animacoes[animacao.AnimacaoAtual].RetanguloQuadroAtual, cor);
                 }
                 else

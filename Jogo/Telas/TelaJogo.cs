@@ -633,7 +633,7 @@ namespace Jogo.Telas
                     //Controlar manivelas
                     checarManivela(mapa.Itens2[i], personagemBox);
                 }
-                //Se tiver na primeira tela ou na tela da �gua
+                //Se tiver na primeira tela ou na tela da água
                 else if (mapa.Caminho.EndsWith("Inicio") || mapa.Caminho.EndsWith("Agua"))
                 {
                     //Aplica gravidade e empuxo aos itens
@@ -703,7 +703,7 @@ namespace Jogo.Telas
                             Componentes.Add(dica);
                             pausado = true;
                         }
-                        //Se tiver na fase da �gua, mostra a dica das roldanas
+                        //Se tiver na fase da água, mostra a dica das roldanas
                         else if (mapa.Caminho.EndsWith("Agua"))
                         {
                             dica = new ImagemCentral(principal, principal.Content.Load<Texture2D>("Sprites\\Esquemas\\esquemas_roldanas"), ImagemCentral.Modo.Esticado);

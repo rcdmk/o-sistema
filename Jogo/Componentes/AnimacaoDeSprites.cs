@@ -9,7 +9,7 @@ using Microsoft.Xna.Framework.Graphics;
 namespace Jogo.Componentes
 {
     /// <summary>
-    /// Classe base para anima��es com controle de framerate
+    /// Classe base para animações com controle de framerate
     /// (Retirada de www.ziggyware.com e modificada por mim RCDMK)
     /// </summary>
     [Serializable]
@@ -128,19 +128,19 @@ namespace Jogo.Componentes
 
         #region Construtor
         /// <summary>
-        /// Cria uma anima��o.
+        /// Cria uma animação.
         /// Construtor vazio para carregar dados posteriormente
         /// </summary>
         public Animacao() { }
 
         /// <summary>
-        /// Cria uma nova anima��o
+        /// Cria uma nova animação
         /// </summary>
-        /// <param name="largura">A largura total da anima��o</param>
-        /// <param name="altura">A altura total da anima��o</param>
-        /// <param name="numQuadros">O n�mero de quadros da anima��o</param>
-        /// <param name="OffsetX">O offset no eixo x de onde come�a a anima��o na spritesheet</param>
-        /// <param name="OffsetY">O offset no eixo Y de onde come�a a anima��o na spritesheet</param>
+        /// <param name="largura">A largura total da animação</param>
+        /// <param name="altura">A altura total da animação</param>
+        /// <param name="numQuadros">O número de quadros da animação</param>
+        /// <param name="OffsetX">O offset no eixo x de onde começa a animação na spritesheet</param>
+        /// <param name="OffsetY">O offset no eixo Y de onde começa a animação na spritesheet</param>
         public Animacao(int largura, int altura, int numQuadros, int OffsetX, int OffsetY)
         {
             this.largura = largura;
@@ -153,16 +153,16 @@ namespace Jogo.Componentes
         }
 
         /// <summary>
-        /// Cria uma nova anima��o com defini��o de quadros por segundo
+        /// Cria uma nova animação com definição de quadros por segundo
         /// </summary>
-        /// <param name="largura">A largura total da anima��o</param>
-        /// <param name="altura">A altura total da anima��o</param>
-        /// <param name="numQuadros">O n�mero de quadros da anima��o</param>
-        /// <param name="quadrosPorSegundo">N�mero de quadros por segundo da anima��o (velocidade)</param>
-        /// <param name="loop">Flag para anima��o passar continuamente (em loop) ou n�o</param>
-        /// <param name="vertical">Flag para anima��o ser gerada verticalemente na spritesheet ou n�o</param>
-        /// <param name="OffsetX">O offset no eixo x de onde come�a a anima��o na spritesheet</param>
-        /// <param name="OffsetY">O offset no eixo Y de onde come�a a anima��o na spritesheet</param>
+        /// <param name="largura">A largura total da animação</param>
+        /// <param name="altura">A altura total da animação</param>
+        /// <param name="numQuadros">O número de quadros da animação</param>
+        /// <param name="quadrosPorSegundo">Número de quadros por segundo da animação (velocidade)</param>
+        /// <param name="loop">Flag para animação passar continuamente (em loop) ou não</param>
+        /// <param name="vertical">Flag para animação ser gerada verticalemente na spritesheet ou não</param>
+        /// <param name="OffsetX">O offset no eixo x de onde começa a animação na spritesheet</param>
+        /// <param name="OffsetY">O offset no eixo Y de onde começa a animação na spritesheet</param>
         public Animacao(int largura, int altura, int numQuadros, int quadrosPorSegundo, bool loop, bool vertical, int OffsetX, int OffsetY)
         {
             this.largura = largura;
@@ -178,17 +178,17 @@ namespace Jogo.Componentes
         }
 
         /// <summary>
-        /// Cria uma nova anima��o com reverso
+        /// Cria uma nova animação com reverso
         /// </summary>
-        /// <param name="largura">A largura total da anima��o</param>
-        /// <param name="altura">A altura total da anima��o</param>
-        /// <param name="numQuadros">O n�mero de quadros da anima��o</param>
+        /// <param name="largura">A largura total da animação</param>
+        /// <param name="altura">A altura total da animação</param>
+        /// <param name="numQuadros">O número de quadros da animação</param>
         /// <param name="quadrosPorSegundo"></param>
-        /// <param name="loop">Flag para anima��o passar continuamente (em loop) ou n�o</param>
-        /// <param name="vertical">Flag para anima��o ser gerada verticalemente na spritesheet ou n�o</param>
-        /// <param name="reverso">Flag para anima��o ser gerada invertida na spritesheet ou n�o</param>
-        /// <param name="OffsetX">O offset no eixo x de onde come�a a anima��o na spritesheet</param>
-        /// <param name="OffsetY">O offset no eixo Y de onde come�a a anima��o na spritesheet</param>
+        /// <param name="loop">Flag para animação passar continuamente (em loop) ou não</param>
+        /// <param name="vertical">Flag para animação ser gerada verticalemente na spritesheet ou não</param>
+        /// <param name="reverso">Flag para animação ser gerada invertida na spritesheet ou não</param>
+        /// <param name="OffsetX">O offset no eixo x de onde começa a animação na spritesheet</param>
+        /// <param name="OffsetY">O offset no eixo Y de onde começa a animação na spritesheet</param>
         public Animacao(int largura, int altura, int numQuadros, int quadrosPorSegundo, bool loop, bool vertical, bool reverso, int OffsetX, int OffsetY)
         {
             this.largura = largura;
@@ -208,7 +208,7 @@ namespace Jogo.Componentes
 
         #region Metodos Padrao
         /// <summary>
-        /// Atualiza a anima��o
+        /// Atualiza a animação
         /// </summary>
         /// <param name="gameTime">O tempo de jogo atual</param>
         public void Update(GameTime gameTime)
@@ -216,7 +216,7 @@ namespace Jogo.Componentes
             //incrementa o timer com os segundos passados
             timer += (float)gameTime.ElapsedGameTime.TotalSeconds;
 
-            //se o timer alcan�ar a duara��o dos quadros
+            //se o timer alcançar a duaração dos quadros
             if (timer >= duracaoQuadros)
             {
                 //reseta o timer
@@ -225,7 +225,7 @@ namespace Jogo.Componentes
 
                 if (reverso)
                 {
-                    //incrementa o quadro atual e limita � quantidade de quadros
+                    //incrementa o quadro atual e limita à quantidade de quadros
                     if (loop)
                     {
                         quadroAtual -= 1;
@@ -238,7 +238,7 @@ namespace Jogo.Componentes
                 }
                 else
                 {
-                    //incrementa o quadro atual e limita � quantidade de quadros
+                    //incrementa o quadro atual e limita à quantidade de quadros
                     if (loop)
                     {
                         quadroAtual = (quadroAtual + 1) % quadros.Length;
@@ -259,13 +259,13 @@ namespace Jogo.Componentes
         /// </summary>
         public void Reset()
         {
-            //reseta a anima��o a 0.
+            //reseta a animação a 0.
             quadroAtual = 0;
             timer = 0f;
         }
 
         /// <summary>
-        /// Gera os ret�ngulos dos quadros da anima��o
+        /// Gera os retângulos dos quadros da animação
         /// </summary>
         public void GerarRetangulos()
         {
@@ -281,7 +281,7 @@ namespace Jogo.Componentes
                 //cria os retangulos
                 for (int i = 0; i < numQuadros; i++)
                 {
-                    //Cria cada ret�ngulo a partir dos offsets com a largura e a altura de cada quadro
+                    //Cria cada retângulo a partir dos offsets com a largura e a altura de cada quadro
                     quadros[i] = new Rectangle(OffsetX, OffsetY + (alturaQuadro * i), largura, alturaQuadro);
                 }
             }
@@ -290,7 +290,7 @@ namespace Jogo.Componentes
                 //cria os retangulos
                 for (int i = 0; i < numQuadros; i++)
                 {
-                    //Cria cada ret�ngulo a partir dos offsets com a largura e a altura de cada quadro
+                    //Cria cada retângulo a partir dos offsets com a largura e a altura de cada quadro
                     quadros[i] = new Rectangle(OffsetX + (larguraQuadro * i), OffsetY, larguraQuadro, altura);
                 }
             }
@@ -387,7 +387,7 @@ namespace Jogo.Componentes
     }
 
     /// <summary>
-    /// Classe base para a anima��o de sprites (Retirada de www.ziggyware.com e modigicada por mim RCDMK)
+    /// Classe base para a animação de sprites (Retirada de www.ziggyware.com e modigicada por mim RCDMK)
     /// </summary>
     [Serializable]
     public class AnimacaoDeSprites
@@ -399,17 +399,17 @@ namespace Jogo.Componentes
         public Vector2 Posicao = Vector2.Zero;
 
         /// <summary>
-        /// Cole��o de anima��es do sprite
+        /// Coleção de animações do sprite
         /// </summary>
         public Dicionario<string, Animacao> Animacoes = new Dicionario<string, Animacao>();
 
         //O spritesheet
         Texture2D textura;
 
-        //a anima��o atual
+        //a animação atual
         string animacaoAtual;
 
-        //a flag de atualiza��o da anima��o
+        //a flag de atualização da animação
         public bool atualizarAnimacao = true;
         #endregion
 
@@ -426,7 +426,7 @@ namespace Jogo.Componentes
         }
 
         /// <summary>
-        /// Retorna ou seta a anima��o atual
+        /// Retorna ou seta a animação atual
         /// </summary>
         [ContentSerializer]
         public string AnimacaoAtual
@@ -434,18 +434,18 @@ namespace Jogo.Componentes
             get { return animacaoAtual; }
             set
             {
-                //se o valor passado existir como anima��o
+                //se o valor passado existir como animação
                 if (value != null)
                 {
                     if (Animacoes.ContainsKey(value))
                     {
-                        //muda a anima��o somente se a anima�ao atual for diferente da informada
+                        //muda a animação somente se a animaçao atual for diferente da informada
                         if (animacaoAtual == null || !animacaoAtual.Equals(value))
                         {
-                            //seta a anima��o atual com o valor informado
+                            //seta a animação atual com o valor informado
                             animacaoAtual = value;
 
-                            //reseta a anima��o
+                            //reseta a animação
                             Animacoes[animacaoAtual].Reset();
                         }
                     }
@@ -462,7 +462,7 @@ namespace Jogo.Componentes
 
         #region Metodos
         /// <summary>
-        /// Inicia a anima��o se ela ainda n�o estiver iniciada
+        /// Inicia a animação se ela ainda não estiver iniciada
         /// </summary>
         public void iniciarAnimacao()
         {
@@ -470,7 +470,7 @@ namespace Jogo.Componentes
         }
 
         /// <summary>
-        /// Para a anima��o
+        /// Para a animação
         /// </summary>
         public void pararAnimacao()
         {
@@ -486,23 +486,23 @@ namespace Jogo.Componentes
         /// <param name="gameTime">O tempo de jogo atual</param>
         public void Update(GameTime gameTime)
         {
-            //Se tiver uma anima��o v�lida
+            //Se tiver uma animação válida
             if (animacaoAtual == null)
             {
-                //Se n�o tiver chaves, n�o tem anima��o, ent�o sai
+                //Se não tiver chaves, não tem animação, então sai
                 if (Animacoes.Keys.Count == 0) return;
 
-                //pega uma lista de anima��es v�lidas na lista de anima��es
+                //pega uma lista de animações válidas na lista de animações
                 string[] keys = new string[Animacoes.Keys.Count];
 
-                //copia a primeira chave da lista para a lista de anima��es
+                //copia a primeira chave da lista para a lista de animações
                 Animacoes.Keys.CopyTo(keys, 0);
 
-                //seta a anima��o atual para a primeira anima��o
+                //seta a animação atual para a primeira animação
                 animacaoAtual = keys[0];
             }
 
-            //se a flag de atualiza��o for verdadeira, atualiza a anima��o
+            //se a flag de atualização for verdadeira, atualiza a animação
             if (atualizarAnimacao) Animacoes[animacaoAtual].Update(gameTime);
         }
 
@@ -512,7 +512,7 @@ namespace Jogo.Componentes
         /// <param name="batch">O SpriteBatch para desenhar o sprite</param>
         public void Draw(SpriteBatch batch)
         {
-            //usando o  Animacoes[animacaoAtual].QuadroAtual para pegar o ret�ngulo de origem do sprite na spritesheet
+            //usando o  Animacoes[animacaoAtual].QuadroAtual para pegar o retângulo de origem do sprite na spritesheet
             if (animacaoAtual != null)
             {
                 batch.Draw(textura, Posicao, Animacoes[animacaoAtual].RetanguloQuadroAtual, Color.White);
